@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TblSiloTypes extends Migration
+class CreateBlockTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,12 @@ class TblSiloTypes extends Migration
     public function up()
     {
         //
-		Schema::create('silo_types', function (Blueprint $table){
-			$table->increments('id');
-			$table->string('type');
-			$table->timestamps();
-		});
+        Schema::create('blocks', function (Blueprint $table){
+            $table->increments('id');;
+            $table->double('width');
+            $table->double('depth');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,6 +30,6 @@ class TblSiloTypes extends Migration
     public function down()
     {
         //
-		Schema::drop('silo_types');
+        Schema::dropIfExists('blocks');
     }
 }

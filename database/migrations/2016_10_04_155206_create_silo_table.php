@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TblBlocksCount extends Migration
+class CreateSiloTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class TblBlocksCount extends Migration
     public function up()
     {
         //
-		Schema::create('blocks_count', function (Blueprint $table){
-			$table->increments('id');
-			$table->integer('block_id')->unsigned();
-			$table->integer('block_count');
-			$table->timestamps();
-		});
+        Schema::create('silos', function (Blueprint $table){
+            $table->increments('id');
+            $table->integer('number');
+            $table->decimal('volume', 5, 2);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,6 +30,6 @@ class TblBlocksCount extends Migration
     public function down()
     {
         //
-		Schema::dropIfExists('blocks_count');
+        Schema::dropIfExists('silos');
     }
 }

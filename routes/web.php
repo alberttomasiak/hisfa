@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('welcome');
 });
 
 Route::get('/blokken', function() {
@@ -28,3 +28,7 @@ Route::get('/silos', function(){
 });
 
 Route::post('/aanmelden', 'ProfileController@login');*/
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

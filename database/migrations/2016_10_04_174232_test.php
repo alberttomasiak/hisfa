@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TblBlockLengths extends Migration
+class Test extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,6 @@ class TblBlockLengths extends Migration
     public function up()
     {
         //
-		Schema::create('block_lengths', function (Blueprint $table){
-			$table->increments('id');
-			$table->double('length');
-			$table->timestamps();
-		});
     }
 
     /**
@@ -29,6 +24,5 @@ class TblBlockLengths extends Migration
     public function down()
     {
         //
-		Schema::dropIfExists('block_lengths');
     }
 }
