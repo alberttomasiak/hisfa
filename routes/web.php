@@ -12,5 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
+
+Route::get('/blokken', function() {
+	return view('blokken');
+});
+
+Route::get('/silos', function(){
+	return view('silos');
+});
+
+/*Route::get('/aanmelden', function(){
+	return view('login');
+});
+
+Route::post('/aanmelden', 'ProfileController@login');*/
