@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFKBlockTypesToBlocks extends Migration
+class AddFKBlockPropertiesToBlocks extends Migration
 {
     /**
      * Run the migrations.
@@ -15,11 +15,12 @@ class AddFKBlockTypesToBlocks extends Migration
     {
         //
         Schema::table('blocks', function (Blueprint $table){
-            $table->increments('id');
             $table->integer('block_id')->unsigned();
             $table->foreign('block_id')->references('id')->on('blocks');
+
+            $table->integer('count');
             $table->string('type');
-            $table->timestamps();
+            $table->integer('length');
         });
     }
 

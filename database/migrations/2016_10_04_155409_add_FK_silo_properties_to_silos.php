@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFKSiloContentsToSilos extends Migration
+class AddFKSiloPropertiesToSilos extends Migration
 {
     /**
      * Run the migrations.
@@ -15,11 +15,10 @@ class AddFKSiloContentsToSilos extends Migration
     {
         //
         Schema::table('silos', function (Blueprint $table){
-            $table->increments('id');
             $table->integer('silo_id')->unsigned();
             $table->foreign('silo_id')->references('id')->on('silos');
-            $table->string('contents');
-            $table->timestamps();
+            $table->string('content');
+            $table->string('type');
         });
     }
 
