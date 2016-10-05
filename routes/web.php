@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/blokken', function() {
@@ -21,6 +21,14 @@ Route::get('/blokken', function() {
 
 Route::get('/silos', function(){
 	return view('silos');
+});
+
+Route::get('/*', function(){
+	if (Auth::check()){
+		// Do nothing, the user is logged in.
+	}else{
+		return view('/auth/login');
+	}
 });
 
 /*Route::get('/aanmelden', function(){
