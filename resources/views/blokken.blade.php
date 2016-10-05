@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Blokken | HISFA</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
 	<h1>Blokken</h1>
-</body>
-</html>
+@endsection
