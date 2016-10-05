@@ -15,7 +15,21 @@
 
 <body>
     
-    
+    <div class="login-content">
+
+        <div class="logo">
+            <img src="/img/piepschuim_logo.svg" alt="Piepschuim logo">
+        </div>
+        <!--Echo out errors here. See example-->
+        <!--<p class=error>Error, wrong username or password used. Please, try again.-->
+        <form>
+            <input type="text" name="username" placeholder="Gebruikersnaam"></input>
+            <input type="password" name="password" placeholder="Wachtwoord"></input>
+
+            <button type="submit" name="submit" class="submit">Login</button>
+        </form>
+    </div>
+
     <div class="bg-boxes">
         <svg width="300px" height="100%" id="col1">
             <rect width="150px" height="150px" x="75px" y="75px" class="bubble" id="bub1" />
@@ -52,7 +66,7 @@
             <rect width="50px" height="50px" x="25px" y="25px" class="bubble" id="bub11" />
         </svg>
     </div>
-    
+
 </body>
 
 </html>
