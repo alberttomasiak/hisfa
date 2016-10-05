@@ -1,6 +1,7 @@
 // Fonts
+$body-bg: #2B2139; 
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
+@import "variables/all";
 @import "vendor/all";
-@import "modules/all";
 @import "pages/all";
