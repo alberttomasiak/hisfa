@@ -23,6 +23,14 @@ Route::get('/silos', function(){
 	return view('silos');
 });
 
+Route::get('/*', function(){
+	if (Auth::check()){
+		
+	}else{
+		return view('/auth/login');
+	}
+});
+
 /*Route::get('/aanmelden', function(){
 	return view('login');
 });
