@@ -5,3 +5,4 @@ Homestead.json
 Homestead.yaml
 .vagrant
 .env
+npm-debug
