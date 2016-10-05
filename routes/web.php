@@ -27,7 +27,7 @@ Route::get('/*', function(){
 	if (Auth::check()){
 		// Do nothing, the user is logged in.
 	}else{
-		return view('/auth/login');
+		return view('home');
 	}
 });
 
