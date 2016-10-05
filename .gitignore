@@ -5,3 +5,5 @@ Homestead.json
 Homestead.yaml
 .vagrant
 .env
+/public/css
+/public/js
