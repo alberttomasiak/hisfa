@@ -31,6 +31,8 @@ Route::get('/*', function(){
 	}
 });
 
+
+
 /*Route::get('/aanmelden', function(){
 	return view('login');
 });
