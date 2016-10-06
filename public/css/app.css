@@ -1056,7 +1056,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   color: #636b6f;
-  background-color: #f5f8fa; }
+  background-color: #2B2139; }
 
 input,
 button,
@@ -1093,7 +1093,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.6;
-  background-color: #f5f8fa;
+  background-color: #2B2139;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -2053,7 +2053,7 @@ th {
   .table > tbody + tbody {
     border-top: 2px solid #ddd; }
   .table .table {
-    background-color: #f5f8fa; }
+    background-color: #2B2139; }
 
 .table-condensed > thead > tr > th,
 .table-condensed > thead > tr > td,
@@ -3562,7 +3562,7 @@ tbody.collapse.in {
         border-color: #eeeeee #eeeeee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
       color: #555555;
-      background-color: #f5f8fa;
+      background-color: #2B2139;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
       cursor: default; }
@@ -3616,7 +3616,7 @@ tbody.collapse.in {
     .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,
     .nav-tabs-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:hover,
     .nav-tabs-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:focus {
-      border-bottom-color: #f5f8fa; } }
+      border-bottom-color: #2B2139; } }
 
 .tab-content > .tab-pane {
   display: none; }
@@ -3910,7 +3910,7 @@ tbody.collapse.in {
 
 .navbar-default {
   background-color: #fff;
-  border-color: #d3e0e9; }
+  border-color: #130e19; }
   .navbar-default .navbar-brand {
     color: #777; }
     .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
@@ -3937,7 +3937,7 @@ tbody.collapse.in {
       background-color: #888; }
   .navbar-default .navbar-collapse,
   .navbar-default .navbar-form {
-    border-color: #d3e0e9; }
+    border-color: #130e19; }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: #eeeeee;
     color: #555; }
@@ -4295,7 +4295,7 @@ a.badge:hover, a.badge:focus {
   padding: 4px;
   margin-bottom: 22px;
   line-height: 1.6;
-  background-color: #f5f8fa;
+  background-color: #2B2139;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: border 0.2s ease-in-out;
@@ -4502,7 +4502,7 @@ a.thumbnail.active {
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #fff;
-  border: 1px solid #d3e0e9; }
+  border: 1px solid #130e19; }
   .list-group-item:first-child {
     border-top-right-radius: 4px;
     border-top-left-radius: 4px; }
@@ -4691,7 +4691,7 @@ button.list-group-item-danger {
 .panel-footer {
   padding: 10px 15px;
   background-color: #f5f5f5;
-  border-top: 1px solid #d3e0e9;
+  border-top: 1px solid #130e19;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px; }
 
@@ -4864,25 +4864,25 @@ button.list-group-item-danger {
     border-bottom: 0; }
     .panel-group .panel-heading + .panel-collapse > .panel-body,
     .panel-group .panel-heading + .panel-collapse > .list-group {
-      border-top: 1px solid #d3e0e9; }
+      border-top: 1px solid #130e19; }
   .panel-group .panel-footer {
     border-top: 0; }
     .panel-group .panel-footer + .panel-collapse .panel-body {
-      border-bottom: 1px solid #d3e0e9; }
+      border-bottom: 1px solid #130e19; }
 
 .panel-default {
-  border-color: #d3e0e9; }
+  border-color: #130e19; }
   .panel-default > .panel-heading {
     color: #333333;
     background-color: #fff;
-    border-color: #d3e0e9; }
+    border-color: #130e19; }
     .panel-default > .panel-heading + .panel-collapse > .panel-body {
-      border-top-color: #d3e0e9; }
+      border-top-color: #130e19; }
     .panel-default > .panel-heading .badge {
       color: #fff;
       background-color: #333333; }
   .panel-default > .panel-footer + .panel-collapse > .panel-body {
-    border-bottom-color: #d3e0e9; }
+    border-bottom-color: #130e19; }
 
 .panel-primary {
   border-color: #3097D1; }
@@ -5765,5 +5765,211 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+.bg-boxes {
+  /*Set the container for the svg elements to take up the whole window and hide objects outside of the window*/
+  height: 100%;
+  min-height: 240px;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1; }
+
+svg {
+  /*Set defaults for svg columns. Opacity set to 0 so the elements are invisible before the animation begins and will not show up on browsers without animation*/
+  -webkit-animation: riser 20s infinite;
+  animation: riser 20s infinite;
+  opacity: 0;
+  overflow: visible;
+  position: absolute; }
+
+.bubble {
+  /*Set the defaults for the "bubbles". transform-origin should always be the center-point of the object including blank-space within the svg. Since the object should be centered, this is equal to the width of the object. The default bubble is 100px by 100px in an svg object with a width of 200px*/
+  -webkit-animation: rotator 20s linear infinite;
+  animation: rotator 20s linear infinite;
+  fill: #FFF;
+  -webkit-transform-origin: 100px 100px;
+  transform-origin: 100px 100px; }
+
+#col1 {
+  /*Since this element is larger than the set default, I want it to rise a little faster to give a subtle sense of depth*/
+  -webkit-animation-duration: 15s;
+  animation-duration: 15s; }
+
+#bub1 {
+  /*The transform-origin has to be redefined because this bubble is not the set default size*/
+  -webkit-transform-origin: 150px 150px;
+  transform-origin: 150px 150px; }
+
+#col2 {
+  /*To offset the columns, adjust their left attribute and add an animation-delay*/
+  left: 15%;
+  -webkit-animation-delay: 18s;
+  animation-delay: 18s; }
+
+#col3 {
+  left: 30%;
+  -webkit-animation-delay: 14s;
+  animation-delay: 14s;
+  -webkit-animation-duration: 17s;
+  animation-duration: 17s; }
+
+#bub3 {
+  -webkit-animation-delay: 14s;
+  animation-delay: 14s;
+  -webkit-transform-origin: 130px 130px;
+  transform-origin: 130px 130px; }
+
+#col4 {
+  left: 45%;
+  -webkit-animation-delay: 8s;
+  animation-delay: 8s;
+  -webkit-animation-duration: 22s;
+  animation-duration: 22s; }
+
+#bub4 {
+  -webkit-animation-delay: 8s;
+  animation-delay: 8s;
+  -webkit-transform-origin: 80px 80px;
+  transform-origin: 80px 80px; }
+
+#col5 {
+  left: 60%;
+  -webkit-animation-delay: 15s;
+  animation-delay: 15s;
+  -webkit-animation-duration: 18s;
+  animation-duration: 18s; }
+
+#bub5 {
+  -webkit-animation-delay: 15s;
+  animation-delay: 15s;
+  -webkit-transform-origin: 120px 120px;
+  transform-origin: 120px 120px; }
+
+#col6 {
+  left: 75%;
+  -webkit-animation-delay: 19s;
+  animation-delay: 19s; }
+
+#col7 {
+  left: 90%;
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s; }
+
+#col8 {
+  left: -5%;
+  -webkit-animation-delay: 11s;
+  animation-delay: 11s; }
+
+#col9 {
+  left: 25%;
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s; }
+
+#col10 {
+  left: 50%;
+  -webkit-animation-delay: 12s;
+  animation-delay: 12s; }
+
+#col11 {
+  left: 67%;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-animation-duration: 25s;
+  animation-duration: 25s; }
+
+#bub11 {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-transform-origin: 50px 50px;
+  transform-origin: 50px 50px; }
+
+/*Rotation Animation - Should be set to a factor of 360 to prevent jumpiness*/
+@-webkit-keyframes rotator {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes rotator {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-webkit-keyframes riser {
+  0% {
+    opacity: 0.2;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%); }
+  100% {
+    opacity: 0.2;
+    -webkit-transform: translateY(-250px);
+    transform: translateY(-250px); } }
+
+@keyframes riser {
+  0% {
+    opacity: 0.2;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%); }
+  100% {
+    opacity: 0.2;
+    -webkit-transform: translateY(-250px);
+    transform: translateY(-250px); } }
+
+.login-content {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: block;
+  left: 50%;
+  text-align: center;
+  max-width: 360px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 90%;
+  z-index: 2; }
+  .login-content .logo {
+    margin-bottom: 40px; }
+    .login-content .logo img {
+      width: 70%; }
+  .login-content input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 250px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    font-weight: 300; }
+    .login-content input:hover {
+      background-color: white;
+      width: 300px;
+      color: black; }
+    .login-content input:focus {
+      background-color: white;
+      color: black; }
+  .login-content .submit {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    background-color: white;
+    border: 0;
+    padding: 10px 15px;
+    color: black;
+    border-radius: 3px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s; }
 
 /*# sourceMappingURL=app.css.map */
