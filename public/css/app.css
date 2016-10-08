@@ -5972,4 +5972,20 @@ svg {
     -webkit-transition-duration: 0.25s;
     transition-duration: 0.25s; }
 
+.profile--image{
+	display: block;
+	border-radius: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.profile--section--image{
+	display: block;
+	text-align: center;
+}
+
+.profile--section--info{
+	padding-top: 10px;
+}
+
 /*# sourceMappingURL=app.css.map */
