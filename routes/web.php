@@ -31,13 +31,9 @@ Route::get('/*', function(){
 	}
 });
 
-
-
-/*Route::get('/aanmelden', function(){
-	return view('login');
+Route::get('/profiel', function(){
+	return view('profile');
 });
-
-Route::post('/aanmelden', 'ProfileController@login');*/
 
 Auth::routes();
 
