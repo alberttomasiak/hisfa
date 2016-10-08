@@ -5988,4 +5988,13 @@ svg {
 	padding-top: 10px;
 }
 
+#profileImage{
+	display: none;
+}
+
+.profile--section--image--upload:hover{
+	background-color: #2B2139;
+	color: white;
+}
+
 /*# sourceMappingURL=app.css.map */

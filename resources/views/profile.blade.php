@@ -19,7 +19,10 @@
 					<div class="row">
 						<div class="col-sm-6 profile--section--image">
 							<img src="{{ Auth::user()->profilePic }}" class="profile--image" alt="{{ Auth::user()->name }}'s profiel foto">
-							<a href="#" class="profile--image--upload">Profielfoto wijzigen</a>
+							<form action="" name="profilePictureForm" method="POST" id="profilePicForm" enctype="multipart/form-data">
+							<label class="btn btn--secondary profile--section--image--upload" for="profileImage">Profielfoto wijzigen</label>
+							<input type="file" name="profileImage" id="profileImage" class="fileToUpload" id="avatarUpload">
+					</form>
 						</div>
 						<div class="col-sm-6 profile--section--info">
 							<div>
