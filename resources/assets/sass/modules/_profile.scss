@@ -1,0 +1,24 @@
+.profile--image{
+	display: block;
+	border-radius: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.profile--section--image{
+	display: block;
+	text-align: center;
+}
+
+.profile--section--info{
+	padding-top: 10px;
+}
+
+#profileImage{
+	display: none;
+}
+
+.profile--section--image--upload:hover{
+	background-color: #2B2139;
+	color: white;
+}
