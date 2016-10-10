@@ -8,7 +8,7 @@
             <img src="/img/piepschuim_logo.svg" alt="Piepschuim logo">
         </div>
 
-        <form>
+        <form method="POST" action="{{ url('/login') }}">
             <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required></input>
             @if ($errors->has('email'))
             <span class="help-block">
