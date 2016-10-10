@@ -64,19 +64,19 @@ gulp.task('image-minify', function(){
 		.pipe(gulp.dest('public/js'));
 });*/
 
-gulp.task('compress-js', function(){
+/*gulp.task('compress-js', function(){
 	return gulp.src('resources/assets/js/*.js')
 		.pipe(babel({
 			presets: ['es2015']
 		}))
 		.pipe(gulp.dest('public/js'));
-});
+});*/
 
 gulp.task('stalk', function(){
 	gulp.watch('resources/assets/sass/**/*.scss', ['sass']);
 	gulp.watch('resources/assets/css/*', ['css-minify']);
 	gulp.watch('resources/assets/img/*', ['image-minify']);
-	gulp.watch('resources/assets/js/*', ['compress-js']);
+	//gulp.watch('resources/assets/js/*', ['compress-js']);
 });
 
-gulp.task('all', ['sass', 'css-minify', 'image-minify', 'compress-js']);
+gulp.task('all', ['sass', 'css-minify', 'image-minify'/*, 'compress-js'*/]);
