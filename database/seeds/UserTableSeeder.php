@@ -21,5 +21,12 @@ class UserTableSeeder extends Seeder
                 'password' => bcrypt('admin'),
             ]);
         }
+
+        // Admin
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@hisfa.be',
+            'password' => bcrypt('admin'),
+        ]);
     }
 }
