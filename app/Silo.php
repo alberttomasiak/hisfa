@@ -8,6 +8,6 @@ class Silo extends Model
 {
     //
     protected $fillable = [
-        'number', 'volume', 'content', 'type'
+        'number', 'volume', 'content', 'type', 'silo_id'
     ];
 }

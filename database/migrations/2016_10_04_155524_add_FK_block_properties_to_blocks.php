@@ -17,6 +17,7 @@ class AddFKBlockPropertiesToBlocks extends Migration
         Schema::table('blocks', function (Blueprint $table){
             $table->integer('block_id')->unsigned();
             $table->foreign('block_id')->references('id')->on('blocks');
+
             $table->integer('count');
             $table->string('type');
             $table->integer('length');
