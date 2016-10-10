@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('/auth/login');
 });
 
 Route::get('/blokken', function() {
@@ -31,11 +31,9 @@ Route::get('/*', function(){
 	}
 });
 
-/*Route::get('/aanmelden', function(){
-	return view('login');
+Route::get('/profiel', function(){
+	return view('profile');
 });
-
-Route::post('/aanmelden', 'ProfileController@login');*/
 
 Auth::routes();
 
