@@ -17,6 +17,9 @@ class BlocksTableSeeder extends Seeder
         $limit = 9;
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        DB::table('blocks')->truncate();
+
         for($i = 0; $i <= $limit; $i++){
             DB::table('blocks')->insert([
                 'width' => $faker->numberBetween($min = 1, $max = 100),
