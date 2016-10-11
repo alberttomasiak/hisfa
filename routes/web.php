@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('/*', function(){
+	if (!Auth::check()){
+		return view('/auth/login');
+	}
+});
+
 Route::get('/', function () {
     return view('/auth/login');
 });
@@ -19,15 +25,11 @@ Route::get('/blokken', function() {
 	return view('blokken');
 });
 
-Route::get('/silos', function(){
-	return view('silos');
-});
-
-Route::get('/*', function(){
-	if (!Auth::check()){
-		return view('/auth/login');
-	}
-});
+/**
+* SILO ROUTES
+**/
+Route::get('/silos', 'SilosController@index');
+Route::get('/silos/{id}/delete', 'SilosController@destroy');
 
 Route::get('/profiel', function(){
 	return view('profile');
