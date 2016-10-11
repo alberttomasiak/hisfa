@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web R!outes
 |--------------------------------------------------------------------------
 |
 | This file is where you may define all of the routes that are handled
@@ -24,9 +24,7 @@ Route::get('/silos', function(){
 });
 
 Route::get('/*', function(){
-	if (Auth::check()){
-		// Do nothing, the user is logged in.
-	}else{
+	if (!Auth::check()){
 		return view('/auth/login');
 	}
 });
