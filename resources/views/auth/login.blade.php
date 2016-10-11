@@ -9,6 +9,9 @@
         </div>
 
         <form method="POST" action="{{ url('/login') }}">
+
+        {{ csrf_field() }}
+
             <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required></input>
             @if ($errors->has('email'))
             <span class="help-block">
