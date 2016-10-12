@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Silo extends Model
+class SiloType extends Model
 {
     //
     protected $fillable = [
-        'number', 'volume', 'content', 'type', 'silo_id', 'id'
+        'id', 'type', 'silo_id'
     ];
 }

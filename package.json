@@ -24,6 +24,11 @@
     "vue-resource": "^1.0.2"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "laravel-elixir": "^6.0.0-11",
+    "node-sass": "^3.10.1"
+=======
     "gulp-clean-css": "^2.0.13"
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
   }
 }

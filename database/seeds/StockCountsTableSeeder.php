@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class BlocksTableSeeder extends Seeder
+class StockCountsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,15 +17,12 @@ class BlocksTableSeeder extends Seeder
         $limit = 9;
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-
-        DB::table('blocks')->truncate();
-
         for($i = 0; $i <= $limit; $i++){
-            DB::table('blocks')->insert([
-                'width' => $faker->numberBetween($min = 1, $max = 100),
-                'depth' => $faker->numberBetween($min = 1, $max = 100),
+            DB::table('stock_counts')->insert([
+                'count' => $faker->numberBetween($min = 1, $max = 100),
+                'stock_id' => $i+1,
             ]);
         }
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
- }
+}

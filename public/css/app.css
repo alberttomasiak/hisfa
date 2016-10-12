@@ -1,11 +1,18 @@
 @charset "UTF-8";
+<<<<<<< HEAD
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+=======
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+<<<<<<< HEAD
+=======
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1052,11 +1059,19 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
+<<<<<<< HEAD
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #636b6f;
+  background-color: #f5f8fa; }
+=======
   font-family: "Lato", sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: #636b6f;
   background-color: #392F49; }
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
 
 input,
 button,
@@ -1093,7 +1108,11 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.6;
+<<<<<<< HEAD
+  background-color: #f5f8fa;
+=======
   background-color: #392F49;
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -2053,7 +2072,11 @@ th {
   .table > tbody + tbody {
     border-top: 2px solid #ddd; }
   .table .table {
+<<<<<<< HEAD
+    background-color: #f5f8fa; }
+=======
     background-color: #392F49; }
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
 
 .table-condensed > thead > tr > th,
 .table-condensed > thead > tr > td,
@@ -3562,7 +3585,11 @@ tbody.collapse.in {
         border-color: #eeeeee #eeeeee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
       color: #555555;
+<<<<<<< HEAD
+      background-color: #f5f8fa;
+=======
       background-color: #392F49;
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
       border: 1px solid #ddd;
       border-bottom-color: transparent;
       cursor: default; }
@@ -3616,7 +3643,11 @@ tbody.collapse.in {
     .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,
     .nav-tabs-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:hover,
     .nav-tabs-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:focus {
+<<<<<<< HEAD
+      border-bottom-color: #f5f8fa; } }
+=======
       border-bottom-color: #392F49; } }
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
 
 .tab-content > .tab-pane {
   display: none; }
@@ -3910,7 +3941,11 @@ tbody.collapse.in {
 
 .navbar-default {
   background-color: #fff;
+<<<<<<< HEAD
+  border-color: #d3e0e9; }
+=======
   border-color: #211b2a; }
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
   .navbar-default .navbar-brand {
     color: #777; }
     .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
@@ -3937,7 +3972,11 @@ tbody.collapse.in {
       background-color: #888; }
   .navbar-default .navbar-collapse,
   .navbar-default .navbar-form {
+<<<<<<< HEAD
+    border-color: #d3e0e9; }
+=======
     border-color: #211b2a; }
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: #eeeeee;
     color: #555; }
@@ -4295,7 +4334,11 @@ a.badge:hover, a.badge:focus {
   padding: 4px;
   margin-bottom: 22px;
   line-height: 1.6;
+<<<<<<< HEAD
+  background-color: #f5f8fa;
+=======
   background-color: #392F49;
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: border 0.2s ease-in-out;
@@ -4502,7 +4545,11 @@ a.thumbnail.active {
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #fff;
+<<<<<<< HEAD
+  border: 1px solid #d3e0e9; }
+=======
   border: 1px solid #211b2a; }
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
   .list-group-item:first-child {
     border-top-right-radius: 4px;
     border-top-left-radius: 4px; }
@@ -4691,7 +4738,11 @@ button.list-group-item-danger {
 .panel-footer {
   padding: 10px 15px;
   background-color: #f5f5f5;
+<<<<<<< HEAD
+  border-top: 1px solid #d3e0e9;
+=======
   border-top: 1px solid #211b2a;
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px; }
 
@@ -4864,6 +4915,22 @@ button.list-group-item-danger {
     border-bottom: 0; }
     .panel-group .panel-heading + .panel-collapse > .panel-body,
     .panel-group .panel-heading + .panel-collapse > .list-group {
+<<<<<<< HEAD
+      border-top: 1px solid #d3e0e9; }
+  .panel-group .panel-footer {
+    border-top: 0; }
+    .panel-group .panel-footer + .panel-collapse .panel-body {
+      border-bottom: 1px solid #d3e0e9; }
+
+.panel-default {
+  border-color: #d3e0e9; }
+  .panel-default > .panel-heading {
+    color: #333333;
+    background-color: #fff;
+    border-color: #d3e0e9; }
+    .panel-default > .panel-heading + .panel-collapse > .panel-body {
+      border-top-color: #d3e0e9; }
+=======
       border-top: 1px solid #211b2a; }
   .panel-group .panel-footer {
     border-top: 0; }
@@ -4878,11 +4945,16 @@ button.list-group-item-danger {
     border-color: #211b2a; }
     .panel-default > .panel-heading + .panel-collapse > .panel-body {
       border-top-color: #211b2a; }
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
     .panel-default > .panel-heading .badge {
       color: #fff;
       background-color: #333333; }
   .panel-default > .panel-footer + .panel-collapse > .panel-body {
+<<<<<<< HEAD
+    border-bottom-color: #d3e0e9; }
+=======
     border-bottom-color: #211b2a; }
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
 
 .panel-primary {
   border-color: #3097D1; }
@@ -5142,7 +5214,11 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
+<<<<<<< HEAD
+  font-family: "Raleway", sans-serif;
+=======
   font-family: "Lato", sans-serif;
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5255,7 +5331,11 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
+<<<<<<< HEAD
+  font-family: "Raleway", sans-serif;
+=======
   font-family: "Lato", sans-serif;
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5766,6 +5846,8 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+<<<<<<< HEAD
+=======
 .bg-boxes {
   /*Set the container for the svg elements to take up the whole window and hide objects outside of the window*/
   height: 100%;
@@ -12447,4 +12529,5 @@ svg {
 #avatarUpload {
   padding-top: 10px; }
 
+>>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
 /*# sourceMappingURL=app.css.map */

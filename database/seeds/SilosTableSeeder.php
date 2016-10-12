@@ -22,15 +22,10 @@ class SilosTableSeeder extends Seeder
 
 		for($i = 0; $i <= $limit; $i++){
 
-			$type = ($i>5) ? 'garbage' : 'stock';
-
 			DB::table('silos')->insert([
 				'number' => $i+1,
 				'volume' => $faker->numberBetween($min = 1, $max = 100),
-				'content' => $faker->word,
-				'type' => $type,
-				'silo_id' => $faker->unique()->randomNumber
-				
+				'silo_id' => $i+1,
 			]);
 		}
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;');

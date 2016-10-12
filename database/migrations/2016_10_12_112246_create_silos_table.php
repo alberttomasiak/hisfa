@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Test extends Migration
+class CreateSilosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,6 +14,12 @@ class Test extends Migration
     public function up()
     {
         //
+        Schema::create('silos', function (Blueprint $table){
+            $table->increments('id');
+            $table->integer('number');
+            $table->decimal('volume', 5, 2);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,5 +30,6 @@ class Test extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('silos');
     }
 }
