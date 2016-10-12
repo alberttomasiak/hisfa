@@ -12,12 +12,12 @@
 
 
 
-                            @foreach( $stock_silos as $s_silo )
+                            @foreach( $prime_silos as $p_silo )
 
                             <div class="col-sm-4">
                                 <div class="balk">
-                                    <div class="fill" style="height: {{ $s_silo->volume }}%;">
-                                        <div class="volume"> {{ $s_silo->volume }}% </div>
+                                    <div class="fill" style="height: {{ $p_silo->silo->volume }}%;">
+                                        <div class="volume"> {{ $p_silo->silo->volume }}% </div>
                                     </div>
                                 </div>
                                 <img src="img/gauge-icon.png" alt="Img" style="height: 25px;">
@@ -36,12 +36,12 @@
                     <div class="panel-body">
                         <div class="row">
 
-                            @foreach( $garbage_silos as $g_silo )
+                            @foreach( $waste_silos as $w_silo )
 
                             <div class="col-sm-4">
                                 <div class="balk">
-                                    <div class="fill" style="height: {{ $g_silo->volume }}%;">
-                                        <div class="volume"> {{ $g_silo->volume }}% </div>
+                                    <div class="fill" style="height: {{ $w_silo->silo->volume }}%;">
+                                        <div class="volume"> {{ $w_silo->silo->volume }}% </div>
                                     </div>
                                 </div>
                                 <img src="img/gauge-icon.png" alt="Img" style="height: 25px;">

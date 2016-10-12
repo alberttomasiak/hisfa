@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Silo;
+use App\SiloType;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $garbage_silos = Silo::where('type', '=', 'garbage')->get();
-        $stock_silos = Silo::where('type', '=', 'stock')->get();
-
-        return view('home', compact('garbage_silos', 'stock_silos'));
+        $waste_silos = SiloType::with('silo')->where('type','=','waste')->get();
+        $prime_silos = SiloType::with('silo')->where('type','=','prime')->get();
+    
+        return view('home', compact('prime_silos', 'waste_silos'));
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Silo;
+use App\SiloType;
 
 class SilosController extends Controller
 {
@@ -26,10 +27,10 @@ class SilosController extends Controller
      */
     public function index()
     {
-    	$garbage_silos = Silo::where('type', '=', 'garbage')->get();
-        $stock_silos = Silo::where('type', '=', 'stock')->get();
-
-    	return view('silos/index', compact('garbage_silos', 'stock_silos')); 
+    	$waste_silos = SiloType::with('silo')->where('type','=','waste')->get();
+        $prime_silos = SiloType::with('silo')->where('type','=','prime')->get();
+    
+        return view('silos/index', compact('prime_silos', 'waste_silos'));
     }
 
     /**
