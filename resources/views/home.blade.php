@@ -1,4 +1,5 @@
-<div class="header">
+@extends('layouts.app')
+   <div class="header">
     <div class="container">Dashboard</div>
 </div>
 
