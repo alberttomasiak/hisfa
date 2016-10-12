@@ -35,6 +35,14 @@ Route::get('/profiel', function(){
 	return view('profile');
 });
 
+Route::get('/profiel/instellingen', function(){
+	return view('profile_settings');
+});
+
+Route::post('/profiel/instellingen/persoonlijk', 'ProfileController@PersonalData');
+Route::post('/profiel/instellingen/avatar', 'ProfileController@UserAvatar');
+Route::post('/profiel/instellingen/wachtwoord', 'ProfileController@UserPassword');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
