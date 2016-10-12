@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFKBlockPropertiesToBlocks extends Migration
+class FKAddBlockLengthsToBlocks extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,11 @@ class AddFKBlockPropertiesToBlocks extends Migration
     public function up()
     {
         //
-        Schema::table('blocks', function (Blueprint $table){
+        Schema::table('block_lengths', function (Blueprint $table) {
             $table->integer('block_id')->unsigned();
             $table->foreign('block_id')->references('id')->on('blocks');
-
-            $table->integer('count');
-            $table->string('type');
-            $table->integer('length');
         });
+
     }
 
     /**
@@ -32,8 +29,8 @@ class AddFKBlockPropertiesToBlocks extends Migration
     public function down()
     {
         //
-        Schema::table('blocks', function (Blueprint $table) {
-            $table->dropForeign('blocks_block_id_foreign');
+        Schema::table('block_lengths', function (Blueprint $table) {
+            $table->dropForeign('block_lengths_block_id_foreign');
         });
     }
 }

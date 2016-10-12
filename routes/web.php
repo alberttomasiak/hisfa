@@ -12,9 +12,9 @@
 */
 
 Route::get('/*', function(){
-	if (!Auth::check()){
-		return view('/auth/login');
-	}
+    if (!Auth::check()){
+        return view('/auth/login');
+    }
 });
 
 Route::get('/', function () {
@@ -22,21 +22,23 @@ Route::get('/', function () {
 });
 
 Route::get('/blokken', function() {
-	return view('blokken');
+    return view('blokken');
 });
 
 /**
-* SILO ROUTES
-**/
+ * SILO ROUTES
+ **/
 Route::get('/silos', 'SilosController@index');
 Route::get('/silos/{id}/delete', 'SilosController@destroy');
-
+Route::get('/silos', function(){
+    return view('silos');
+});
 Route::get('/profiel', function(){
-	return view('profile');
+    return view('profile');
 });
 
 Route::get('/profiel/instellingen', function(){
-	return view('profile_settings');
+    return view('profile_settings');
 });
 
 Route::post('/profiel/instellingen/persoonlijk', 'ProfileController@PersonalData');

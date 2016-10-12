@@ -8,6 +8,6 @@ class Block extends Model
 {
     //
     protected $fillable = [
-        'type', 'length', 'width', 'depth'
+        'type', 'length', 'width', 'depth', 'block_id'
     ];
 }

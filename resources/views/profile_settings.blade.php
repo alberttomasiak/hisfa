@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Mijn profiel | HISFA</title>
-</head>
-<body>
-<nav>
-	@extends('layouts.app')
-</nav>
+@extends('layouts.app')
+<div class="header">
+    <div class="container">Profile settings</div>
+</div>
 
 @section('content')
 <div class="container">
@@ -92,6 +86,3 @@
 	</div>
 </div>
 @endsection
-
-</body>
-</html>
