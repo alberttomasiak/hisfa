@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlockTable extends Migration
+class FKAddStockCountsToStocks extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,9 @@ class CreateBlockTable extends Migration
     public function up()
     {
         //
-        Schema::create('blocks', function (Blueprint $table){
-            $table->increments('id');
-            $table->double('width');
-            $table->double('depth');
-            $table->timestamps();
+        Schema::table('stock_counts', function (Blueprint $table) {
+            $table->integer('stock_id')->unsigned();
+            $table->foreign('stock_id')->references('id')->on('stocks');
         });
     }
 
@@ -30,6 +28,8 @@ class CreateBlockTable extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('blocks');
+        Schema::table('stock_counts', function (Blueprint $table) {
+            $table->dropForeign('stock_counts_stock_id_foreign');
+        });
     }
 }
