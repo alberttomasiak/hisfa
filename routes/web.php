@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('/auth/login');
 });
 
 Route::get('/blokken', function() {
@@ -31,11 +31,17 @@ Route::get('/*', function(){
 	}
 });
 
-/*Route::get('/aanmelden', function(){
-	return view('login');
+Route::get('/profiel', function(){
+	return view('profile');
 });
 
-Route::post('/aanmelden', 'ProfileController@login');*/
+Route::get('/profiel/instellingen', function(){
+	return view('profile_settings');
+});
+
+Route::post('/profiel/instellingen/persoonlijk', 'ProfileController@PersonalData');
+Route::post('/profiel/instellingen/avatar', 'ProfileController@UserAvatar');
+Route::post('/profiel/instellingen/wachtwoord', 'ProfileController@UserPassword');
 
 Auth::routes();
 

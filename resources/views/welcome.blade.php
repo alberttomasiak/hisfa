@@ -1,91 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <title>Laravel</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+</head>
 
-            .full-height {
-                height: 100vh;
-            }
+<body>
+    
+    <div class="login-content">
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+        <div class="logo">
+            <img src="/img/piepschuim_logo.svg" alt="Piepschuim logo">
         </div>
-    </body>
+        <!--Echo out errors here. See example-->
+        <!--<p class=error>Error, wrong username or password used. Please, try again.-->
+        <form>
+            <input type="text" name="username" placeholder="Gebruikersnaam"></input>
+            <input type="password" name="password" placeholder="Wachtwoord"></input>
+
+            <button type="submit" name="submit" class="submit">Login</button>
+        </form>
+    </div>
+
+    <div class="bg-boxes">
+        <svg width="300px" height="100%" id="col1">
+            <rect width="150px" height="150px" x="75px" y="75px" class="bubble" id="bub1" />
+        </svg>
+        <svg width="200px" height="100%" id="col2">
+            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub2" />
+        </svg>
+        <svg width="260px" height="100%" id="col3">
+            <rect width="130px" height="130px" x="65px" y="65px" class="bubble" id="bub3" />
+        </svg>
+        <svg width="160px" height="100%" id="col4">
+            <rect width="80px" height="80px" x="40px" y="40px" class="bubble" id="bub4" />
+        </svg>
+        <svg width="240px" height="100%" id="col5">
+            <rect width="120px" height="120px" x="60px" y="60px" class="bubble" id="bub5" />
+        </svg>
+    </div>
+
+</body>
+
 </html>

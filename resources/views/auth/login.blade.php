@@ -1,68 +1,50 @@
-@extends('layouts.app')
+@extends('layouts.app') 
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+    <div class="login-content">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div class="logo">
+            <img src="/img/piepschuim_logo.svg" alt="Piepschuim logo">
         </div>
+
+        <form method="POST" action="{{ url('/login') }}">
+           <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required></input>
+            @if ($errors->has('email'))
+            <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span> @endif
+
+            <input type="password" name="password" placeholder="Wachtwoord" required></input>
+            @if ($errors->has('password'))
+            <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span> @endif
+
+            <button type="submit" name="submit" class="submit">Login</button>
+        </form>
     </div>
-</div>
+
+    <div class="bg-boxes">
+        <svg width="300px" height="100%" id="col1">
+            <rect width="150px" height="150px" x="75px" y="75px" class="bubble" id="bub1" />
+        </svg>
+        <svg width="200px" height="100%" id="col2">
+            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub2" />
+        </svg>
+        <!--Here is a triangle-->
+        <svg width="200px" height="100%" id="col6">
+            <polygon points="50,150 100,50 150,150" class="bubble" id="bub6" />
+        </svg>
+        <svg width="200px" height="100%" id="col7">
+            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub7" />
+        </svg>
+        <svg width="200px" height="100%" id="col8">
+            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub8" />
+        </svg>
+        <svg width="100px" height="100%" id="col11">
+            <rect width="50px" height="50px" x="25px" y="25px" class="bubble" id="bub11" />
+        </svg>
+    </div>
 @endsection
