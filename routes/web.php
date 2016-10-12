@@ -28,8 +28,10 @@ Route::get('/blokken', function() {
 /**
 * SILO ROUTES
 **/
-Route::get('/silos', 'SilosController@index');
-Route::get('/silos/{id}/delete', 'SilosController@destroy');
+Route::get('/silos', 				'SilosController@index');
+Route::get('/silos/{type}/add', 	'SilosController@create');
+Route::get('/silos/{id}/delete', 	'SilosController@destroy');
+Route::post('/silos', 				'SilosController@store');
 
 Route::get('/profiel', function(){
 	return view('profile');
