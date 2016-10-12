@@ -5955,7 +5955,8 @@ p {
 .footer {
   -webkit-box-flex: 0;
   flex: 0 0 auto;
-  background-color: #2A2236; }
+  background-color: #2A2236;
+  height: 50px; }
 
 .balk {
   height: 150px; }
