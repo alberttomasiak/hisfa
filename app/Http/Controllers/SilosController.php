@@ -26,9 +26,10 @@ class SilosController extends Controller
      */
     public function index()
     {
-    	$silos = Silo::all();
+    	$garbage_silos = Silo::where('type', '=', 'garbage')->get();
+        $stock_silos = Silo::where('type', '=', 'stock')->get();
 
-    	return view('silos/index', compact('silos')); 
+    	return view('silos/index', compact('garbage_silos', 'stock_silos')); 
     }
 
     /**
@@ -36,9 +37,9 @@ class SilosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($type)
     {
-        return view('silos/edit');
+        return view('silos/create', compact('type'));
     }
 
     /**
@@ -48,8 +49,10 @@ class SilosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        Silo::create($request->except(['_token']));
+
+        return redirect()->action('SilosController@index');
     }
 
     /**
