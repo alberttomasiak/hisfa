@@ -5,17 +5,79 @@
 @section('content')
 	<h1>Silos</h1>
 
-	<ul>
-	@foreach( $silos as $silo )
+	<div class="container">
+		<div class="row">
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        	<span class="fx-bold">PRIME</span> Silos
 
-		<li>SILO: {{ $silo->nummer }}
-		Vol:{{ $silo->volume }}%<br>
-		Content:{{ $silo->content }}<br>
+							<span class="pull-right">
+								<a href="{{ action('SilosController@create', 'prime') }}">Silo Toevoegen</a>
+							</span>
 
-		<a href="{{ action('SilosController@destroy', [$silo->id]) }}">Verwijder deze silo</a>
-		</li>
-		
-	@endforeach
-	</ul>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+
+                                
+
+                                @foreach( $prime_silos as $p_silo )
+
+                                <div class="col-sm-4">
+                                    <div class="balk">
+                                        <div class="fill" style="height: {{ $p_silo->silo->volume }}%;">
+                                            <div class="volume"> {{ $p_silo->silo->volume }}% </div>
+                                        </div>
+                                    </div>
+                                    <img src="img/gauge-icon.png" alt="Img" style="height: 25px;">
+
+                                    <a class="btn btn-danger" href="{{ action('SilosController@destroy', [$p_silo->silo->id]) }}">Verwijder deze silo</a>
+                                </div>
+
+
+
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">WASTE Silos
+						
+						<span class="pull-right">
+								<a href="{{ action('SilosController@create', 'waste') }}">Silo Toevoegen</a>
+							</span>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+
+                                @foreach( $waste_silos as $w_silo )
+
+                                <div class="col-sm-4">
+                                    <div class="balk">
+                                        <div class="fill" style="height: {{ $w_silo->silo->volume }}%;">
+                                            <div class="volume"> {{ $w_silo->silo->volume }}% </div>
+                                        </div>
+                                    </div>
+                                    <img src="img/gauge-icon.png" alt="Img" style="height: 25px;">
+
+                                    <a class="btn btn-danger" href="{{ action('SilosController@destroy', [$w_silo->silo->id]) }}">Verwijder deze silo</a>
+
+                                </div>
+
+                                @endforeach
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
 @endsection

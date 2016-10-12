@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Silo;
+use App\SiloType;
 
 class SilosController extends Controller
 {
@@ -26,9 +27,10 @@ class SilosController extends Controller
      */
     public function index()
     {
-    	$silos = Silo::all();
-
-    	return view('silos/index', compact('silos')); 
+    	$waste_silos = SiloType::with('silo')->where('type','=','waste')->get();
+        $prime_silos = SiloType::with('silo')->where('type','=','prime')->get();
+    
+        return view('silos/index', compact('prime_silos', 'waste_silos'));
     }
 
     /**
@@ -36,9 +38,9 @@ class SilosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($type)
     {
-        return view('silos/edit');
+        return view('silos/create', compact('type'));
     }
 
     /**
@@ -48,8 +50,10 @@ class SilosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        Silo::create($request->except(['_token']));
+
+        return redirect()->action('SilosController@index');
     }
 
     /**
