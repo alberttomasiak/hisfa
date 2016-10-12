@@ -9,7 +9,7 @@
         </div>
 
         <form method="POST" action="{{ url('/login') }}">
-           <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        {{ csrf_field() }}
             <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required></input>
             @if ($errors->has('email'))
             <span class="help-block">
