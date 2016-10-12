@@ -1,34 +1,9 @@
 @extends('layouts.app')
-   <div class="header">
+<div class="header">
     <div class="container">Dashboard</div>
 </div>
 
 @section('content')
-
-    <!-- Ik zet CSS hier effkes tot gulp watch weer werkt -->
-    <style>
-    .balk {
-        height: 100px;
-        display: flex;
-        align-items: flex-end;
-        text-align: center;
-    }
-    .col-sm-4 {
-        text-align: center;
-    }
-    .col-sm-4 img {
-        margin: auto;
-        margin-top: 10px;
-    }
-    .balk .volume {
-        position: relative;
-        top: -25px;
-    }
-    .fill {
-        background: rgb(0,0,0);
-        width: 100%;
-    }
-    </style>
 
     <div class="container">
         <div class="container">
