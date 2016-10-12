@@ -5,9 +5,7 @@ Homestead.json
 Homestead.yaml
 .vagrant
 .env
-<<<<<<< HEAD
-npm-debug
-=======
 /public/css
 /public/js
->>>>>>> 35dce454d5755e1bfefc66964fcba0785870dd80
+/public/css/app.css.map
+/public/css/app.css
