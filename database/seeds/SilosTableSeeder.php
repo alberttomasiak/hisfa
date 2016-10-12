@@ -25,7 +25,6 @@ class SilosTableSeeder extends Seeder
 			DB::table('silos')->insert([
 				'number' => $i+1,
 				'volume' => $faker->numberBetween($min = 1, $max = 100),
-				'silo_id' => $i+1,
 			]);
 		}
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
