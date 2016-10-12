@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFKStockPropertiesToStocks extends Migration
+class FKAddStockTypesToStocks extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,9 @@ class AddFKStockPropertiesToStocks extends Migration
     public function up()
     {
         //
-        Schema::table('stocks', function (Blueprint $table){
-//            $table->increments('id');
+        Schema::table('stock_types', function (Blueprint $table) {
             $table->integer('stock_id')->unsigned();
             $table->foreign('stock_id')->references('id')->on('stocks');
-            $table->string('name');
-            $table->string('type');
-            $table->integer('count');
         });
     }
 
@@ -32,8 +28,8 @@ class AddFKStockPropertiesToStocks extends Migration
     public function down()
     {
         //
-        Schema::table('stocks', function (Blueprint $table) {
-            $table->dropForeign('stocks_stock_id_foreign');
+        Schema::table('stock_types', function (Blueprint $table) {
+            $table->dropForeign('stock_types_stock_id_foreign');
         });
     }
 }

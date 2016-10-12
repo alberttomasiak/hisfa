@@ -7,3 +7,5 @@ Homestead.yaml
 .env
 /public/css
 /public/js
+/public/css/app.css.map
+/public/css/app.css

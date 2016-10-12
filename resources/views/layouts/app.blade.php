@@ -24,7 +24,11 @@
 <body>
 
     <div class="page">
-        @yield('content')
+        @include('layouts.header')
+        <div class="page-content">
+                @yield('content')
+        </div>
+        @include('layouts.footer')
     </div>
 
     <!-- Scripts -->

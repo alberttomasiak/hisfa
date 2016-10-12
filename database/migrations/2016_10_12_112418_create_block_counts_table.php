@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStockTable extends Migration
+class CreateBlockCountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,9 @@ class CreateStockTable extends Migration
     public function up()
     {
         //
-        Schema::create('stocks', function (Blueprint $table){
+        Schema::create('block_counts', function (Blueprint $table){
             $table->increments('id');
-            $table->double('tonnage');
-            $table->string('image');
+            $table->double('count');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateStockTable extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('stocks');
+        Schema::dropIfExists('block_counts');
     }
 }
