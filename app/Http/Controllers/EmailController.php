@@ -3,28 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Mail\Mailer;
-use Mail;
 
 use App\Http\Requests;
+use App\Silo;
+use DB;
+use App\User;
+use App\Notifications\SilosVolume;
 
 class EmailController extends Controller
 {
     //
+		public function checkVolume(){
+		$silos = DB::table('silos')
+            ->join('silo_types', 'silos.id', '=', 'silo_types.silo_id')
+            ->select('silos.*', 'silo_types.type')
+			->where('silos.volume', '>=', '90')
+            ->get();
+		
+		if($silos->first()){
+			return $this->sendMail();
+		}else{
+			return redirect('/home');
+		}
+	}
 	
-	public function send(Request $request){
-		$title = $request->input('title');
-        $content = $request->input('content');
-
-        Mail::send('emails.send', ['title' => $title, 'content' => $content], function ($message)
-        {
-
-            $message->from('me@gmail.com', 'Christian Nwamba');
-
-            $message->to('chrisn@scotch.io');
-
-        });
-
-        return response()->json(['message' => 'Request completed']);
+	public function sendMail(){
+		$users = \App\User::all();
+		foreach ($users as $user){
+			$user->notify(new SilosVolume());
+		}
+		return redirect('/home');
 	}
 }

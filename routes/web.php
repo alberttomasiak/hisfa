@@ -35,16 +35,7 @@ Route::get('/silos/{type}/add', 	'SilosController@create');
 Route::get('/silos/{id}/delete', 	'SilosController@destroy');
 Route::post('/silos', 				'SilosController@store');
 
-Route::get('/email', function(){
-	
-	if('SilosVolume@checkVolume' == true){
-		$user = App\User::find(1);
-		$user->notify(new SilosVolume());
-	}else{
-		// SILOS ARENT FULL YET.
-	}
-	
-});
+Route::get('/email', 'EmailController@checkVolume');
 
 /**
 * PROFILE ROUTES

@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use DB;
+use App\User;
 
 class SilosVolume extends Notification
 {
@@ -40,28 +41,14 @@ class SilosVolume extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-	
-	public function checkVolume(){
-		$silos = DB::table('silos')
-            ->join('silo_types', 'silos.id', '=', 'silo_types.silo_id')
-            ->select('silos.*', 'silo_types.type')
-			->where('silos.volume', '>=', '95')
-            ->get();
-		
-		if($silos->first()){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	
     public function toMail($notifiable)
     {
         return (new MailMessage)
+					->error()
+					->subject("Het volume van de silo's.")
 					->greeting('Opgepast!')
-                    ->line("De volgende silo's zijn bijna vol: ")
-                    ->action('Notification Action', 'https://laravel.com')
-                    ->line('Thank you for using our application!');
+                    ->line("Een of meerdere silo's zijn 90% of voller.")
+                    ->action('Controleer hier hun volume', 'http://hisfa.dev');
     }
 
     /**

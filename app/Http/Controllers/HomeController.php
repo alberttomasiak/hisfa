@@ -34,8 +34,6 @@ class HomeController extends Controller
 			->where('silos.volume', '>=', '90')
             ->get();
 		
-		$data['siloInhoud'] = $silos;
-		
         return view('home', compact('prime_silos', 'waste_silos', 'silos'));
     }
 }
