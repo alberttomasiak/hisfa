@@ -2,15 +2,17 @@
 @section('content')
 <div class="container">
     <div class="container">
+       <script src="js/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="css/sweetalert.css">
         <div class="row">
             <div class="col-sm-6">
                 <div class="panel panel-default">
+                  
+                   
                     <div class="panel-heading"><span class="fx-bold">PRIME</span> Silos</div>
 
                     <div class="panel-body">
                         <div class="row">
-
-
 
                             @foreach( $prime_silos as $p_silo )
 

@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Input;
 class ProfileController extends Controller
 {
     //
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+	
 	public function PersonalData(Request $request){
 		//dd($request->all());  //to check all the datas dumped from the form
    		//if your want to get single element,someName in this case
