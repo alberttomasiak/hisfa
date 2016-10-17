@@ -6,6 +6,8 @@
 
 {!! Form::open(['action' => 'SilosController@store']) !!}
 
+	{!! Form::text('content'); !!}
+
 	{!! Form::number('number', ''); !!}
 
 	{!! Form::select('type', ['stock' => 'Stock', 'waste' => 'Waste'], $type) !!}
