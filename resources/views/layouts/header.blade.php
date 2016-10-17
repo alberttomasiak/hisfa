@@ -1,5 +1,5 @@
 <div class="header">
-    <div class="container">Dashboard</div>
+    <div class="container">{{ $title or 'Dashboard' }}</div>
        @if(isset($silos))
                  	@if($silos->first())
                   	<a href="#" id="newNotification"><img src="img/notification-1.png" alt="New notification">
