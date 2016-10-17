@@ -11,6 +11,8 @@
 |
 */
 
+use App\Notifications\SilosVolume;
+
 Route::get('/*', function(){
 	if (!Auth::check()){
 		return view('/auth/login');
@@ -33,6 +35,11 @@ Route::get('/silos/{type}/add', 	'SilosController@create');
 Route::get('/silos/{id}/delete', 	'SilosController@destroy');
 Route::post('/silos', 				'SilosController@store');
 
+Route::get('/email', 'EmailController@checkVolume');
+
+/**
+* PROFILE ROUTES
+**/
 Route::get('/profiel', function(){
 	return view('profile');
 });
@@ -48,3 +55,4 @@ Route::post('/profiel/instellingen/wachtwoord', 'ProfileController@UserPassword'
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+//Route::get('/home/notifications', 'NotificationController@dashboardNotification');
