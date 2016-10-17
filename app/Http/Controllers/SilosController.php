@@ -30,7 +30,8 @@ class SilosController extends Controller
     	$waste_silos = SiloType::with('silo')->where('type','=','waste')->get();
         $prime_silos = SiloType::with('silo')->where('type','=','prime')->get();
     
-        return view('silos/index', compact('prime_silos', 'waste_silos'));
+        return view('silos/index', compact('prime_silos', 'waste_silos'))
+               ->with('title', 'Silos');
     }
 
     /**
@@ -38,9 +39,11 @@ class SilosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($type)
+    public function create($type = null)
     {
-        return view('silos/create', compact('type'));
+        $type = ($type == null) ? '' : $type;
+        return view('silos/create', compact('type'))
+               ->with('title', 'Silo creeëren');
     }
 
     /**
@@ -75,7 +78,14 @@ class SilosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $silo = Silo::findOrFail($id);
+
+        $type = '';
+
+        return view('silos.create', compact('silo', 'type'))
+               ->with('title', 'Silo aanpassen')
+               ->with('button', 'Silo aanpassen')
+               ->with('method', 'edit');
     }
 
     /**
@@ -87,7 +97,16 @@ class SilosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $silo = Silo::findOrFail($id);
+
+        //dd($request->all());
+
+        $silo->number = $request->input('number');
+        $silo->volume = $request->input('volume');
+
+        $silo->save();
+
+        return redirect()->back();
     }
 
     /**
