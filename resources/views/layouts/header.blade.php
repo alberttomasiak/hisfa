@@ -30,4 +30,7 @@
                   	</a>
                   @endif
                   @endif
+
+
+    <a href="/profiel">User Profile</a>
 </div>
