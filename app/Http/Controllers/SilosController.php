@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Silo;
 use App\SiloType;
 use App\SiloContent;
+use App\Notifications\SilosVolume;
 
 class SilosController extends Controller
 {
@@ -122,7 +123,10 @@ class SilosController extends Controller
 
         $type->type = $request->input('type');
         $type->save();
-
+		
+		
+		// Check volumes -> if any is 90% or fuller -> send mail to all users.
+		app('App\Http\Controllers\EmailController')->checkVolume();
         return redirect()->back();
     }
 
