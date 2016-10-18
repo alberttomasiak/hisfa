@@ -41,6 +41,13 @@ Route::post('/silos/{id}/edit', 	'SilosController@update');
 * STOCK ROUTES
 **/
 Route::get('/stock', 				'StockController@index');
+Route::get('/stock/{id}/edit',		'StockController@edit');
+Route::post('/stock/{id}/edit',		'StockController@update');
+Route::get('/stock/add',			'StockController@create');
+Route::post('/stock/add',			'StockController@store');
+Route::get('/stock/{id}/delete',	'StockController@destroy');
+Route::get('/stock/{id}/increase', 	'StockController@increase');
+Route::get('/stock/{id}/decrease',	'StockController@decrease');
 
 // TEST ROUTE | NO LONGER NECESSARY
 //Route::get('/email', 'EmailController@checkVolume');

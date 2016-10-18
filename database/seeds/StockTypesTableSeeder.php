@@ -14,12 +14,12 @@ class StockTypesTableSeeder extends Seeder
         //
         $faker = Faker\Factory::create();
 
-        $limit = 9;
+        $types = ['f21MB-n','RF23W-n','KSE-20','KSE-30','F21B-n'];
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        for($i = 0; $i <= $limit; $i++){
+        for($i = 0; $i < count($types); $i++){
             DB::table('stock_types')->insert([
-                'type' => $faker->word,
+                'type' => $types[$i],
                 'stock_id' => $i+1,
             ]);
         }
