@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Mijn profiel | HISFA</title>
-</head>
-<body>
-<nav>
-	@extends('layouts.app')
-</nav>
+@extends('layouts.app')
+<div class="header">
+    <span class="glyphicon glyphicon-arrow-left"><a href="" class="back"></a></span>
+    <div class="container">My profile</div>
+</div>
 
 @section('content')
 <div class="container">
@@ -19,10 +14,7 @@
 					<div class="row">
 						<div class="col-sm-6 profile--section--image">
 							<img src="{{ Auth::user()->profilePic }}" class="profile--image" alt="{{ Auth::user()->name }}'s profiel foto">
-							<form action="" name="profilePictureForm" method="POST" id="profilePicForm" enctype="multipart/form-data">
-							<label class="btn btn--secondary profile--section--image--upload" for="profileImage">Profielfoto wijzigen</label>
-							<input type="file" name="profileImage" id="profileImage" class="fileToUpload" id="avatarUpload">
-					</form>
+							<a href="/profiel/instellingen">Gegevens wijzigen</a>
 						</div>
 						<div class="col-sm-6 profile--section--info">
 							<div>
@@ -53,5 +45,3 @@
 </div>
 @endsection
 
-</body>
-</html>

@@ -17,14 +17,13 @@ class BlocksTableSeeder extends Seeder
         $limit = 9;
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        DB::table('blocks')->truncate();
+
         for($i = 0; $i <= $limit; $i++){
             DB::table('blocks')->insert([
                 'width' => $faker->numberBetween($min = 1, $max = 100),
                 'depth' => $faker->numberBetween($min = 1, $max = 100),
-                'length' => $faker->numberBetween($min = 1, $max = 100),
-                'count' => $faker->numberBetween($min = 1, $max = 10),
-                'type' => $faker->word,
-                'block_id' => $faker->unique()->randomNumber
             ]);
         }
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

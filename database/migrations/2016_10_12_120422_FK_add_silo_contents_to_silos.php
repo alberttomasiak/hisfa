@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFKSiloPropertiesToSilos extends Migration
+class FKAddSiloContentsToSilos extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,12 @@ class AddFKSiloPropertiesToSilos extends Migration
     public function up()
     {
         //
-        Schema::table('silos', function (Blueprint $table){
+        Schema::table('silo_contents', function (Blueprint $table) {
+            // weird mysql logic
+            $table->engine = 'InnoDB';
+            // *****************
             $table->integer('silo_id')->unsigned();
-            $table->foreign('silo_id')->references('id')->on('silos');
-            $table->string('content');
-            $table->string('type');
+            $table->foreign('silo_id')->references('id')->on('silos')->onDelete('cascade');
         });
     }
 
@@ -30,8 +31,8 @@ class AddFKSiloPropertiesToSilos extends Migration
     public function down()
     {
         //
-        Schema::table('silos', function (Blueprint $table) {
-            $table->dropForeign('silos_silo_id_foreign');
+        Schema::table('silo_contents', function (Blueprint $table) {
+            $table->dropForeign('silo_contents_silo_id_foreign');
         });
     }
 }

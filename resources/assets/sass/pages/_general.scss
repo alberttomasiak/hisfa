@@ -7,6 +7,7 @@ body,
 
 body {
     overflow: hidden;
+    background-color: #392F49;
 }
 
 p {
@@ -18,24 +19,12 @@ p {
     flex-direction: column;
 }
 
-.header {
-    flex: 0 0 auto;
-    background-color: #2A2236;
-    padding: 15px 0;
-    font-size: 16px;
-    color: #FFF;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-}
-
 .page-content {
     flex: 1 1 auto;
     position: relative;
     overflow-y: auto;
 }
 
-.footer {
-    flex: 0 0 auto;
-    background-color: #2A2236;
+.balk {
+    height: 150px;
 }

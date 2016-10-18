@@ -1,6 +1,27 @@
-@extends('layouts.app') 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
+</head>
+<body>
 
     <div class="login-content">
 
@@ -9,6 +30,7 @@
         </div>
 
         <form method="POST" action="{{ url('/login') }}">
+        {{ csrf_field() }}
             <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required></input>
             @if ($errors->has('email'))
             <span class="help-block">
@@ -46,4 +68,8 @@
             <rect width="50px" height="50px" x="25px" y="25px" class="bubble" id="bub11" />
         </svg>
     </div>
-@endsection
+
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
+</body>
+</html>

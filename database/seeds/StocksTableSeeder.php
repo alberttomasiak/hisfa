@@ -16,15 +16,14 @@ class StocksTableSeeder extends Seeder
 		$limit = 10;
 		
 		DB::statement('SET FOREIGN_KEY_CHECKS=0');
+
+		DB::table('stocks')->truncate();
+
+
 		for($i = 0; $i <= $limit; $i++){
 			DB::table('stocks')->insert([
 				'tonnage' => $faker->numberBetween($min = 1, $max = 15),
-				'image' => 'public/img/gauge-icon.png',
-				'name' => $faker->word,
-				'type' => $faker->word,
-				'count' => $faker->numberBetween($min = 1, $max = 30),
-				'stock_id' => $faker->unique()->randomNumber
-				
+				'image' => $faker->imageUrl($width = 640, $height = 480),
 			]);
 		}
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;');

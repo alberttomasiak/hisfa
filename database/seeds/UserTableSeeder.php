@@ -13,6 +13,9 @@ class UserTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         $limit = 2;
+
+        DB::table('users')->truncate();
+
         //
         for ($i = 0; $i <= $limit; $i++) {
             DB::table('users')->insert([ //,
