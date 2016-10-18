@@ -35,16 +35,15 @@
 						<!-- MELDINGEN & NOTIFICATIES --> 
 						<form method="post" action="{{ url('/profiel') }}"> 
 							<h6 class="h6_melding">Grondstofsilo bijna vol (90%)</h6> 
-							<div class="slideThree"> 
-								{{ Form::checkbox('grondstofsiloChecker', 'NULL', false, ['id' => 'grondstofsiloChecker']) }} 
-								<!--<input type="checkbox" value="None" id="grondstofsiloChecker" name="grondstofsiloChecker"  />--> 
-								<label for="grondstofsiloChecker"></label> 
-							</div> 
+							<div class="onoffswitch">
+								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="{{ Auth::user()->notification_prime }}" onclick="{{ ClickUpdateNotification_prime }}" >
+								<label class="onoffswitch-label" for="myonoffswitch">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+							</div>
 							<h6 class="h6_melding">Afvalsilo bijna vol (90%)</h6> 
-							<div class="slideThree"> 
-								{{ Form::checkbox('afvalsiloChecker', 'NULL', false, ['id' => 'afvalsiloChecker']) }} 
-								<label for="afvalsiloChecker"></label> 
-							</div> 
+
 						</form> 
 					</div> 
 				</div> 
