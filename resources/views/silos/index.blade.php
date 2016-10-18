@@ -7,10 +7,10 @@
 	<div class="container">
 		<div class="row">
                 <div class="col-sm-6">
-                    <div class="silos">
-                        <h1 class="silos__title">PRIME Silos</h1>
+                    <div class="block">
+                        <h1 class="block__title">PRIME Silos</h1>
 
-                        <div class="silos__body">
+                        <div class="block__body">
 
                             @foreach( $prime_silos as $p_silo )
                             <!--
@@ -34,10 +34,10 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="silos">
-                        <h1 class="silos__title">WASTE Silos</h1>
+                    <div class="block">
+                        <h1 class="block__title">WASTE Silos</h1>
 
-                        <div class="silos__body">
+                        <div class="block__body">
 
                             @foreach( $waste_silos as $w_silo )
 
