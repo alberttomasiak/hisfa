@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
-@include('silos.nav')
+<!--@include('silos.nav')-->
 
 @section('content')
-	<h1>Silos</h1>
 
 	<div class="container">
 		<div class="row">
@@ -34,6 +33,7 @@
                                     <img src="img/gauge-icon.png" alt="Img" style="height: 25px;">
 
                                     <a class="btn btn-danger" href="{{ action('SilosController@destroy', [$p_silo->silo->id]) }}">Verwijder deze silo</a>
+                                    <a class="btn btn-warning" href="{{ action('SilosController@edit', [$p_silo->silo->id]) }}">Silo aanpassen</a>
                                 </div>
 
 
@@ -67,6 +67,7 @@
                                     <img src="img/gauge-icon.png" alt="Img" style="height: 25px;">
 
                                     <a class="btn btn-danger" href="{{ action('SilosController@destroy', [$w_silo->silo->id]) }}">Verwijder deze silo</a>
+                                    <a class="btn btn-warning" href="{{ action('SilosController@edit', [$w_silo->silo->id]) }}">Silo aanpassen</a>
 
                                 </div>
 
