@@ -15,8 +15,11 @@ class FKAddBlockCountsToBlocks extends Migration
     {
         //
         Schema::table('block_counts', function (Blueprint $table) {
+            // weird mysql logic
+            $table->engine = 'InnoDB';
+            // *****************
             $table->integer('block_id')->unsigned();
-            $table->foreign('block_id')->references('id')->on('blocks');
+            $table->foreign('block_id')->references('id')->on('blocks')->onDelete('cascade');
         });
     }
 

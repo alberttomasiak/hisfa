@@ -15,8 +15,11 @@ class FKAddSiloTypesToSilos extends Migration
     {
         //
         Schema::table('silo_types', function (Blueprint $table) {
+            // weird mysql logic
+            $table->engine = 'InnoDB';
+            // *****************
             $table->integer('silo_id')->unsigned();
-            $table->foreign('silo_id')->references('id')->on('silos');
+            $table->foreign('silo_id')->references('id')->on('silos')->onDelete('cascade');
         });
     }
 
