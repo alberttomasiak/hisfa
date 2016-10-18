@@ -34,5 +34,25 @@
         flex: 1;
         align-items: center;
         padding-right: 20px;
+
+        a  {
+            display: flex;
+            margin-right: 15px;
+
+            &:last-child {
+                margin-right: none; 
+            }
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        .icon {
+            font-size: 28px;
+            color: #FFF;
+            align-self: center;
+            justify-content: center;
+        }
     }
 }

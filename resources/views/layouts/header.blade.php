@@ -19,7 +19,8 @@
 				</script>
 			</a>
 			@else
-			<a href="#" id="noNotification"><img src="img/notification.png" alt="No notifications">
+			<a href="#" id="noNotification">
+				<i class="icon icon-bell"></i>
 			<script type="text/javascript">
 					document.getElementById("noNotification").addEventListener("click", function(event){
 						swal({
@@ -32,6 +33,6 @@
 			</a>
 			@endif
 		@endif
-		<a href="/profiel">User Profile</a>
-		</div>
+		<a href="/profiel"><i class="icon icon-user"></i></a>
+	</div>
 </div>
