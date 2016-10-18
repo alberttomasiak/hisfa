@@ -22,7 +22,7 @@
 
 	{!! Form::label('Type'); !!}
 
-	{!! Form::select('type', ['stock' => 'Stock', 'waste' => 'Waste'], $type) !!}
+	{!! Form::select('type', ['prime' => 'Prime', 'waste' => 'Waste'], $type) !!}
 
 	{!! Form::label('Volume in de Silo'); !!}
 
