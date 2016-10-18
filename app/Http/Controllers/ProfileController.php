@@ -111,4 +111,8 @@ class ProfileController extends Controller
 			return redirect('/profiel/instellingen');
 		}
 	}
+
+	public function SiloMelding(){
+
+	}
 }

@@ -45,6 +45,7 @@ Route::get('/email', 'EmailController@checkVolume');
 Route::get('/profiel', function(){
 	return view('profile');
 });
+Route::post('/profiel', 'ProfileController@SiloMelding');
 
 Route::get('/profiel/instellingen', function(){
 	return view('profile_settings');
