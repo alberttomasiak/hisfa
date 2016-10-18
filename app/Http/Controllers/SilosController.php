@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Silo;
 use App\SiloType;
+use App\SiloContent;
 
 class SilosController extends Controller
 {
@@ -30,7 +31,8 @@ class SilosController extends Controller
     	$waste_silos = SiloType::with('silo')->where('type','=','waste')->get();
         $prime_silos = SiloType::with('silo')->where('type','=','prime')->get();
     
-        return view('silos/index', compact('prime_silos', 'waste_silos'));
+        return view('silos/index', compact('prime_silos', 'waste_silos'))
+               ->with('title', 'Silos');
     }
 
     /**
@@ -38,9 +40,12 @@ class SilosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($type)
+    public function create($type = null)
     {
-        return view('silos/create', compact('type'));
+        $type = ($type == null) ? '' : $type;
+
+        return view('silos/create', compact('type'))
+               ->with('title', 'Silo creeëren');
     }
 
     /**
@@ -51,7 +56,15 @@ class SilosController extends Controller
      */
     public function store(Request $request)
     {   
-        Silo::create($request->except(['_token']));
+        $silo = Silo::create($request->except(['_token', 'content', 'type']));
+
+        SiloType::create([
+            'type' => $request->input('type'),
+            'silo_id' => $silo->id]);
+
+        SiloContent::create([
+            'content' => $request->input('content'),
+            'silo_id' => $silo->id]);
 
         return redirect()->action('SilosController@index');
     }
@@ -75,7 +88,14 @@ class SilosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $silo = Silo::with('type', 'content')->findOrFail($id);
+
+        $type = ($silo->content->content) ? $silo->content->content : '';
+
+        return view('silos.create', compact('silo', 'type'))
+               ->with('title', 'Silo aanpassen')
+               ->with('button', 'Silo aanpassen')
+               ->with('method', 'edit');
     }
 
     /**
@@ -87,7 +107,23 @@ class SilosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $silo = Silo::findOrFail($id);
+
+        $silo->number = $request->input('number');
+        $silo->volume = $request->input('volume');
+        $silo->save();
+
+        $content = SiloContent::where('silo_id', $silo->id)->firstOrFail();
+
+        $content->content = $request->input('content');
+        $content->save();
+
+        $type = SiloType::where('silo_id', $silo->id)->firstOrFail();
+
+        $type->type = $request->input('type');
+        $type->save();
+
+        return redirect()->back();
     }
 
     /**

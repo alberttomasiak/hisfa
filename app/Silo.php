@@ -14,4 +14,8 @@ class Silo extends Model
     public function type(){
     	return $this->hasOne('App\SiloType');
     }
+
+    public function content(){
+    	return $this->hasOne('App\SiloContent');
+    }
 }

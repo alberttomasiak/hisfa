@@ -15,8 +15,11 @@ class FKAddStockTypesToStocks extends Migration
     {
         //
         Schema::table('stock_types', function (Blueprint $table) {
+            // weird mysql logic
+            $table->engine = 'InnoDB';
+            // *****************
             $table->integer('stock_id')->unsigned();
-            $table->foreign('stock_id')->references('id')->on('stocks');
+            $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('cascade');
         });
     }
 
