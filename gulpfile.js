@@ -2,6 +2,16 @@ const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue');
 
+var gulp = require('gulp');
+var cleanCSS = require('gulp-clean-css'); // minify css files
+var concatCss = require('gulp-concat-css'); // merge css files together
+var sass = require('gulp-sass'); // sass for gulp
+var sourcemaps = require('gulp-sourcemaps');
+var imagemin = require('gulp-imagemin'); // image optimization
+var pngquant = require('imagemin-pngquant'); // bundled with imagemin
+var uglify = require('gulp-uglify'); // minify javascript files
+const babel = require('gulp-babel');
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management

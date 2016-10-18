@@ -4,3 +4,8 @@
 Homestead.json
 Homestead.yaml
 .vagrant
+.env
+/public/css
+/public/js
+/public/css/app.css.map
+/public/css/app.css

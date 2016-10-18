@@ -1,0 +1,30 @@
+html,
+body,
+.page {
+    height: 100%;
+    font-family: "Lato", sans-serif;
+}
+
+body {
+    overflow: hidden;
+    background-color: #392F49;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-content {
+    flex: 1 1 auto;
+    position: relative;
+    overflow-y: auto;
+}
+
+.balk {
+    height: 150px;
+}
