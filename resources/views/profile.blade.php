@@ -30,15 +30,28 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="col-sm-6">
-			<div class="panel panel-default">
-				<div class="panel-heading"><span class="fx-bold">Meldingen & notificaties</span></div>
-				<div class="panel-body">
-					<div class="row">
-						<!-- MELDINGEN & NOTIFICATIES -->
-					</div>
-				</div>
+
+		<div class="col-sm-6"> 
+			<div class="panel panel-default"> 
+				<div class="panel-heading"><span class="fx-bold">Meldingen/Notificaties</span></div> 
+				<div class="panel-body"> 
+					<div class="row"> 
+						<!-- MELDINGEN & NOTIFICATIES --> 
+						<form method="post" action="{{ url('/profiel') }}"> 
+							<h6 class="h6_melding">Grondstofsilo bijna vol (90%)</h6> 
+							<div class="slideThree"> 
+								{{ Form::checkbox('grondstofsiloChecker', 'NULL', false, ['id' => 'grondstofsiloChecker']) }} 
+								<!--<input type="checkbox" value="None" id="grondstofsiloChecker" name="grondstofsiloChecker"  />--> 
+								<label for="grondstofsiloChecker"></label> 
+							</div> 
+							<h6 class="h6_melding">Afvalsilo bijna vol (90%)</h6> 
+							<div class="slideThree"> 
+								{{ Form::checkbox('afvalsiloChecker', 'NULL', false, ['id' => 'afvalsiloChecker']) }} 
+								<label for="afvalsiloChecker"></label> 
+							</div> 
+						</form> 
+					</div> 
+				</div> 
 			</div>
 		</div>
 	</div>
