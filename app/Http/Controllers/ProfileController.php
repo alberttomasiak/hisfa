@@ -112,15 +112,23 @@ class ProfileController extends Controller
 		}
 	}
 
-	public function ClickUpdateNotification_prime(Request $request){
+	public function ClickUpdateNotification_prime(){
 		//klik op slider: verstuur 0 of 1 naar databank (submit)
 
 		$notification_prime = \Auth::user()->notification_prime;
-		if($notification_prime === "1"){
-			//geef de checkbox klasse .onoffswitch-inner:before
+
+		if($notification_prime == 1){
+			$user = \App\User::findOrFail(\Auth::user()->id);
+			$user->notification_prime = 0;
+			$user->save();
+			
 		}else{
-			//geef de checkbox klasse .onoffswitch-inner:after
+			$user = \App\User::findOrFail(\Auth::user()->id);
+			$user->notification_prime = 1;
+			$user->save();
 		}
+
+		return redirect()->back();
 	}
 
 	public function siloMelding(){
