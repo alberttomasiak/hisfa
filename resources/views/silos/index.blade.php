@@ -7,7 +7,7 @@
 	<div class="container">
 		<div class="row">
                 <div class="col-sm-6">
-                    <div class="panel panel-default">
+                    <div class="silo-wrapper">
                         <div class="panel-heading">
                         	<span class="fx-bold">PRIME</span> Silos
 
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="panel panel-default">
+                    <div class="silo-wrapper">
                         <div class="panel-heading">WASTE Silos
 						
 						<span class="pull-right">

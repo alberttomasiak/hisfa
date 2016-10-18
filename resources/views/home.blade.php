@@ -6,53 +6,51 @@
   <link rel="stylesheet" href="css/sweetalert.css">
         <div class="row">
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                  
-                   
-                    <div class="panel-heading"><span class="fx-bold">PRIME</span> Silos</div>
+                <div class="silos">
+                    
+                    <h1 class="silos__title">PRIME Silos</h1>
 
-                    <div class="panel-body">
-                        <div class="row">
+                    <div class="silos__body">
 
-                            @foreach( $prime_silos as $p_silo )
+                        @foreach( $prime_silos as $p_silo )
 
-                            <div class="col-sm-4">
-                                <div class="balk">
-                                    <div class="fill" style="height: {{ $p_silo->silo->volume }}%;">
-                                        <div class="volume"> {{ $p_silo->silo->volume }}% </div>
-                                    </div>
+                        <div class="silo">
+                            <div class="silo-inner">
+                                <div class="silo__image">
+                                    <div class="silo__image__top default"></div>
+                                    <div class="silo__image__middle medium"></div>
+                                    <div class="silo__image__bottom medium"></div>
+                                    <div class="silo__percentage">{{ intval($p_silo->silo->volume) }}%</div>
                                 </div>
-                                <img src="img/gauge-icon.png" alt="Img" style="height: 25px;">
+                                <div class="silo__number">1</div>
                             </div>
-
-                            @endforeach
-
                         </div>
+
+                        @endforeach
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">WASTE Silos</div>
+                <div class="silos">
+                    <h1 class="silos__title">WASTE Silos</h1>
 
-                    <div class="panel-body">
-                        <div class="row">
+                    <div class="silos__body">
 
-                            @foreach( $waste_silos as $w_silo )
+                        @foreach( $prime_silos as $p_silo )
 
-                            <div class="col-sm-4">
-                                <div class="balk">
-                                    <div class="fill" style="height: {{ $w_silo->silo->volume }}%;">
-                                        <div class="volume"> {{ $w_silo->silo->volume }}% </div>
-                                    </div>
+                        <div class="silo">
+                            <div class="silo-inner">
+                                <div class="silo__image">
+                                    <div class="silo__image__top default"></div>
+                                    <div class="silo__image__middle default"></div>
+                                    <div class="silo__image__bottom empty"></div>
+                                    <div class="silo__percentage">{{ intval($p_silo->silo->volume) }}%</div>
                                 </div>
-                                <img src="img/gauge-icon.png" alt="Img" style="height: 25px;">
-
+                                <div class="silo__number">1</div>
                             </div>
-
-                            @endforeach
-
                         </div>
+
+                        @endforeach
                     </div>
 
                 </div>
