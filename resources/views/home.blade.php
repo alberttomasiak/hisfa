@@ -6,90 +6,85 @@
   <link rel="stylesheet" href="css/sweetalert.css">
         <div class="row">
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                  
-                   
-                    <div class="panel-heading"><span class="fx-bold">PRIME</span> Silos</div>
+                <!-- START PRIME SILOS -->
+                <div class="block">
+                    
+                    <h1 class="block__title">PRIME Silos</h1>
 
-                    <div class="panel-body">
-                        <div class="row">
+                    <div class="block__body">
 
-                            @foreach( $prime_silos as $p_silo )
+                        @foreach( $prime_silos as $p_silo )
 
-                            <div class="col-sm-4">
-                                <div class="balk">
-                                    <div class="fill" style="height: {{ $p_silo->silo->volume }}%;">
-                                        <div class="volume"> {{ $p_silo->silo->volume }}% </div>
-                                    </div>
+                        <a class="silo" href="{{ action('SilosController@edit', [$p_silo->silo->id]) }}">
+                            <div class="silo-inner">
+                                <div class="silo__image">
+                                    <div class="silo__image__top default"></div>
+                                    <div class="silo__image__middle medium"></div>
+                                    <div class="silo__image__bottom medium"></div>
+                                    <div class="silo__percentage">{{ intval($p_silo->silo->volume) }}%</div>
                                 </div>
-                                <img src="img/gauge-icon.png" alt="Img" style="height: 25px;">
+                                <div class="silo__number">1</div>
                             </div>
+                        </a>
 
-                            @endforeach
-
-                        </div>
+                        @endforeach
                     </div>
                 </div>
+                <!-- END PRIME SILOS -->
             </div>
+
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">WASTE Silos</div>
+                
+                <!-- START WASTE SILOS -->
+                <div class="block">
+                    <h1 class="block__title">WASTE Silos</h1>
 
-                    <div class="panel-body">
-                        <div class="row">
+                    <div class="block__body">
 
-                            @foreach( $waste_silos as $w_silo )
+                        @foreach( $waste_silos as $w_silo )
 
-                            <div class="col-sm-4">
-                                <div class="balk">
-                                    <div class="fill" style="height: {{ $w_silo->silo->volume }}%;">
-                                        <div class="volume"> {{ $w_silo->silo->volume }}% </div>
-                                    </div>
+                        <a class="silo" href="{{ action('SilosController@edit', [$w_silo->silo->id]) }}">
+                            <div class="silo-inner">
+                                <div class="silo__image">
+                                    <div class="silo__image__top default"></div>
+                                    <div class="silo__image__middle default"></div>
+                                    <div class="silo__image__bottom empty"></div>
+                                    <div class="silo__percentage">{{ intval($w_silo->silo->volume) }}%</div>
                                 </div>
-                                <img src="img/gauge-icon.png" alt="Img" style="height: 25px;">
-
+                                <div class="silo__number">1</div>
                             </div>
+                        </a>
 
-                            @endforeach
-
-                        </div>
+                        @endforeach
                     </div>
-
                 </div>
+                <!-- END WASTE SILOS -->
             </div>
         </div>
+
         <div class="row">
             <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Stock</div>
+                <!-- START STOCK -->
+                <div class="block">
+                    <h1 class="block__title">Stock</h1>
 
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <img src="../../public/img/gauge-icon.png" alt="Img">
-                            </div>
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-3"></div>
-                        </div>
+                    <div class="block__body">
+                        <div class="row"></div>
                     </div>
                 </div>
+                <!-- END STOCK -->
             </div>
-            <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Advanced data</div>
 
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <img src="../../public/img/gauge-icon.png" alt="Img">
-                            </div>
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-3"></div>
-                        </div>
+            <div class="col-sm-6">
+                <!-- START ADVANCED_DATA -->
+                <div class="block">
+                    <h1 class="block__title">Advanced Data</h1>
+
+                    <div class="block-body">
+                        <div class="row"></div>
                     </div>
                 </div>
+                <!-- END ADVANCED_DATA -->
             </div>
         </div>
     </div>
