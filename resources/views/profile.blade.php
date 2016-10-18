@@ -26,15 +26,28 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="col-sm-6">
-			<div class="panel panel-default">
-				<div class="panel-heading"><span class="fx-bold">Meldingen & notificaties</span></div>
-				<div class="panel-body">
-					<div class="row">
-						<!-- MELDINGEN & NOTIFICATIES -->
-					</div>
-				</div>
+
+		<div class="col-sm-6"> 
+			<div class="panel panel-default"> 
+				<div class="panel-heading"><span class="fx-bold">Meldingen/Notificaties</span></div> 
+				<div class="panel-body"> 
+					<div class="row"> 
+						<!-- MELDINGEN & NOTIFICATIES --> 
+						
+							<h6 class="h6_melding">Grondstofsilo bijna vol (90%)</h6> 
+							
+							<div class="onoffswitch">
+								<input type="checkbox" <?php if( Auth::user()->notification_prime == 1 ){ echo 'checked'; } ?> name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="{{ Auth::user()->notification_prime }}" onclick="window.location.href='{{ action('ProfileController@ClickUpdateNotification_prime') }}'" >
+								<label class="onoffswitch-label" for="myonoffswitch">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+							</div>
+							<h6 class="h6_melding">Afvalsilo bijna vol (90%)</h6> 
+
+						
+					</div> 
+				</div> 
 			</div>
 		</div>
 	</div>

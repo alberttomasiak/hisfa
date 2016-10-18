@@ -58,6 +58,7 @@ Route::get('/stock/{id}/decrease',	'StockController@decrease');
 Route::get('/profiel', function(){
 	return view('profile')->with('title', 'Profiel');
 });
+Route::get('/profiel/updateNotiPrime', 'ProfileController@ClickUpdateNotification_prime');
 
 Route::get('/profiel/instellingen', function(){
 	return view('profile_settings');
