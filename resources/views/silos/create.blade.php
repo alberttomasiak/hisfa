@@ -14,11 +14,11 @@
 
 	{!! Form::label('Wat zit er in de Silo?') !!}
 
-	{!! Form::text('content'); !!}
+	{!! Form::text('content', (isset($silo->content->content)) ? $silo->content->content : ''); !!}
 
 	{!! Form::label('Numer van de silo'); !!}
 
-	{!! Form::number('number', ''); !!}
+	{!! Form::number('number', (isset($silo->number)) ? $silo->number : ''); !!}
 
 	{!! Form::label('Type'); !!}
 
@@ -26,9 +26,9 @@
 
 	{!! Form::label('Volume in de Silo'); !!}
 
-	{!! Form::number('volume', $silo->volume); !!}
+	{!! Form::number('volume', (isset($silo->volume)) ? $silo->volume : ''); !!}
 
-	@if( $button )
+	@if( isset($button) )
 	{!! Form::submit($button); !!}
 	@else
 	{!! Form::submit('Silo toevoegen'); !!}
