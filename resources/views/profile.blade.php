@@ -35,17 +35,24 @@
 						<!-- MELDINGEN & NOTIFICATIES --> 
 						
 							<h6 class="h6_melding">Grondstofsilo bijna vol (90%)</h6> 
-							
-							<div class="onoffswitch">
-								<input type="checkbox" <?php if( Auth::user()->notification_prime == 1 ){ echo 'checked'; } ?> name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="{{ Auth::user()->notification_prime }}" onclick="window.location.href='{{ action('ProfileController@ClickUpdateNotification_prime') }}'" >
-								<label class="onoffswitch-label" for="myonoffswitch">
-									<span class="onoffswitch-inner"></span>
-									<span class="onoffswitch-switch"></span>
-								</label>
-							</div>
+
+								<div class="primeSwitch">
+									<input type="checkbox" <?php if( Auth::user()->notification_prime == 1 ){ echo 'checked'; } ?> name="primeSwitch" class="primeSwitch-checkbox" id="primeSwitch" value="{{ Auth::user()->notification_prime }}" onclick="window.location.href='{{ action('ProfileController@ClickUpdateNotification_prime') }}'" >
+									<label class="primeSwitch-label" for="primeSwitch">
+										<span class="primeSwitch-inner"></span>
+										<span class="primeSwitch-switch"></span>
+									</label>
+								</div>
+
 							<h6 class="h6_melding">Afvalsilo bijna vol (90%)</h6> 
 
-						
+								<div class="wasteSwitch">
+									<input type="checkbox" <?php if( Auth::user()->notification_waste == 1 ){ echo 'checked'; } ?> name="wasteSwitch" class="wasteSwitch-checkbox" id="wasteSwitch" value="{{ Auth::user()->notification_waste }}" onclick="window.location.href='{{ action('ProfileController@ClickUpdateNotification_waste') }}'" >
+									<label class="wasteSwitch-label" for="wasteSwitch">
+										<span class="wasteSwitch-inner"></span>
+										<span class="wasteSwitch-switch"></span>
+									</label>
+								</div>
 					</div> 
 				</div> 
 			</div>
