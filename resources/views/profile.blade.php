@@ -1,8 +1,4 @@
 @extends('layouts.app')
-<div class="header">
-    <span class="glyphicon glyphicon-arrow-left"><a href="" class="back"></a></span>
-    <div class="container">My profile</div>
-</div>
 
 @section('content')
 <div class="container">
