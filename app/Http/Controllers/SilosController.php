@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Silo;
 use App\SiloType;
+use App\SiloContent;
 
 class SilosController extends Controller
 {
@@ -42,6 +43,7 @@ class SilosController extends Controller
     public function create($type = null)
     {
         $type = ($type == null) ? '' : $type;
+
         return view('silos/create', compact('type'))
                ->with('title', 'Silo creeëren');
     }
@@ -54,7 +56,15 @@ class SilosController extends Controller
      */
     public function store(Request $request)
     {   
-        Silo::create($request->except(['_token']));
+        $silo = Silo::create($request->except(['_token', 'content', 'type']));
+
+        SiloType::create([
+            'type' => $request->input('type'),
+            'silo_id' => $silo->id]);
+
+        SiloContent::create([
+            'content' => $request->input('content'),
+            'silo_id' => $silo->id]);
 
         return redirect()->action('SilosController@index');
     }
@@ -78,9 +88,9 @@ class SilosController extends Controller
      */
     public function edit($id)
     {
-        $silo = Silo::findOrFail($id);
+        $silo = Silo::with('type', 'content')->findOrFail($id);
 
-        $type = '';
+        $type = ($silo->content->content) ? $silo->content->content : '';
 
         return view('silos.create', compact('silo', 'type'))
                ->with('title', 'Silo aanpassen')
@@ -99,12 +109,19 @@ class SilosController extends Controller
     {
         $silo = Silo::findOrFail($id);
 
-        //dd($request->all());
-
         $silo->number = $request->input('number');
         $silo->volume = $request->input('volume');
-
         $silo->save();
+
+        $content = SiloContent::where('silo_id', $silo->id)->firstOrFail();
+
+        $content->content = $request->input('content');
+        $content->save();
+
+        $type = SiloType::where('silo_id', $silo->id)->firstOrFail();
+
+        $type->type = $request->input('type');
+        $type->save();
 
         return redirect()->back();
     }
