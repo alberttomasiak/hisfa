@@ -37,7 +37,8 @@ Route::get('/silos/{id}/edit',		'SilosController@edit');
 Route::post('/silos', 				'SilosController@store');
 Route::post('/silos/{id}/edit', 	'SilosController@update');
 
-Route::get('/email', 'EmailController@checkVolume');
+// TEST ROUTE | NO LONGER NECESSARY
+//Route::get('/email', 'EmailController@checkVolume');
 
 /**
 * PROFILE ROUTES
