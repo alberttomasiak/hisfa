@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="pull-right">
-	<a href="#" class="btn btn-primary btn-xs">Stock Type toevoegen</a> <a href="#" class="btn btn-primary btn-xs">Stock Lengte toevoegen</a>
-</div>
 
-@include('stock.partials.table_view')
+	<div class="col-md-8 col-md-offset-2">
+
+		<div class="pull-right">
+		
+		</div>
+
+	</div>
 
 @endsection
