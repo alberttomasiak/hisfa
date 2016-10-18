@@ -51,7 +51,7 @@ Route::get('/stock', 				'StockController@index');
 Route::get('/profiel', function(){
 	return view('profile')->with('title', 'Profiel');
 });
-Route::post('/profiel', 'ProfileController@ClickUpdateNotification_prime');
+Route::get('/profiel/updateNotiPrime', 'ProfileController@ClickUpdateNotification_prime');
 
 Route::get('/profiel/instellingen', function(){
 	return view('profile_settings');
