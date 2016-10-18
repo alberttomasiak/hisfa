@@ -111,4 +111,27 @@ class ProfileController extends Controller
 			return redirect('/profiel/instellingen');
 		}
 	}
+
+	public function ClickUpdateNotification_prime(){
+		//klik op slider: verstuur 0 of 1 naar databank (submit)
+
+		$notification_prime = \Auth::user()->notification_prime;
+
+		if($notification_prime == 1){
+			$user = \App\User::findOrFail(\Auth::user()->id);
+			$user->notification_prime = 0;
+			$user->save();
+			
+		}else{
+			$user = \App\User::findOrFail(\Auth::user()->id);
+			$user->notification_prime = 1;
+			$user->save();
+		}
+
+		return redirect()->back();
+	}
+
+	public function siloMelding(){
+
+	}
 }
