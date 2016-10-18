@@ -33,10 +33,11 @@
 				<div class="panel-body"> 
 					<div class="row"> 
 						<!-- MELDINGEN & NOTIFICATIES --> 
-						<form method="post" action="{{ url('/profiel') }}"> 
+						
 							<h6 class="h6_melding">Grondstofsilo bijna vol (90%)</h6> 
+							
 							<div class="onoffswitch">
-								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="{{ Auth::user()->notification_prime }}" onclick="{{ ClickUpdateNotification_prime }}" >
+								<input type="checkbox" <?php if( Auth::user()->notification_prime == 1 ){ echo 'checked'; } ?> name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="{{ Auth::user()->notification_prime }}" onclick="window.location.href='{{ action('ProfileController@ClickUpdateNotification_prime') }}'" >
 								<label class="onoffswitch-label" for="myonoffswitch">
 									<span class="onoffswitch-inner"></span>
 									<span class="onoffswitch-switch"></span>
@@ -44,7 +45,7 @@
 							</div>
 							<h6 class="h6_melding">Afvalsilo bijna vol (90%)</h6> 
 
-						</form> 
+						
 					</div> 
 				</div> 
 			</div>
