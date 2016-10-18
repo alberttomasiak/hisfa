@@ -21,7 +21,11 @@
     flex-basis: auto;
     padding: 15px;
 
-    &:nth-child(even) {
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:nth-child(odd) {
         background-color: rgba(0,0,0,0.04);
     }
 }
