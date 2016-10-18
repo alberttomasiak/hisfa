@@ -49,7 +49,7 @@ Route::get('/stock', 				'StockController@index');
 * PROFILE ROUTES
 **/
 Route::get('/profiel', function(){
-	return view('profile');
+	return view('profile')->with('title', 'Profiel');
 });
 
 Route::get('/profiel/instellingen', function(){
