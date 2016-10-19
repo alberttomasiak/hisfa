@@ -59,6 +59,7 @@ Route::get('/profiel', function(){
 	return view('profile')->with('title', 'Profiel');
 });
 Route::get('/profiel/updateNotiPrime', 'ProfileController@ClickUpdateNotification_prime');
+Route::get('/profiel/updateNotiWaste', 'ProfileController@ClickUpdateNotification_waste');
 
 Route::get('/profiel/instellingen', function(){
 	return view('profile_settings');
