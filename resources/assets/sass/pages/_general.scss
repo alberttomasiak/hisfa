@@ -14,17 +14,29 @@ p {
     margin-bottom: 1em;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+}
+
 .page {
     display: flex;
     flex-direction: column;
 }
 
 .page-content {
+    height: 100%;
     flex: 1 1 auto;
     position: relative;
     overflow-y: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.balk {
-    height: 150px;
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.full-height {
+    height: 100%;
 }
