@@ -91,7 +91,7 @@ class SilosController extends Controller
     {
         $silo = Silo::with('type', 'content')->findOrFail($id);
 
-        $type = ($silo->content->content) ? $silo->content->content : '';
+        $type = ($silo->type->type) ? $silo->type->type : '';
 
         return view('silos.create', compact('silo', 'type'))
                ->with('title', 'Silo aanpassen')

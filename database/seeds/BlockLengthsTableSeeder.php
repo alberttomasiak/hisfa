@@ -14,12 +14,14 @@ class BlockLengthsTableSeeder extends Seeder
         //
         $faker = Faker\Factory::create();
 
-        $limit = 9;
+        $limit = 2;
+
+        $lengths = [8000,4000,2000];
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         for($i = 0; $i <= $limit; $i++){
             DB::table('block_lengths')->insert([
-                'length' => $faker->numberBetween($min = 1, $max = 100),
+                'length' => $lengths[$i],
                 'block_id' => $i+1,
             ]);
         }

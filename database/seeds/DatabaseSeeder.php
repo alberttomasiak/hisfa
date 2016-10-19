@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BlocksTableSeeder::class);
         $this->call(BlockLengthsTableSeeder::class);
         $this->call(BlockTypesTableSeeder::class);
-        $this->call(BlockLengthsTableSeeder::class);
         $this->call(StocksTableSeeder::class);
         $this->call(StockCountsTableSeeder::class);
         $this->call(StockTypesTableSeeder::class);

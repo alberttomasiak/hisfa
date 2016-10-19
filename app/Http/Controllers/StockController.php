@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\StockType;
+use App\Stock;
 
 class StockController extends Controller
 {
@@ -15,8 +17,26 @@ class StockController extends Controller
      */
     public function index()
     {
-        return view('stock.index')
+        $stockTypes = StockType::all();
+
+        return view('stock.index', compact('stockTypes'))
                ->with('title', 'Stock');
+    }
+
+    public function increase($id){
+        $stock = Stock::findOrFail($id);
+        $stock->increment('tonnage');  
+        $stock->save();
+
+        return redirect()->back();
+    }
+
+    public function decrease($id){
+        $stock = Stock::findOrFail($id);
+        $stock->decrement('tonnage');  
+        $stock->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -26,7 +46,8 @@ class StockController extends Controller
      */
     public function create()
     {
-        //
+        return view('stock.create')
+               ->with('title', 'Grondstof type toevoegen');
     }
 
     /**
@@ -37,7 +58,17 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $stock = Stock::create([
+            'tonnage' => $request->input('tonnage'),
+            'image' => '',
+        ]);
+
+        $stockType = StockType::create([
+            'type' => $request->input('type'),
+            'stock_id' => $stock->id
+        ]);
+
+        return redirect()->action('StockController@index');
     }
 
     /**
@@ -59,7 +90,10 @@ class StockController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stock = StockType::with('stock')->findOrFail($id);
+
+        return view('stock.create', compact('stock'))
+               ->with('title', 'Grondstof aanpassen');
     }
 
     /**
@@ -71,7 +105,16 @@ class StockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stockType = StockType::findOrFail($id);
+        $stock = Stock::findOrFail($stockType->stock_id);
+
+        $stockType->type = $request->input('type');
+        $stock->tonnage = $request->input('tonnage');
+
+        $stockType->save();
+        $stock->save();
+
+        return redirect()->action('StockController@index');
     }
 
     /**
@@ -82,6 +125,12 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $stockType = StockType::findOrFail($id);
+        $stock = Stock::findOrFail($stockType->stock_id);
+
+        $stockType->delete();
+        $stock->delete();
+
+        return redirect()->back();
     }
 }
