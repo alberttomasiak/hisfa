@@ -2,17 +2,18 @@
 
 namespace App\Notifications;
 
-use App\Silo;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use DB;
 use App\User;
+use App\Silo;
 
-class SilosVolume extends Notification
+class SilosVolumeWaste extends Notification
 {
     use Queueable;
+
     /**
      * Create a new notification instance.
      *
@@ -21,7 +22,6 @@ class SilosVolume extends Notification
     public function __construct()
     {
         //
-		
     }
 
     /**
@@ -45,10 +45,10 @@ class SilosVolume extends Notification
     {
         return (new MailMessage)
 					->error()
-					->subject("Het volume van de silo's.")
+					->subject("Het volume van de WASTE silo's.")
 					->greeting('Opgepast!')
-                    ->line("Een of meerdere silo's zijn 90% of voller.")
-                    ->action('Controleer hier hun volume', 'http://hisfa.dev');
+                    ->line("Het volume van een of meerdere waste silo's is 90% of hoger.")
+                    ->action('Controleer hier het volume', 'http://hisfa.dev/silos');
     }
 
     /**
