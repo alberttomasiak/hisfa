@@ -131,7 +131,22 @@ class ProfileController extends Controller
 		return redirect()->back();
 	}
 
-	public function siloMelding(){
+	public function ClickUpdateNotification_waste(){
+		//klik op slider: verstuur 0 of 1 naar databank (submit)
 
+		$notification_waste = \Auth::user()->notification_waste;
+
+		if($notification_waste == 1){
+			$user = \App\User::findOrFail(\Auth::user()->id);
+			$user->notification_waste = 0;
+			$user->save();
+
+		}else{
+			$user = \App\User::findOrFail(\Auth::user()->id);
+			$user->notification_waste = 1;
+			$user->save();
+		}
+
+		return redirect()->back();
 	}
 }

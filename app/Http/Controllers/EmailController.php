@@ -9,6 +9,8 @@ use App\Silo;
 use DB;
 use App\User;
 use App\Notifications\SilosVolume;
+use App\Notifications\SilosVolumeWaste;
+use App\Notifications\SilosVolumePrime;
 
 class EmailController extends Controller
 {
@@ -21,16 +23,41 @@ class EmailController extends Controller
             ->get();
 		
 		if($silos->first()){
-			return $this->sendMail();
+			$userPermissionsWaste = DB::table('users')
+				->select('notification_waste')
+				->where('notification_waste', '=', '1')
+				->get();
+			
+			if($userPermissionsWaste->first()){
+				$this->sendMailWaste();
+			}
+			
+			$userPermissionsPrime = DB::table('users')
+				->select('notification_prime')
+				->where('notification_prime', '=', '1')
+				->get();
+			
+			if($userPermissionsPrime->first()){
+				$this->sendMailPrime();
+			}
+
 		}else{
-			return redirect('/home');
+			redirect('/home');
 		}
 	}
 	
-	public function sendMail(){
-		$users = \App\User::all();
+	public function sendMailWaste(){
+		$users = \App\User::where('notification_waste', '=', '1')->get();
 		foreach ($users as $user){
-			$user->notify(new SilosVolume());
+			$user->notify(new SilosVolumeWaste());
+		}
+		return redirect('/home');
+	}
+	
+	public function sendMailPrime(){
+		$users = \App\User::where('notification_prime', '=', '1')->get();
+		foreach ($users as $user){
+			$user->notify(new SilosVolumePrime());
 		}
 		return redirect('/home');
 	}
