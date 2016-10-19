@@ -7,6 +7,7 @@
 
 		@if( isset($method) && $method == 'edit' )
 		<form method="post" class="row flex-row edit-silo" action="{{ action('SilosController@update', $silo->id) }}"> 
+		<input type="hidden" id="id" value="{{ $silo->id }}">
 		@else
 		{!! Form::open(['action' => 'SilosController@store']) !!}
 		@endif
@@ -58,9 +59,9 @@
 				</div>
 
 				@if( isset($button) )
-					{!! Form::submit($button, array('class' => 'submit')); !!}
+					{!! Form::submit($button, array('class' => 'btn btn-success')); !!}
 				@else
-					{!! Form::submit('Silo toevoegen', array('class' => 'submit')); !!}
+					{!! Form::submit('Silo toevoegen', array('class' => 'btn btn-success')); !!}
 				@endif
 			</div>
 		{!! Form::close() !!}
