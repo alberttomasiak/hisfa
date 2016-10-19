@@ -106,7 +106,7 @@ class SilosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $ajax = null)
     {
         $silo = Silo::findOrFail($id);
 
@@ -127,7 +127,18 @@ class SilosController extends Controller
 		
 		// Check volumes -> if any is 90% or fuller -> send mail to all users.
 		app('App\Http\Controllers\EmailController')->checkVolume();
-        return redirect()->back();
+        if( $ajax ){
+            // Will be automagically JSON ^^
+            return compact('silo', 'content', 'type');
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    public function update_json(Request $request, $id){
+
+        return $this->update($request, $id, true);
+
     }
 
     /**
