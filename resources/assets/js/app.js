@@ -19,6 +19,32 @@ const app = new Vue({
     el: 'body'
 });
 
+$('.edit-silo .btn-success').on('click', function(e){
+
+    e.preventDefault();
+
+    $(this).val('Silo opslagen...');
+    $(this).prop('disabled', true);
+
+    var $button = $(this);
+
+    $.ajax({
+           type: "POST",
+           url: '/silos/'+ $('.edit-silo #id').val() +'/editjson',
+           data: $(".edit-silo").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+                $button.val('Silo aanpassen');
+                $button.prop('disabled', false);
+           },
+           error: function(e)
+           {   
+
+           }
+         });
+
+});
+
 $('.edit-silo__block-form #name').keyup(function(e) {
     // Do something
 
