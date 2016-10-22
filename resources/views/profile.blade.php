@@ -27,11 +27,11 @@
 			</div>
 		</div>
 
-		<div class="col-sm-6"> 
+		<div class="col-sm-6 col-sm-6_meldingen"> 
 			<div class="panel panel-default"> 
 				<div class="panel-heading"><span class="fx-bold">Meldingen/Notificaties</span></div> 
 				<div class="panel-body"> 
-					<div class="row"> 
+					<div class="row meldingrow"> 
 						<!-- MELDINGEN & NOTIFICATIES --> 
 						
 							<h6 class="h6_melding">Grondstofsilo bijna vol (90%)</h6> 
