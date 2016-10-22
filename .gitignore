@@ -9,3 +9,5 @@ Homestead.yaml
 /public/js
 /public/css/app.css.map
 /public/css/app.css
+/public/js/app.js
+public/fonts/bootstrap/
