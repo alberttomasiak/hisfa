@@ -74,3 +74,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 //Route::get('/home/notifications', 'NotificationController@dashboardNotification');
+
+/**
+ * RAPPORTEN ROUTES
+ **/
+Route::get('/rapporten', 'RapportenController@index');
+
+Route::get('/rapporten', function(){
+	return view('rapporten')->with('title', 'Rapporten');
+});
