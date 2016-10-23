@@ -1,7 +1,4 @@
 @extends('layouts.app')
-<div class="header">
-    <div class="container">Profile settings</div>
-</div>
 
 @section('content')
 <div class="container">

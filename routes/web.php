@@ -63,7 +63,7 @@ Route::get('/profiel/updateNotiPrime', 'ProfileController@ClickUpdateNotificatio
 Route::get('/profiel/updateNotiWaste', 'ProfileController@ClickUpdateNotification_waste');
 
 Route::get('/profiel/instellingen', function(){
-	return view('profile_settings');
+	return view('profile_settings')->with('title', 'Profiel instellingen');
 });
 
 Route::post('/profiel/instellingen/persoonlijk', 'ProfileController@PersonalData');

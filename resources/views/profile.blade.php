@@ -14,11 +14,11 @@
 						</div>
 						<div class="col-sm-6 profile--section--info">
 							<div>
-							<h6>Naam</h6>
+							<h6 class="profielNaam-Email">Naam:</h6>
 							<p>{{ Auth::user()->name }}</p>
 							</div>
 							<div>
-							<h6>Email</h6>
+							<h6 class="profielNaam-Email">Email:</h6>
 							<p>{{ Auth::user()->email }}</p>
 							</div>
 						</div>
@@ -34,7 +34,7 @@
 					<div class="row meldingrow"> 
 						<!-- MELDINGEN & NOTIFICATIES --> 
 						
-							<h6 class="h6_melding">Grondstofsilo bijna vol (90%)</h6> 
+							<h6 class="h6_melding">Grondstofsilo bijna vol (90%):</h6> 
 
 								<div class="primeSwitch">
 									<input type="checkbox" <?php if( Auth::user()->notification_prime == 1 ){ echo 'checked'; } ?> name="primeSwitch" class="primeSwitch-checkbox" id="primeSwitch" value="{{ Auth::user()->notification_prime }}" onclick="window.location.href='{{ action('ProfileController@ClickUpdateNotification_prime') }}'" >
@@ -44,7 +44,7 @@
 									</label>
 								</div>
 
-							<h6 class="h6_melding">Afvalsilo bijna vol (90%)</h6> 
+							<h6 class="h6_melding">Afvalsilo bijna vol (90%):</h6> 
 
 								<div class="wasteSwitch">
 									<input type="checkbox" <?php if( Auth::user()->notification_waste == 1 ){ echo 'checked'; } ?> name="wasteSwitch" class="wasteSwitch-checkbox" id="wasteSwitch" value="{{ Auth::user()->notification_waste }}" onclick="window.location.href='{{ action('ProfileController@ClickUpdateNotification_waste') }}'" >
