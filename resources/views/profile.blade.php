@@ -14,12 +14,10 @@
 						</div>
 						<div class="col-sm-6 profile--section--info">
 							<div>
-							<h6 class="profielNaam-Email">Naam:</h6>
-							<p>{{ Auth::user()->name }}</p>
+							<h6 class="profielNaam-Email">Naam: <span><a href="/profiel/instellingen">{{ Auth::user()->name }}</a></span></h6>
 							</div>
 							<div>
-							<h6 class="profielNaam-Email">Email:</h6>
-							<p>{{ Auth::user()->email }}</p>
+							<h6 class="profielNaam-Email">Email: <span><a href="/profiel/instellingen">{{ Auth::user()->email }}</a></span></h6>
 							</div>
 						</div>
 					</div>
