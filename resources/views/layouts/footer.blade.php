@@ -19,7 +19,7 @@
             </a>
         </div>
         <div class="fp-content <?=(Request::is('rapports/*')) ? 'active' : '' ?>">
-            <a>
+            <a href="{{ action('RapportenController@index') }}">
                 <i class="icon-rapports badge-on-icon"></i>
                 <h6>RAPPORTEN</h6>
             </a>

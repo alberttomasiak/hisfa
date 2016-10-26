@@ -63,7 +63,7 @@ Route::get('/profiel/updateNotiPrime', 'ProfileController@ClickUpdateNotificatio
 Route::get('/profiel/updateNotiWaste', 'ProfileController@ClickUpdateNotification_waste');
 
 Route::get('/profiel/instellingen', function(){
-	return view('profile_settings');
+	return view('profile_settings')->with('title', 'Profiel instellingen');
 });
 
 Route::post('/profiel/instellingen/persoonlijk', 'ProfileController@PersonalData');
@@ -74,3 +74,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 //Route::get('/home/notifications', 'NotificationController@dashboardNotification');
+
+/**
+ * RAPPORTEN ROUTES
+ **/
+Route::get('/rapporten', 'RapportenController@index');
+
+Route::get('/rapporten', function(){
+	return view('rapporten')->with('title', 'Rapporten');
+});
