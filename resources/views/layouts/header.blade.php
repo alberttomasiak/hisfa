@@ -1,10 +1,10 @@
 <div class="header">
 	<div class="left-icons"></div>
-	<div class="middle-icons">{{ $title or 'Dashboard' }}</div>
+	<div class="middle-icons"><h5>{{ $title or 'Dashboard' }}</h5></div>
 	<div class="right-icons">
 		@if(isset($silos))
 			@if($silos->first())
-			<a href="#" id="newNotification"><img src="img/notification-1.png" alt="New notification">
+			<a href="#" id="newNotification"><img src="img/notification-1.svg" alt="New notification">
 				<script type="text/javascript">
 					document.getElementById("newNotification").addEventListener("click", function(event){
 						swal({

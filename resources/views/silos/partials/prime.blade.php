@@ -1,7 +1,7 @@
 <!-- START PRIME SILOS -->
                 <div class="block">
-                    
-                    <h1 class="block__title">PRIME Silos</h1>
+
+                    <h1 class="block__title">PRIME <span class="focus--title" style="font-size: 0.7em;">Silos</span></h1>
 
                     <div class="block__body">
 

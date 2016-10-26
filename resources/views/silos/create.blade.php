@@ -4,7 +4,6 @@
 
 @section('content')
 	<div class="container full-height">
-
 		@if( isset($method) && $method == 'edit' )
 		<form method="post" class="row flex-row edit-silo" action="{{ action('SilosController@update', $silo->id) }}"> 
 		<input type="hidden" id="id" value="{{ $silo->id }}">
@@ -35,35 +34,35 @@
 			<div class="block edit-silo__block-form">
 
 				<div class="input-control">
-					{!! Form::label('name', 'Wat zit er in de Silo?') !!}
+					{!! Form::label('name', 'Silo contents?') !!}
 
 					{!! Form::text('content', (isset($silo->content->content)) ? $silo->content->content : '', array('id' => 'name')); !!}
 				</div>
 
 				<div class="input-control">
-					{!! Form::label('number', 'Numer van de silo'); !!}
+					{!! Form::label('number', 'Silo number') !!}
 
 					{!! Form::number('number', (isset($silo->number)) ? $silo->number : '', array('id' => 'number')); !!}
 				</div>
 
 				<div class="input-control">
-					{!! Form::label('type', 'Type'); !!}
+					{!! Form::label('type', 'Silo type') !!}
 
 					{!! Form::select('type', ['prime' => 'Prime', 'waste' => 'Waste'], $type, array('id' => 'type')) !!}
 				</div>
 				
 				<div class="input-control">
-					{!! Form::label('volume', 'Volume in de Silo'); !!}
+					{!! Form::label('volume', 'Silo volume') !!}
 
 					{!! Form::number('volume', (isset($silo->volume)) ? $silo->volume : '', array('id' => 'volume')); !!}
 				</div>
 
 				@if( isset($button) )
-					{!! Form::submit($button, array('class' => 'btn btn-success')); !!}
+					{!! Form::submit($button, array('class' => 'btn btn-success')) !!}
 				@else
-					{!! Form::submit('Silo toevoegen', array('class' => 'btn btn-success')); !!}
+					{!! Form::submit('Add silo', array('class' => 'btn btn-success')) !!}
 				@endif
 			</div>
-		{!! Form::close() !!}
+	{!! Form::close() !!}
 	</div>
 @endsection

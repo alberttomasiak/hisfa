@@ -1,6 +1,7 @@
 <!-- START WASTE SILOS -->
                 <div class="block">
-                    <h1 class="block__title">WASTE Silos</h1>
+                    <h1 class="block__title">WASTE <span class="focus--title" style="font-size: 0.7em;">Silos</span></h1>
+
 
                     <div class="block__body">
 

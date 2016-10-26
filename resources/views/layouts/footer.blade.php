@@ -14,7 +14,8 @@
         </div>
         <div class="fp-content <?=(Request::is('stock/*') || Request::is('stock')) ? 'active' : '' ?>">
             <a href="{{ action('StockController@index') }}">
-                <i class="icon-stock badge-on-icon"></i>
+                <img src="img/stocks-ic.svg" alt="" style="width: auto; height: 35px; padding: 5px;">
+                {{--<i class="icon-stock badge-on-icon"></i>--}}
                 <h6>STOCK</h6>
             </a>
         </div>
