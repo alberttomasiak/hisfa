@@ -31,7 +31,7 @@
 				<div class="panel-body"> 
 					<div class="row meldingrow"> 
 						<!-- MELDINGEN & NOTIFICATIES --> 
-						
+
 							<h6 class="h6_melding">Grondstofsilo bijna vol (90%):</h6> 
 
 								<div class="primeSwitch">
@@ -55,7 +55,64 @@
 				</div> 
 			</div>
 		</div>
+
+		<div class="col-sm-6 col-sm-6_nieuweUser">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span class="fx-bold">Nieuwe gebruiker toevoegen</span>
+				</div>
+				<div class="panel-body">
+					<div class="row userrow">
+						<!-- NIEUWE GEBRUIKER TOEVOEGEN -->
+
+						<form class="" action="{{ URL('/profiel/addUser')}}" method="post">
+							<label for="name">Naam</label>
+							<input type="text" name="name" value="" placeholder="Naam">
+
+							<label for="email">Email</label>
+							<input type="text" name="email" placeholder="Email" value="">
+
+							<label for="password">Wachtwoord</label>
+							<input type="password" name="password" placeholder="Wachtwoord" value="">
+
+							<label for="passwordRepeat">Wachtwoord herhalen</label>
+							<input type="password" name="passwordRepeat" placeholder="Wachtwoord herhalen" value="">
+
+							<p>
+								Welke rollen moet deze gebruiker hebben?
+							</p>
+
+							<input type="checkbox" name="options[]" id="optie1" value="1" />
+							<label for="optie1">Dashboard bekijken</label>
+
+							<input type="checkbox" name="options[]" id="optie2" value="2" />
+							<label for="optie2">Blokken stock bekijken</label>
+
+							<input type="checkbox" name="options[]" id="optie3" value="3" />
+							<label for="optie3">Blokken stock beheren</label>
+
+							<input type="checkbox" name="options[]" id="optie4" value="4" />
+							<label for="optie4">Afvalsilos bekijken</label>
+
+							<input type="checkbox" name="options[]" id="optie5" value="5" />
+							<label for="optie5">Afvalsilos beheren</label>
+
+							<input type="checkbox" name="options[]" id="optie6" value="6" />
+							<label for="optie6">Grondstofsilos bekijken</label>
+
+							<input type="checkbox" name="options[]" id="optie7" value="7" />
+							<label for="optie7">Grondstofsilos beheren</label>
+
+							<input type="checkbox" name="options[]" id="optie8" value="8" />
+							<label for="optie8">Gebruikers beheren</label>
+
+							<input type="submit" name="submit" class="submit btn btn-primary" id="userAdd_submit" value="User toevoegen">
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 @endsection
-

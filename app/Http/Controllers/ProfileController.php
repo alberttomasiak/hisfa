@@ -17,43 +17,43 @@ class ProfileController extends Controller
     {
         $this->middleware('auth');
     }
-	
+
 	public function PersonalData(Request $request){
 		//dd($request->all());  //to check all the datas dumped from the form
    		//if your want to get single element,someName in this case
-		
+
 		$loggedInUser = \Auth::user()->name;
    		$name = $request->name;
 		$email = $request->email;
-		
+
 		$query = DB::update('update users set name = ?, email = ? where name = ?', [$name, $email, $loggedInUser]);
-		
+
 		if($query){
 			$request->session()->flash('alert-success', 'Uw persoonlijke gegevens werden succesvol aangepast.');
 			return redirect('/profiel/instellingen');
 			//$feedbackPersonal = "Uw persoonlijke gegevens werden succesvol aangepast.";
-			
+
 		}else{
 			$request->session()->flash('alert-danger', 'Uw persoonlijke gegevens werden niet aangepast.');
 			return redirect('/profiel/instellingen');
 		}
 	}
-	
+
 	public function UserAvatar(Request $request){
 		if(Input::hasFile('file')){
-	
+
 			$file = Input::file('file');
-			
+
 			if(substr($file->getMimeType(), 0, 5) == 'image'){
 				$extension = Input::file('file')->getClientOriginalExtension();
 				$fileName = "UA-" . \Auth::user()->id . time() . '.' . $extension;
-				
+
 				$destinationPath = "img/" . $fileName;
 				$loggedInUser = \Auth::user()->id;
-				
-				
+
+
 				$query = DB::update('update users set profilePic = ? where id = ?', [$destinationPath, $loggedInUser]);
-				
+
 				if($query){
 					$file->move('img', $fileName);
 					$request->session()->flash('avatar-success', 'Uw profielfoto werd succesvol aangepast.');
@@ -62,26 +62,26 @@ class ProfileController extends Controller
 					$request->session()->flash('avatar-danger', 'Uw profielfoto kon niet worden aangepast.');
 					return redirect('/profiel/instellingen');
 				}
-				
-				
+
+
 			}else{
 				$request->session()->flash('avatar-danger', 'Het bestand is geen afbeelding.');
 				return redirect('/profiel/instellingen');
 			}
-			
-			
+
+
 		}
 	}
 
-	
+
 	public function UserPassword(Request $request){
 		//dd($request->all());
 		$currentPass = $request->currentPass;
 		$newPass = $request->newPass;
 		$newPassRepeat = $request->newPassRepeat;
-		
+
 		$user = \Auth::user()->password;
-		
+
 		if(Hash::check($currentPass, $user)){
 			/*$request->session()->flash('password-success', 'Uw huidig wachtwoord klopt.');
 			return redirect('/profiel/instellingen');*/
@@ -91,7 +91,7 @@ class ProfileController extends Controller
 				$newPassword = Hash::make($newPass);
 				$loggedInUser = \Auth::user()->name;
 				$query = DB::update('update users set password = ? where name = ?', [$newPassword, $loggedInUser]);
-				
+
 				if($query){
 					$request->session()->flash('password-success', 'Uw wachtwoord werd succesvol verandert.');
 					return redirect('/profiel/instellingen');
@@ -105,7 +105,7 @@ class ProfileController extends Controller
 			}
 
   return $passwordOK;
-			
+
 		}else{
 			$request->session()->flash('password-danger', 'Uw huidig wachtwoord klopt niet.');
 			return redirect('/profiel/instellingen');
@@ -121,7 +121,7 @@ class ProfileController extends Controller
 			$user = \App\User::findOrFail(\Auth::user()->id);
 			$user->notification_prime = 0;
 			$user->save();
-			
+
 		}else{
 			$user = \App\User::findOrFail(\Auth::user()->id);
 			$user->notification_prime = 1;
@@ -146,6 +146,12 @@ class ProfileController extends Controller
 			$user->notification_waste = 1;
 			$user->save();
 		}
+
+		return redirect()->back();
+	}
+
+	public function addUser(Request $request){
+		
 
 		return redirect()->back();
 	}

@@ -69,6 +69,7 @@ Route::get('/profiel/instellingen', function(){
 Route::post('/profiel/instellingen/persoonlijk', 'ProfileController@PersonalData');
 Route::post('/profiel/instellingen/avatar', 'ProfileController@UserAvatar');
 Route::post('/profiel/instellingen/wachtwoord', 'ProfileController@UserPassword');
+Route::post('/profiel/addUser', 'ProfileController@AddUser');
 
 Auth::routes();
 
