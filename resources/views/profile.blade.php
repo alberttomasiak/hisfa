@@ -66,8 +66,16 @@
 				<div class="panel-body">
 					<div class="row userrow">
 						<!-- NIEUWE GEBRUIKER TOEVOEGEN -->
+						@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+								@if(Session::has('user-' . $msg))
+									<p class="alert alert-{{ $msg }}">{{ Session::get('user-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+								 @endif
+						@endforeach
+
 						@if(Auth::user()->account_type == "admin")
 						<form class="" action="{{ URL('/profiel/addUser')}}" method="post">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 							<label for="name">Naam</label>
 							<input type="text" name="name" value="" placeholder="Naam">
 
@@ -94,7 +102,7 @@
 							<label for="optie3">Blokken stock beheren</label>
 
 							<input type="checkbox" name="options[]" id="optie4" value="4" />
-							<label for="optie4">Grondstof & afvalsilos bekijken</label>
+							<label for="optie4">Grondstof- en afvalsilos bekijken</label>
 
 							<input type="checkbox" name="options[]" id="optie5" value="5" />
 							<label for="optie5">Afvalsilos beheren</label>

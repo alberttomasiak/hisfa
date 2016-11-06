@@ -66,9 +66,11 @@ Route::get('/profiel/instellingen', function(){
 	return view('profile_settings')->with('title', 'Profiel instellingen');
 });
 
+// profiel instellingen wijzigen
 Route::post('/profiel/instellingen/persoonlijk', 'ProfileController@PersonalData');
 Route::post('/profiel/instellingen/avatar', 'ProfileController@UserAvatar');
 Route::post('/profiel/instellingen/wachtwoord', 'ProfileController@UserPassword');
+// user toevoegen
 Route::post('/profiel/addUser', 'ProfileController@AddUser');
 
 Auth::routes();

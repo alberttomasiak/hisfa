@@ -151,8 +151,36 @@ class ProfileController extends Controller
 	}
 
 	public function addUser(Request $request){
-		
+		$name = $request->name;
+		$email = $request->email;
+		$pass = $request->password;
+		$passRepeat = $request->passwordRepeat;
+		$options = $request->options;
 
-		return redirect()->back();
+		if($pass == $passRepeat){
+			$newPassword = Hash::make($pass);
+			$query = DB::table('users')->insert(
+				['name' => $name, 'email' => $email, 'password' => $newPassword]
+			);
+
+			if($query){
+				$lastIDQuery = DB::table('users')->orderBy('id', 'desc')->first();
+				//$lastID = mysqli_fetch_assoc($lastIDQuery);
+				$newID = $lastIDQuery->id;
+
+				foreach($options as $option){
+					$query = DB::table('user_permissions')->insert(
+						['options' => $option, 'user_id' => $newID]
+					);
+				}
+
+				$request->session()->flash('user-success', 'De gebruiker werd succesvol aangemaakt.');
+				return redirect('/profiel');
+			}
+		}else{
+			$request->session()->flash('user-danger', 'De wachtwoorden komen niet overeen.');
+			return redirect('/profiel');
+		}
+		//return redirect()->back();
 	}
 }
