@@ -1,4 +1,8 @@
 @extends('layouts.app')
+<!-- Indien de user een admin is OF als het een "normal" user is met optie 1 ingeschakeld wordt deze content getoond. -->
+
+@if(Auth::user()->account_type == "admin" || Auth::user()->account_type == "normal" && strpos($account_options, "1") && $account_id = "[".Auth::user()->id."]")
+
 @section('content')
 <div class="container">
     <div class="container">
@@ -42,3 +46,6 @@
     </div>
 </div>
 @endsection
+@else
+    @include('layouts.noaccess')
+@endif

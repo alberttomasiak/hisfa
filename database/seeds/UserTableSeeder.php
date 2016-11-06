@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         $limit = 2;
-
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('users')->truncate();
 
         //
@@ -30,6 +30,7 @@ class UserTableSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@hisfa.be',
             'password' => bcrypt('admin'),
+            'account_type' => 'admin',
         ]);
 
         // Tom
@@ -38,7 +39,7 @@ class UserTableSeeder extends Seeder
             'email' => 'tom@changeme.hisfa',
             'password' => bcrypt('hisfa'),
         ]);
-
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class FKAddUserToUserPermissions extends Migration
+class FKAddUsersToUserPermissions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class FKAddUserToUserPermissions extends Migration
      */
     public function up()
     {
-        Schema::table('userPermissions', function (Blueprint $table){
+        Schema::table('user_permissions', function (Blueprint $table){
             // crazy loco mysql logic
             $table->engine = 'InnoDB';
             $table->integer('user_id')->unsigned();
@@ -28,8 +28,8 @@ class FKAddUserToUserPermissions extends Migration
      */
     public function down()
     {
-        Schema::table('userPermissions', function (Blueprint $table){
-            $table->dropForeign('userPermissions_user_id_foreign');
+        Schema::table('user_permissions', function (Blueprint $table){
+            $table->dropForeign('user_permissions_user_id_foreign');
         });
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserPermissions extends Migration
+class CreateUsersPermissions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateUserPermissions extends Migration
      */
     public function up()
     {
-        Schema::create('userPermissions', function (Blueprint $table){
-            $table->integer('option');
+        Schema::create('user_permissions', function (Blueprint $table){
+            $table->integer('options');
             $table->rememberToken();
             $table->timestamps();
+
         });
     }
 
@@ -27,6 +28,6 @@ class CreateUserPermissions extends Migration
      */
     public function down()
     {
-        Schema::drop('userPermissions');
+        Schema::drop('user_permissions');
     }
 }

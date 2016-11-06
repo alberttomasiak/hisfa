@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('notification')->default(true);
             $table->boolean('notification_prime')->default(true);
             $table->boolean('notification_waste')->default(true);
+            $table->string('account_type')->default('normal');
             $table->rememberToken();
             $table->timestamps();
         });

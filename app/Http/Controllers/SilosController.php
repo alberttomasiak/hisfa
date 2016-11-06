@@ -9,6 +9,7 @@ use App\Silo;
 use App\SiloType;
 use App\SiloContent;
 use App\Notifications\SilosVolume;
+use DB;
 
 class SilosController extends Controller
 {
@@ -17,6 +18,7 @@ class SilosController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -29,10 +31,20 @@ class SilosController extends Controller
      */
     public function index()
     {
+		// account type achterhalen + optie's
+		$loggedInUser = \Auth::user()->id;
+
+		// opties ophalen voor de ingelogde user
+		$account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+
+		// de id van ingelogde user ophalen uit user_permissions
+		$account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
+
+
     	$waste_silos = SiloType::with('silo')->where('type','=','waste')->get();
         $prime_silos = SiloType::with('silo')->where('type','=','prime')->get();
-    
-        return view('silos/index', compact('prime_silos', 'waste_silos'))
+
+        return view('silos/index', compact('prime_silos', 'waste_silos', 'account_options', 'account_id'))
                ->with('title', 'Silos');
     }
 
@@ -45,7 +57,7 @@ class SilosController extends Controller
     {
         $type = ($type == null) ? '' : $type;
 
-        return view('silos/create', compact('type'))
+        return view('silos/create', compact('type', 'account_options', 'account_id'))
                ->with('title', 'Silo creeëren');
     }
 
@@ -56,7 +68,7 @@ class SilosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $silo = Silo::create($request->except(['_token', 'content', 'type']));
 
         SiloType::create([
@@ -89,11 +101,21 @@ class SilosController extends Controller
      */
     public function edit($id)
     {
+		// account type achterhalen + optie's
+		$loggedInUser = \Auth::user()->id;
+
+		// opties ophalen voor de ingelogde user
+		$account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+
+		// de id van ingelogde user ophalen uit user_permissions
+		$account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
+
+
         $silo = Silo::with('type', 'content')->findOrFail($id);
 
         $type = ($silo->type->type) ? $silo->type->type : '';
 
-        return view('silos.create', compact('silo', 'type'))
+        return view('silos.create', compact('silo', 'type', 'account_options', 'account_id'))
                ->with('title', 'Silo aanpassen')
                ->with('button', 'Silo aanpassen')
                ->with('method', 'edit');
@@ -123,13 +145,12 @@ class SilosController extends Controller
 
         $type->type = $request->input('type');
         $type->save();
-		
-		
+
 		// Check volumes -> if any is 90% or fuller -> send mail to all users.
 		app('App\Http\Controllers\EmailController')->checkVolume();
         if( $ajax ){
             // Will be automagically JSON ^^
-            return compact('silo', 'content', 'type');
+            return compact('silo', 'content', 'type', 'account_options', 'account_id');
         } else {
             return redirect()->back();
         }

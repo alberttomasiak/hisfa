@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Silo;
 use App\SiloType;
+use App\User;
+use App\UserPermissions;
 use DB;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class HomeController extends Controller
 {
@@ -26,6 +29,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // account type achterhalen + optie's
+        $loggedInUser = \Auth::user()->id;
+
+        // opties ophalen voor de ingelogde user
+        $account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+
+        // de id van ingelogde user ophalen uit user_permissions
+        $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
+
         $waste_silos = SiloType::with('silo')->where('type','=','waste')->get();
         $prime_silos = SiloType::with('silo')->where('type','=','prime')->get();
     	$silos = DB::table('silos')
@@ -33,7 +45,7 @@ class HomeController extends Controller
             ->select('silos.*', 'silo_types.type')
 			->where('silos.volume', '>=', '90')
             ->get();
-		
-        return view('home', compact('prime_silos', 'waste_silos', 'silos'));
+
+        return view('home', compact('account_id', 'account_options', 'account_type', 'prime_silos', 'waste_silos', 'silos'));
     }
 }

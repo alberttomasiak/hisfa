@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\StockType;
 use App\Stock;
+use DB;
 
 class StockController extends Controller
 {
@@ -17,15 +18,24 @@ class StockController extends Controller
      */
     public function index()
     {
+        // account type achterhalen + optie's
+        $loggedInUser = \Auth::user()->id;
+
+        // opties ophalen voor de ingelogde user
+        $account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+
+        // de id van ingelogde user ophalen uit user_permissions
+        $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
+
         $stockTypes = StockType::all();
 
-        return view('stock.index', compact('stockTypes'))
+        return view('stock.index', compact('stockTypes', 'account_options', 'account_id'))
                ->with('title', 'Stock');
     }
 
     public function increase($id){
         $stock = Stock::findOrFail($id);
-        $stock->increment('tonnage');  
+        $stock->increment('tonnage');
         $stock->save();
 
         return redirect()->back();
@@ -33,7 +43,7 @@ class StockController extends Controller
 
     public function decrease($id){
         $stock = Stock::findOrFail($id);
-        $stock->decrement('tonnage');  
+        $stock->decrement('tonnage');
         $stock->save();
 
         return redirect()->back();
@@ -46,7 +56,15 @@ class StockController extends Controller
      */
     public function create()
     {
-        return view('stock.create')
+        // account type achterhalen + optie's
+        $loggedInUser = \Auth::user()->id;
+
+        // opties ophalen voor de ingelogde user
+        $account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+
+        // de id van ingelogde user ophalen uit user_permissions
+        $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
+        return view('stock.create', compact('account_options', 'account_id'))
                ->with('title', 'Grondstof type toevoegen');
     }
 
@@ -90,9 +108,17 @@ class StockController extends Controller
      */
     public function edit($id)
     {
+        // account type achterhalen + optie's
+        $loggedInUser = \Auth::user()->id;
+
+        // opties ophalen voor de ingelogde user
+        $account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+
+        // de id van ingelogde user ophalen uit user_permissions
+        $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
         $stock = StockType::with('stock')->findOrFail($id);
 
-        return view('stock.create', compact('stock'))
+        return view('stock.create', compact('stock', 'account_options', 'account_id'))
                ->with('title', 'Grondstof aanpassen');
     }
 

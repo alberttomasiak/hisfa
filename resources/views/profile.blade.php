@@ -56,6 +56,8 @@
 			</div>
 		</div>
 
+
+
 		<div class="col-sm-6 col-sm-6_nieuweUser">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -64,7 +66,7 @@
 				<div class="panel-body">
 					<div class="row userrow">
 						<!-- NIEUWE GEBRUIKER TOEVOEGEN -->
-
+						@if(Auth::user()->account_type == "admin")
 						<form class="" action="{{ URL('/profiel/addUser')}}" method="post">
 							<label for="name">Naam</label>
 							<input type="text" name="name" value="" placeholder="Naam">
@@ -92,23 +94,24 @@
 							<label for="optie3">Blokken stock beheren</label>
 
 							<input type="checkbox" name="options[]" id="optie4" value="4" />
-							<label for="optie4">Afvalsilos bekijken</label>
+							<label for="optie4">Grondstof & afvalsilos bekijken</label>
 
 							<input type="checkbox" name="options[]" id="optie5" value="5" />
 							<label for="optie5">Afvalsilos beheren</label>
 
-							<input type="checkbox" name="options[]" id="optie6" value="6" />
-							<label for="optie6">Grondstofsilos bekijken</label>
-
-							<input type="checkbox" name="options[]" id="optie7" value="7" />
+							<input type="checkbox" name="options[]" id="optie7" value="6" />
 							<label for="optie7">Grondstofsilos beheren</label>
 
-							<input type="checkbox" name="options[]" id="optie8" value="8" />
+							<input type="checkbox" name="options[]" id="optie8" value="7" />
 							<label for="optie8">Gebruikers beheren</label>
 
 							<input type="submit" name="submit" class="submit btn btn-primary" id="userAdd_submit" value="User toevoegen">
 
 						</form>
+					@endif
+					@if(Auth::user()->account_type == "admin" || Auth::user()->account_type == "normal" && strpos($account_options, "7") && $account_id = "[".Auth::user()->id."]")
+						<a href="/profiel/gebruikers-beheren">Beheer de gebruikers</a>
+					@endif
 					</div>
 				</div>
 			</div>

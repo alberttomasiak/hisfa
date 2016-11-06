@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@if(Auth::user()->account_type == "admin" || Auth::user()->account_type == "normal" && strpos($account_options, "3") && $account_id = "[".Auth::user()->id."]")
+
 @section('content')
 
 <form method="post">
@@ -20,3 +22,7 @@
 </form>
 
 @endsection
+
+@else
+	@include('layouts.noaccess')
+@endif
