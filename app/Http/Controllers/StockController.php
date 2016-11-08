@@ -16,37 +16,61 @@ class StockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function checkIfLoggedIn(){
+        if(\Auth::user()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function index()
     {
-        // account type achterhalen + optie's
-        $loggedInUser = \Auth::user()->id;
+        if($this->checkIfLoggedIn()){
 
-        // opties ophalen voor de ingelogde user
-        $account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+            // account type achterhalen + optie's
+            $loggedInUser = \Auth::user()->id;
 
-        // de id van ingelogde user ophalen uit user_permissions
-        $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
+            // opties ophalen voor de ingelogde user
+            $account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
 
-        $stockTypes = StockType::all();
+            // de id van ingelogde user ophalen uit user_permissions
+            $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
 
-        return view('stock.index', compact('stockTypes', 'account_options', 'account_id'))
-               ->with('title', 'Stock');
+            $stockTypes = StockType::all();
+
+            return view('stock.index', compact('stockTypes', 'account_options', 'account_id'))
+                   ->with('title', 'Stock');
+
+        }else{
+            return redirect('login');
+        }
     }
 
     public function increase($id){
-        $stock = Stock::findOrFail($id);
-        $stock->increment('tonnage');
-        $stock->save();
+        if($this->checkIfLoggedIn()){
+            $stock = Stock::findOrFail($id);
+            $stock->increment('tonnage');
+            $stock->save();
 
-        return redirect()->back();
+            return redirect()->back();
+        }else{
+            return redirect('login');
+        }
+
     }
 
     public function decrease($id){
-        $stock = Stock::findOrFail($id);
-        $stock->decrement('tonnage');
-        $stock->save();
+        if($this->checkIfLoggedIn()){
+            $stock = Stock::findOrFail($id);
+            $stock->decrement('tonnage');
+            $stock->save();
 
-        return redirect()->back();
+            return redirect()->back();
+        }else{
+            return redirect('login');
+        }
+
     }
 
     /**
@@ -56,16 +80,20 @@ class StockController extends Controller
      */
     public function create()
     {
-        // account type achterhalen + optie's
-        $loggedInUser = \Auth::user()->id;
+        if($this->checkIfLoggedIn()){
+            // account type achterhalen + optie's
+            $loggedInUser = \Auth::user()->id;
 
-        // opties ophalen voor de ingelogde user
-        $account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+            // opties ophalen voor de ingelogde user
+            $account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
 
-        // de id van ingelogde user ophalen uit user_permissions
-        $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
-        return view('stock.create', compact('account_options', 'account_id'))
-               ->with('title', 'Grondstof type toevoegen');
+            // de id van ingelogde user ophalen uit user_permissions
+            $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
+            return view('stock.create', compact('account_options', 'account_id'))
+                   ->with('title', 'Grondstof type toevoegen');
+        }else{
+            return redirect('login');
+        }
     }
 
     /**
@@ -108,18 +136,23 @@ class StockController extends Controller
      */
     public function edit($id)
     {
-        // account type achterhalen + optie's
-        $loggedInUser = \Auth::user()->id;
+        if($this->checkifLoggedIn()){
 
-        // opties ophalen voor de ingelogde user
-        $account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+            // account type achterhalen + optie's
+            $loggedInUser = \Auth::user()->id;
 
-        // de id van ingelogde user ophalen uit user_permissions
-        $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
-        $stock = StockType::with('stock')->findOrFail($id);
+            // opties ophalen voor de ingelogde user
+            $account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
 
-        return view('stock.create', compact('stock', 'account_options', 'account_id'))
-               ->with('title', 'Grondstof aanpassen');
+            // de id van ingelogde user ophalen uit user_permissions
+            $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
+            $stock = StockType::with('stock')->findOrFail($id);
+
+            return view('stock.create', compact('stock', 'account_options', 'account_id'))
+                   ->with('title', 'Grondstof aanpassen');
+        }else{
+            return redirect('login');
+        }
     }
 
     /**
@@ -151,12 +184,17 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        $stockType = StockType::findOrFail($id);
-        $stock = Stock::findOrFail($stockType->stock_id);
+        if($this->checkIfloggedIn()){
 
-        $stockType->delete();
-        $stock->delete();
+            $stockType = StockType::findOrFail($id);
+            $stock = Stock::findOrFail($stockType->stock_id);
 
-        return redirect()->back();
+            $stockType->delete();
+            $stock->delete();
+
+            return redirect()->back();
+        }else{
+            return redirect('login');
+        }
     }
 }

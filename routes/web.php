@@ -15,16 +15,20 @@ use App\Notifications\SilosVolume;
 
 Route::get('/*', function(){
 	if (!Auth::check()){
-		return view('/auth/login');
+		return redirect('login');
 	}
 });
 
 Route::get('/', function () {
-    return view('/auth/login');
+	return redirect('login');
 });
 
 Route::get('/blokken', function() {
-	return view('blokken');
+	if(Auth::user()){
+		return view('blokken');
+	}else{
+		return redirect('login');
+	}
 });
 
 /**
@@ -57,7 +61,12 @@ Route::get('/stock/{id}/decrease',	'StockController@decrease');
 * PROFILE ROUTES
 **/
 Route::get('/profiel', function(){
-	return view('profile')->with('title', 'Profiel');
+	if(Auth::check()){
+		return view('profile')->with('title', 'Profiel');
+	}else{
+		return redirect('login');
+	}
+
 });
 Route::get('/profiel/updateNotiPrime', 'ProfileController@ClickUpdateNotification_prime');
 Route::get('/profiel/updateNotiWaste', 'ProfileController@ClickUpdateNotification_waste');
