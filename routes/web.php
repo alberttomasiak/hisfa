@@ -20,7 +20,7 @@ Route::get('/*', function(){
 });
 
 Route::get('/', function () {
-	return redirect('login');
+	return view('/auth/login');
 });
 
 Route::get('/blokken', function() {

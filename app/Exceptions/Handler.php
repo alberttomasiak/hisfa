@@ -42,10 +42,27 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
-    }
+     public function render($request, Exception $exception)
+     {
+         if($this->isHttpException($exception)){
+             switch ($exception->getStatusCode())
+             {
+                 case 404:
+                 return redirect()->guest('home');
+                 break;
+
+                 case '500':
+                 return redirect()->guest('home');
+                 break;
+
+                 default:
+                     return $this->renderHttpException($exception);
+                 break;
+            }
+         }else{
+                 return parent::render($request, $exception);
+         }
+     }
 
     /**
      * Convert an authentication exception into an unauthenticated response.
