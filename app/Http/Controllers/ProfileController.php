@@ -150,6 +150,27 @@ class ProfileController extends Controller
 		return redirect()->back();
 	}
 
+	public function checkName($p_sName){
+		$name = DB::table('users')->where('name', $p_sName)->get();
+
+		if(count($name)){
+			// if there is a name like the one the user inserted -> signal a false to stop the process
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	public function checkMail($p_sMail){
+		$mail = DB::table('users')->where('email', $p_sMail)->get();
+
+		if(count($mail)){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
 	public function addUser(Request $request){
 		$name = $request->name;
 		$email = $request->email;
@@ -158,23 +179,34 @@ class ProfileController extends Controller
 		$options = $request->options;
 
 		if($pass == $passRepeat){
-			$newPassword = Hash::make($pass);
-			$query = DB::table('users')->insert(
-				['name' => $name, 'email' => $email, 'password' => $newPassword]
-			);
+			if($this->checkName($name)){
+				if($this->checkMail($email)){
 
-			if($query){
-				$lastIDQuery = DB::table('users')->orderBy('id', 'desc')->first();
-				//$lastID = mysqli_fetch_assoc($lastIDQuery);
-				$newID = $lastIDQuery->id;
-
-				foreach($options as $option){
-					$query = DB::table('user_permissions')->insert(
-						['options' => $option, 'user_id' => $newID]
+					$newPassword = Hash::make($pass);
+					$query = DB::table('users')->insert(
+						['name' => $name, 'email' => $email, 'password' => $newPassword]
 					);
-				}
 
-				$request->session()->flash('user-success', 'De gebruiker werd succesvol aangemaakt.');
+					if($query){
+						$lastIDQuery = DB::table('users')->orderBy('id', 'desc')->first();
+						//$lastID = mysqli_fetch_assoc($lastIDQuery);
+						$newID = $lastIDQuery->id;
+
+						foreach($options as $option){
+							$query = DB::table('user_permissions')->insert(
+								['options' => $option, 'user_id' => $newID]
+							);
+						}
+
+						$request->session()->flash('user-success', 'De gebruiker werd succesvol aangemaakt.');
+						return redirect('/profiel');
+					}
+				}else{
+					$request->session()->flash('user-danger', 'Een gebruiker met dezelfde e-mail adres bestaat al.');
+					return redirect('/profiel');
+				}
+			}else{
+				$request->session()->flash('user-danger', 'Een gebruiker met dezelfde naam bestaat al.');
 				return redirect('/profiel');
 			}
 		}else{
