@@ -38,6 +38,7 @@ class UserTableSeeder extends Seeder
             'name' => 'tom',
             'email' => 'tom@changeme.hisfa',
             'password' => bcrypt('hisfa'),
+            'account_type' => 'admin',
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
