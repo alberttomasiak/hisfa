@@ -203,16 +203,16 @@ class ProfileController extends Controller
 					}
 				}else{
 					$request->session()->flash('user-danger', 'Een gebruiker met dezelfde e-mail adres bestaat al.');
-					return redirect('/profiel');
+
 				}
 			}else{
 				$request->session()->flash('user-danger', 'Een gebruiker met dezelfde naam bestaat al.');
-				return redirect('/profiel');
+
 			}
 		}else{
 			$request->session()->flash('user-danger', 'De wachtwoorden komen niet overeen.');
-			return redirect('/profiel');
+
 		}
-		//return redirect()->back();
+		return redirect()->back();
 	}
 }
