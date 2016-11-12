@@ -71,6 +71,8 @@ Route::get('/profiel', function(){
 Route::get('/profiel/updateNotiPrime', 'ProfileController@ClickUpdateNotification_prime');
 Route::get('/profiel/updateNotiWaste', 'ProfileController@ClickUpdateNotification_waste');
 
+Route::get('/profiel/gebruikers_beheren', 'ProfileController@ManageUsers');
+
 Route::get('/profiel/instellingen', function(){
 	return view('profile_settings')->with('title', 'Profiel instellingen');
 });
@@ -81,6 +83,8 @@ Route::post('/profiel/instellingen/avatar', 'ProfileController@UserAvatar');
 Route::post('/profiel/instellingen/wachtwoord', 'ProfileController@UserPassword');
 // user toevoegen
 Route::post('/profiel/addUser', 'ProfileController@AddUser');
+Route::post('/profiel/UpdateUser', 'ProfileController@UpdateUser');
+Route::get('/profiel/DeleteUser/{id}', 'ProfileController@DeleteUser');
 
 Auth::routes();
 

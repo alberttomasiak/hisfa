@@ -179,40 +179,68 @@ class ProfileController extends Controller
 		$options = $request->options;
 
 		if($pass == $passRepeat){
-			if($this->checkName($name)){
-				if($this->checkMail($email)){
+			if(strlen($pass) >= 7){
+				if($this->checkName($name)){
+					if($this->checkMail($email)){
 
-					$newPassword = Hash::make($pass);
-					$query = DB::table('users')->insert(
-						['name' => $name, 'email' => $email, 'password' => $newPassword]
-					);
+						$newPassword = Hash::make($pass);
+						$query = DB::table('users')->insert(
+							['name' => $name, 'email' => $email, 'password' => $newPassword]
+						);
 
-					if($query){
-						$lastIDQuery = DB::table('users')->orderBy('id', 'desc')->first();
-						//$lastID = mysqli_fetch_assoc($lastIDQuery);
-						$newID = $lastIDQuery->id;
+						if($query){
+							$lastIDQuery = DB::table('users')->orderBy('id', 'desc')->first();
+							//$lastID = mysqli_fetch_assoc($lastIDQuery);
+							$newID = $lastIDQuery->id;
 
-						foreach($options as $option){
-							$query = DB::table('user_permissions')->insert(
-								['options' => $option, 'user_id' => $newID]
-							);
+							if(!empty($options)){
+								foreach($options as $option){
+									$query = DB::table('user_permissions')->insert(
+										['options' => $option, 'user_id' => $newID]
+									);
+								}
+							}
+							$request->session()->flash('user-success', 'De gebruiker werd succesvol aangemaakt.');
+							return redirect('/profiel');
 						}
-
-						$request->session()->flash('user-success', 'De gebruiker werd succesvol aangemaakt.');
-						return redirect('/profiel');
+					}else{
+						$request->session()->flash('user-danger', 'Een gebruiker met dezelfde e-mail adres bestaat al.');
 					}
 				}else{
-					$request->session()->flash('user-danger', 'Een gebruiker met dezelfde e-mail adres bestaat al.');
-
+					$request->session()->flash('user-danger', 'Een gebruiker met dezelfde naam bestaat al.');
 				}
 			}else{
-				$request->session()->flash('user-danger', 'Een gebruiker met dezelfde naam bestaat al.');
-
+				$request->session()->flash('user-danger', 'Het wachtwoord moet minstens 7 karakters lang zijn.');
 			}
 		}else{
 			$request->session()->flash('user-danger', 'De wachtwoorden komen niet overeen.');
-
 		}
+		return redirect()->back();
+	}
+
+	public function ManageUsers(){
+		$users = DB::table('users')->where('account_type', '=', 'normal')->get();
+		return view('profiel/gebruikers_beheren', ['users' => $users]);
+	}
+
+	public function UpdateUser(Request $request){
+		$options = $request->options;
+		$id = $request->userId;
+		if(!empty($options)){
+			$query = DB::table('user_permissions')->where('user_id', '=', $id)->delete();
+
+			foreach($options as $option){
+				$query = DB::table('user_permissions')->insert(
+					['options' => $option, 'user_id' => $id]
+				);
+			}
+
+			return redirect()->back();
+		}
+	}
+
+	public function DeleteUser($id){
+		$query = DB::table('users')->where('id', '=', $id)->delete();
 		return redirect()->back();
 	}
 }

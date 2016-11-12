@@ -38,7 +38,7 @@ $('.edit-silo .btn-success').on('click', function(e){
                 $button.prop('disabled', false);
            },
            error: function(e)
-           {   
+           {
 
            }
          });
