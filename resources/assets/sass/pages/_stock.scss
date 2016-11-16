@@ -2,6 +2,11 @@
     .add-items {
         display: flex;
         justify-content: flex-end;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    .btn-add {
+        background-color: #cc861e;
+        padding: 5px 15px;
+        color: white;
     }
 }
