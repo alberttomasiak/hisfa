@@ -4,39 +4,33 @@
 
 @section('content')
 
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-md-8 col-md-offset-2 stock">
 
 		@if(Auth::user()->account_type == "admin" || Auth::user()->account_type == "normal" && strpos($account_options, "3") && $account_id = "[".Auth::user()->id."]")
 
-		<div class="pull-right">
-			<a href="{{ action('StockController@create') }}" class="btn btn-primary btn-xs">Grondstof type toevoegen</a>
+		<div class="add-items">
+			<a href="{{ action('StockController@create') }}" class="btn btn-add btn-xs">Grondstof type toevoegen</a>
 		</div>
 
 		@endif
 
-		<table class="table">
-			<thead>
-				<tr>
-					<td>Naam</td><td>In voorraad</td> <td>#</td> <td>Actie</td>
-				</tr>
-			</thead>
-
+		<div class="table">
+			<div class="tr table-header">
+				<div class="flex1">Type</div>
+				<div class="flex3">In voorraad</div>
+				<div class="flex1">Actie</div>
+			</div>
 			@foreach($stockTypes as $type)
-				<tr>
-					<td>{{ $type->type }} </td>
-					<td>{{ $type->stock->tonnage }} </td>
-					<td>
-
-						<a class="btn btn-primary" href="{{ action('StockController@increase', $type->stock->id) }}">+</a>
-
-						<a class="btn btn-primary" href="{{ action('StockController@decrease', $type->stock->id) }}">-</a>
-
-					</td>
-					<td><a href="{{ action('StockController@edit', $type->id)}}" class="btn btn-warning btn-xs">Aanpassen</a> <a href="{{ action('StockController@destroy', $type->id)}}" class="btn btn-danger btn-xs">Verwijderen</a> </td>
-				</tr>
+				<div class="tr table-data">
+					<div class="flex1">{{ $type->type }}</div>
+					<div class="flex3">{{ $type->stock->tonnage }}</div>
+					<div class="flex1">
+						<a href="{{ action('StockController@edit', $type->id)}}" class="btn btn-default btn-edit btn-sm">Aanpassen</i></a>
+						<a href="{{ action('StockController@destroy', $type->id)}}" class="btn btn-danger btn-sm">Verwijderen</a>
+					</div>
+				</div>
 			@endforeach
-		</table>
-
+		</div>
 	</div>
 
 @endsection
