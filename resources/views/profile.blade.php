@@ -76,42 +76,66 @@
 						<form class="" action="{{ URL('/profiel/addUser')}}" method="post">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+							<div class="labelInputveld">
 							<label for="name">Naam</label>
-							<input type="text" name="name" value="" placeholder="Naam">
+							</div>
+							<div class="labelInputveld">
+							<input type="text" class="form-control" name="name" value="" placeholder="Naam">
+							</div>
 
+							<div class="labelInputveld">
 							<label for="email">Email</label>
-							<input type="text" name="email" placeholder="Email" value="">
+							<input type="text" class="form-control" name="email" placeholder="Email" value="">
+							</div>
 
+							<div class="labelInputveld">
 							<label for="password">Wachtwoord</label>
-							<input type="password" name="password" placeholder="Wachtwoord" value="">
+							<input type="password" class="form-control" name="password" placeholder="Wachtwoord" value="">
+							</div>
 
+							<div class="labelInputveld">
 							<label for="passwordRepeat">Wachtwoord herhalen</label>
-							<input type="password" name="passwordRepeat" placeholder="Wachtwoord herhalen" value="">
+							<input type="password" class="form-control" name="passwordRepeat" placeholder="Wachtwoord herhalen" value="">
+							</div>
 
-							<p>
-								Welke rollen moet deze gebruiker hebben?
-							</p>
+								<p class="h6_melding vraagRollenGebruiker">
+									Welke rollen moet deze gebruiker hebben?
+								</p>
 
+							<div class="labelInputBox">
 							<input type="checkbox" name="options[]" id="optie1" value="1" />
 							<label for="optie1">Dashboard bekijken</label>
+							</div>
 
+							<div class="labelInputBox">
 							<input type="checkbox" name="options[]" id="optie2" value="2" />
 							<label for="optie2">Blokken stock bekijken</label>
+							</div>
 
+							<div class="labelInputBox">
 							<input type="checkbox" name="options[]" id="optie3" value="3" />
 							<label for="optie3">Blokken stock beheren</label>
+							</div>
 
+							<div class="labelInputBox">
 							<input type="checkbox" name="options[]" id="optie4" value="4" />
 							<label for="optie4">Grondstof- en afvalsilos bekijken</label>
+							</div>
 
+							<div class="labelInputBox">
 							<input type="checkbox" name="options[]" id="optie5" value="5" />
 							<label for="optie5">Afvalsilos beheren</label>
+							</div>
 
+							<div class="labelInputBox">
 							<input type="checkbox" name="options[]" id="optie6" value="6" />
 							<label for="optie6">Grondstofsilos beheren</label>
+							</div>
 
+							<div class="labelInputBox">
 							<input type="checkbox" name="options[]" id="optie7" value="7" />
 							<label for="optie7">Gebruikers beheren</label>
+							</div>
 
 							<input type="submit" name="submit" class="submit btn btn-primary" id="userAdd_submit" value="User toevoegen">
 
