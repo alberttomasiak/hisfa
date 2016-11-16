@@ -279,7 +279,9 @@ span {
 	display: flex;
 }
 
-.labelInputveld>label {}
+.labelInputveld > input {
+	margin-bottom: 0.6em;
+}
 
 .labelInputveld>input {
 	-webkit-border-radius: 3px;
@@ -288,9 +290,21 @@ span {
 	border-color: #EEEEEE;
 }
 
-.labelInputBox {}
+.labelInputBox > input{
+	width: 20px;
+	height: 15px;
+	margin: 15px auto;
+	position: relative;
+}
 
 .vraagRollenGebruiker {
+	font-size: 1.2em;
 	margin-top: 1em;
 	margin-bottom: 1em;
+}
+
+#userAdd_submit{
+	margin-top: 1em;
+	margin-bottom: 1em;
+
 }

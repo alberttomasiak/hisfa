@@ -20,7 +20,7 @@
 
 		<div class="col-sm-6">
 			<div class="pf-block notifications">
-				<h1 class="pf-block__title">Meldingen/Notificaties</h1>
+				<h1 id="MeldingenNotificatiesTitel" class="pf-block__title">Meldingen/Notificaties</h1>
 				<div class="pf-block__body">
 					<!-- MELDINGEN & NOTIFICATIES -->
 					<div class="notifications__row">
@@ -52,7 +52,10 @@
 	<div class="row secondrow">
 		<div class="col-sm-6">
 			<div class="pf-block adduser">
-				<h1 class="pf-block__title">Nieuwe gebruiker toevoegen</h1>
+				<h1 class="pf-block__title">Nieuwe gebruiker toevoegen
+					@if(Auth::user()->account_type == "admin" || Auth::user()->account_type == "normal" && strpos($account_options, "7") && $account_id = "[".Auth::user()->id."]")
+						<a href="profiel/gebruikers_beheren" class="pf-block__title__edit">Beheer de gebruikers</a>
+					@endif</h1>
 				<div class="pf-block__body">
 					<div class="row userrow">
 						<!-- NIEUWE GEBRUIKER TOEVOEGEN -->
@@ -70,22 +73,28 @@
 							<label for="name">Naam</label>
 							</div>
 							<div class="labelInputveld">
-							<input type="text" class="form-control" name="name" value="" placeholder="Naam">
+							<input type="text" class="form-control" name="name" value="" >
 							</div>
 
 							<div class="labelInputveld">
 							<label for="email">Email</label>
-							<input type="text" class="form-control" name="email" placeholder="Email" value="">
+							</div>
+							<div class="labelInputveld">
+							<input type="text" class="form-control" name="email" value="">
 							</div>
 
 							<div class="labelInputveld">
 							<label for="password">Wachtwoord</label>
-							<input type="password" class="form-control" name="password" placeholder="Wachtwoord" value="">
+							</div>
+							<div class="labelInputveld">
+							<input type="password" class="form-control" name="password" value="">
 							</div>
 
 							<div class="labelInputveld">
 							<label for="passwordRepeat">Wachtwoord herhalen</label>
-							<input type="password" class="form-control" name="passwordRepeat" placeholder="Wachtwoord herhalen" value="">
+							</div>
+							<div class="labelInputveld">
+							<input type="password" class="form-control" name="passwordRepeat" value="">
 							</div>
 
 								<p class="h6_melding vraagRollenGebruiker">
@@ -94,6 +103,7 @@
 
 							<div class="labelInputBox">
 							<input type="checkbox" name="options[]" id="optie1" value="1" />
+								<label for="labelInputBox"></label>
 							<label for="optie1">Dashboard bekijken</label>
 							</div>
 
@@ -131,9 +141,7 @@
 
 						</form>
 					@endif
-					@if(Auth::user()->account_type == "admin" || Auth::user()->account_type == "normal" && strpos($account_options, "7") && $account_id = "[".Auth::user()->id."]")
-						<a href="profiel/gebruikers_beheren">Beheer de gebruikers</a>
-					@endif
+
 					</div>
 				</div>
 			</div>

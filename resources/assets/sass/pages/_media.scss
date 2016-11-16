@@ -1,3 +1,10 @@
+// # ExtraSmall Mobile
+@media screen and (min-width: 400px) {
+    #MeldingenNotificatiesTitel{
+        margin-top:1.5em;
+    }
+}
+
 // # Mobile
 @media screen and (min-width: 480px) {
     .page-content {
@@ -20,6 +27,14 @@
             padding-bottom: 30px;
         }
     }
+
+    #MeldingenNotificatiesTitel{
+        margin-top: 0em;
+    }
+
+    .secondrow > .col-sm-6{
+        width: 70%;
+    }
 }
 
 // # Desktop
@@ -32,6 +47,10 @@
             padding-bottom: 60px;
         }
     }
+
+    .secondrow > .col-sm-6{
+        width: 60%;
+    }
 }
 
 // # Huge
@@ -43,5 +62,9 @@
             padding-top: 75px;
             padding-bottom: 75px;
         }
+    }
+
+    .secondrow > .col-sm-6{
+        width: 50%;
     }
 }
