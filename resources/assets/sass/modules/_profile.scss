@@ -1,3 +1,11 @@
+.secondrow {
+	margin-top: 50px;
+}
+
+.pf-block {
+	padding: 0 30px;
+}
+
 .pf-block__title {
 	font-size: 20px;
 	font-weight: 400;
@@ -11,7 +19,6 @@
 	float: right;
 	background-color: #cc861e;
 	border-color: transparent;
-	margin-right: 30px;
 	border-radius: 15px;
 	padding: 4px 10px;
 	font-size: 10px;
@@ -84,13 +91,15 @@ span {
 	margin-top: -60px;
 }
 
-.primeSwitch,
-.wasteSwitch {
-	margin: 20px 0 25px 0;
-}
-
 
 /* sliders grondstofsilo notificatie */
+
+.notifications__row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0;
+}
 
 .primeSwitch {
 	position: relative;
@@ -152,6 +161,7 @@ span {
 .primeSwitch-switch {
 	display: block;
 	width: 22px;
+	height: 26px;
 	margin: 4px;
 	background: #FFFFFF;
 	position: absolute;
@@ -234,6 +244,7 @@ span {
 .wasteSwitch-switch {
 	display: block;
 	width: 22px;
+	height: 26px;
 	margin: 4px;
 	background: #FFFFFF;
 	position: absolute;
