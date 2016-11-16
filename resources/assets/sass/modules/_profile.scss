@@ -1,5 +1,3 @@
-.pf-block {}
-
 .pf-block__title {
 	font-size: 20px;
 	font-weight: 400;
@@ -21,6 +19,10 @@
 	outline: none;
 }
 
+.pf-block__body {
+	color: #cccccc;
+}
+
 .user-row {
 	display: flex;
 }
@@ -33,7 +35,6 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	color: #cccccc;
 }
 
 .user__image-wrapper {
@@ -51,12 +52,6 @@
 	margin-bottom: 10px;
 }
 
-.user__info {}
-
-.user__info__row {}
-
-.user__info__name {}
-
 .profile--section--info {
 	padding-top: 10px;
 }
@@ -73,19 +68,11 @@ span {
 	font-size: 0.9em;
 }
 
-.h6_melding {
-	font-size: 1.1em;
-}
-
 
 /*Meldingen en Notificaties*/
 
 .panel-heading {
 	margin-top: -20px;
-}
-
-.primeSwitch {
-	margin-bottom: 30px;
 }
 
 .h6_melding {
@@ -97,8 +84,13 @@ span {
 	margin-top: -60px;
 }
 
+.primeSwitch,
+.wasteSwitch {
+	margin: 20px 0 25px 0;
+}
 
-/*sliders grondstofsilo notificatie*/
+
+/* sliders grondstofsilo notificatie */
 
 .primeSwitch {
 	position: relative;
