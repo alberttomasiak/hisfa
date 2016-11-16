@@ -1,38 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container profile">
 	<div class="row">
 		<div class="col-sm-6">
-			<div class="panel panel-default">
-				<div class="panel-heading"><span class="fx-bold">Persoonlijke gegevens</span></div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-6 profile--section--image">
-							<img src="{{ Auth::user()->profilePic }}" class="profile--image" alt="{{ Auth::user()->name }}'s profiel foto">
-							<a href="/profiel/instellingen">Gegevens wijzigen</a>
-						</div>
-						<div class="col-sm-6 profile--section--info">
-							<div>
-							<h6 class="profielNaam-Email">Naam: <span><a href="/profiel/instellingen">{{ Auth::user()->name }}</a></span></h6>
-							</div>
-							<div>
-							<h6 class="profielNaam-Email">Email: <span><a href="/profiel/instellingen">{{ Auth::user()->email }}</a></span></h6>
-							</div>
-						</div>
+			<div class="pf-block user">
+				<h1 class="pf-block__title">Persoonlijke gegevens<a href="/profiel/instellingen" class="pf-block__title__edit">Gegevens wijzigen</a></h1>
+				<div class="pf-block__body user-row">
+					<div class="user__image-wrapper user-col">
+						<img src="{{ Auth::user()->profilePic }}" class="user__image" alt="{{ Auth::user()->name }}'s profiel foto">
+					</div>
+					<div class=" user__info user-col">
+							<h5 class="user__info__name">Naam: <span>{{ Auth::user()->name }}</span></h5>
+							<h5 class="user__info__email">Email: <span>{{ Auth::user()->email }}</span></h5>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-sm-6 col-sm-6_meldingen"> 
-			<div class="panel panel-default"> 
-				<div class="panel-heading"><span class="fx-bold">Meldingen/Notificaties</span></div> 
-				<div class="panel-body"> 
-					<div class="row meldingrow"> 
-						<!-- MELDINGEN & NOTIFICATIES --> 
+		<div class="col-sm-6 col-sm-6_meldingen">
+			<div class="pf-block user">
+				<div class="panel-heading"><span class="fx-bold">Meldingen/Notificaties</span></div>
+				<div class="panel-body">
+					<div class="row meldingrow">
+						<!-- MELDINGEN & NOTIFICATIES -->
 
-							<h6 class="h6_melding">Grondstofsilo bijna vol (90%):</h6> 
+							<h6 class="h6_melding">Grondstofsilo bijna vol (90%):</h6>
 
 								<div class="primeSwitch">
 									<input type="checkbox" <?php if( Auth::user()->notification_prime == 1 ){ echo 'checked'; } ?> name="primeSwitch" class="primeSwitch-checkbox" id="primeSwitch" value="{{ Auth::user()->notification_prime }}" onclick="window.location.href='{{ action('ProfileController@ClickUpdateNotification_prime') }}'" >
@@ -42,7 +35,7 @@
 									</label>
 								</div>
 
-							<h6 class="h6_melding">Afvalsilo bijna vol (90%):</h6> 
+							<h6 class="h6_melding">Afvalsilo bijna vol (90%):</h6>
 
 								<div class="wasteSwitch">
 									<input type="checkbox" <?php if( Auth::user()->notification_waste == 1 ){ echo 'checked'; } ?> name="wasteSwitch" class="wasteSwitch-checkbox" id="wasteSwitch" value="{{ Auth::user()->notification_waste }}" onclick="window.location.href='{{ action('ProfileController@ClickUpdateNotification_waste') }}'" >

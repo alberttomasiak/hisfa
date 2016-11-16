@@ -1,4 +1,47 @@
-.profile--image{
+.pf-block {}
+
+.pf-block__title {
+	font-size: 20px;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: #FFF;
+	margin-bottom: 25px;
+	font-family: 'Actor', sans-serif;
+}
+
+.pf-block__title__edit {
+	float: right;
+	background-color: #cc861e;
+	border-color: transparent;
+	margin-right: 30px;
+	border-radius: 15px;
+	padding: 4px 10px;
+	font-size: 10px;
+	line-height: 10px;
+	outline: none;
+}
+
+.user-row {
+	display: flex;
+}
+
+.user-col {
+	flex: 1;
+}
+
+.user__info {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	color: #cccccc;
+}
+
+.user__image-wrapper {
+	display: block;
+	text-align: center;
+}
+
+.user__image {
 	display: block;
 	border-radius: 50%;
 	width: 115px;
@@ -8,177 +51,237 @@
 	margin-bottom: 10px;
 }
 
-
-.profile--section--image{
-	display: block;
-	text-align: center;
-}
-
-.profile--section--info{
+.profile--section--info {
 	padding-top: 10px;
 }
 
-#avatarUpload{
+#avatarUpload {
 	padding-top: 10px;
 }
 
-.profielNaam-Email{
+.profielNaam-Email {
 	font-size: 1.2em;
 }
 
-span{
+span {
 	font-size: 0.9em;
 }
 
-.h6_melding{
+.h6_melding {
 	font-size: 1.1em;
 }
 
+
 /*Meldingen en Notificaties*/
 
-.panel-heading{
+.panel-heading {
 	margin-top: -20px;
 }
 
-.primeSwitch{
+.primeSwitch {
 	margin-bottom: 30px;
 }
 
-.h6_melding{
+.h6_melding {
 	margin-bottom: -10px;
 }
 
-.meldingrow{
+.meldingrow {
 	margin-left: 0.5em;
 	margin-top: -60px;
 }
 
+
 /*sliders grondstofsilo notificatie*/
+
 .primeSwitch {
-	position: relative; width: 90px;
-	-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+	position: relative;
+	width: 90px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
+
 .primeSwitch-checkbox {
 	display: none;
 }
+
 .primeSwitch-label {
-	display: block; overflow: hidden; cursor: pointer;
-	border: 2px solid #999999; border-radius: 20px;
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 2px solid #999999;
+	border-radius: 20px;
 }
+
 .primeSwitch-inner {
-	display: block; width: 200%; margin-left: -100%;
+	display: block;
+	width: 200%;
+	margin-left: -100%;
 	transition: margin 0.3s ease-in 0s;
 }
-.primeSwitch-inner:before, .primeSwitch-inner:after {
-	display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
-	font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+
+.primeSwitch-inner:before,
+.primeSwitch-inner:after {
+	display: block;
+	float: left;
+	width: 50%;
+	height: 30px;
+	padding: 0;
+	line-height: 30px;
+	font-size: 14px;
+	color: white;
+	font-family: Trebuchet, Arial, sans-serif;
+	font-weight: bold;
 	box-sizing: border-box;
 }
+
 .primeSwitch-inner:before {
 	content: "AAN";
 	padding-left: 10px;
-	background-color: #34C280; color: #FFFFFF;
+	background-color: #34C280;
+	color: #FFFFFF;
 }
+
 .primeSwitch-inner:after {
 	content: "UIT";
 	padding-right: 10px;
-	background-color: #EEEEEE; color: #999999;
+	background-color: #EEEEEE;
+	color: #999999;
 	text-align: right;
 }
+
 .primeSwitch-switch {
-	display: block; width: 22px; margin: 4px;
+	display: block;
+	width: 22px;
+	margin: 4px;
 	background: #FFFFFF;
-	position: absolute; top: 0; bottom: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
 	right: 56px;
-	border: 2px solid #999999; border-radius: 20px;
+	border: 2px solid #999999;
+	border-radius: 20px;
 	transition: all 0.3s ease-in 0s;
 }
-.primeSwitch-checkbox:checked + .primeSwitch-label .primeSwitch-inner {
+
+.primeSwitch-checkbox:checked+.primeSwitch-label .primeSwitch-inner {
 	margin-left: 0;
 }
-.primeSwitch-checkbox:checked + .primeSwitch-label .primeSwitch-switch {
+
+.primeSwitch-checkbox:checked+.primeSwitch-label .primeSwitch-switch {
 	right: 0px;
 }
 
+
 /*sliders afvalsilo notificatie*/
+
 .wasteSwitch {
-	position: relative; width: 90px;
-	-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+	position: relative;
+	width: 90px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
+
 .wasteSwitch-checkbox {
 	display: none;
 }
+
 .wasteSwitch-label {
-	display: block; overflow: hidden; cursor: pointer;
-	border: 2px solid #999999; border-radius: 20px;
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 2px solid #999999;
+	border-radius: 20px;
 }
+
 .wasteSwitch-inner {
-	display: block; width: 200%; margin-left: -100%;
+	display: block;
+	width: 200%;
+	margin-left: -100%;
 	transition: margin 0.3s ease-in 0s;
 }
-.wasteSwitch-inner:before, .wasteSwitch-inner:after {
-	display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
-	font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+
+.wasteSwitch-inner:before,
+.wasteSwitch-inner:after {
+	display: block;
+	float: left;
+	width: 50%;
+	height: 30px;
+	padding: 0;
+	line-height: 30px;
+	font-size: 14px;
+	color: white;
+	font-family: Trebuchet, Arial, sans-serif;
+	font-weight: bold;
 	box-sizing: border-box;
 }
+
 .wasteSwitch-inner:before {
 	content: "AAN";
 	padding-left: 10px;
-	background-color: #34C280; color: #FFFFFF;
+	background-color: #34C280;
+	color: #FFFFFF;
 }
+
 .wasteSwitch-inner:after {
 	content: "UIT";
 	padding-right: 10px;
-	background-color: #EEEEEE; color: #999999;
+	background-color: #EEEEEE;
+	color: #999999;
 	text-align: right;
 }
+
 .wasteSwitch-switch {
-	display: block; width: 22px; margin: 4px;
+	display: block;
+	width: 22px;
+	margin: 4px;
 	background: #FFFFFF;
-	position: absolute; top: 0; bottom: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
 	right: 56px;
-	border: 2px solid #999999; border-radius: 20px;
+	border: 2px solid #999999;
+	border-radius: 20px;
 	transition: all 0.3s ease-in 0s;
 }
-.wasteSwitch-checkbox:checked + .wasteSwitch-label .wasteSwitch-inner {
+
+.wasteSwitch-checkbox:checked+.wasteSwitch-label .wasteSwitch-inner {
 	margin-left: 0;
 }
-.wasteSwitch-checkbox:checked + .wasteSwitch-label .wasteSwitch-switch {
+
+.wasteSwitch-checkbox:checked+.wasteSwitch-label .wasteSwitch-switch {
 	right: 0px;
 }
 
+
 /*nieuwe gebruiker toevoegen*/
-.userrow{
+
+.userrow {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	margin-left: 0.5em;
-
 }
 
-.labelInputveld{
+.labelInputveld {
 	margin-bottom: 0.5em;
 	display: flex;
 }
 
-.labelInputveld > label{
+.labelInputveld>label {}
 
-}
-
-.labelInputveld > input{
+.labelInputveld>input {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	border-color: #EEEEEE;
 }
-.labelInputBox{
 
-}
+.labelInputBox {}
 
-.vraagRollenGebruiker{
+.vraagRollenGebruiker {
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
-
-
-
