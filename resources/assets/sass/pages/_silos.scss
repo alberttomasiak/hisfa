@@ -9,7 +9,18 @@
     color: #FFF;
     margin-bottom: 25px;
     font-family: 'Actor', sans-serif;
+}
 
+.addsilo {
+    float: right;
+    background-color: rgb(204, 134, 30);
+    border-color: transparent;
+    margin-right: 58px;
+    border-radius: 15px;
+    padding: 4px 10px;
+    font-size: 10px;
+    line-height: 10px;
+    outline: none;
 }
 
 .block__body {
@@ -22,13 +33,11 @@
     display: flex;
     flex-basis: auto;
     padding: 15px;
-
     &:hover {
         text-decoration: none;
     }
-
     &:nth-child(odd) {
-        background-color: rgba(0,0,0,0.04);
+        background-color: rgba(0, 0, 0, 0.04);
     }
 }
 
@@ -55,7 +64,7 @@
     text-transform: uppercase;
     font-size: 18px;
     font-weight: bold;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .silo__number {
@@ -67,39 +76,33 @@
     text-align: center;
 }
 
-
 .silo__image__top,
 .silo__image__middle,
 .silo__image__bottom {
     background-size: 100%;
-
 }
 
 .silo__image__top {
     width: 69.73px;
     height: 38.34px;
-
     &.full {
         background-image: url("../img/silos/full/silo-full-top.svg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 100%;
     }
-
     &.medium {
         background-image: url("../img/silos/medium/silo-medium-top.svg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 100%;
     }
-
     &.empty {
         background-image: url("../img/silos/empty/silo-empty-top.svg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 100%;
     }
-
     &.default {
         background-image: url("../img/silos/default/silo-default-top.svg");
         background-position: center center;
@@ -111,28 +114,24 @@
 .silo__image__middle {
     width: 69.72px;
     height: 26.97px;
-
     &.full {
         background-image: url("../img/silos/full/silo-full-middle.svg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 100%;
     }
-
     &.medium {
         background-image: url("../img/silos/medium/silo-medium-middle.svg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 100%;
     }
-
     &.empty {
         background-image: url("../img/silos/empty/silo-empty-middle.svg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 100%;
     }
-
     &.default {
         background-image: url("../img/silos/default/silo-default-middle.svg");
         background-position: center center;
@@ -144,28 +143,24 @@
 .silo__image__bottom {
     width: 69.71px;
     height: 27.83px;
-
     &.full {
         background-image: url("../img/silos/full/silo-full-bottom.svg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 100%;
     }
-
     &.medium {
         background-image: url("../img/silos/medium/silo-medium-bottom.svg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 100%;
     }
-
     &.empty {
         background-image: url("../img/silos/empty/silo-empty-bottom.svg");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 100%;
     }
-
     &.default {
         background-image: url("../img/silos/default/silo-default-bottom.svg");
         background-position: center center;
@@ -182,51 +177,41 @@
 }
 
 // CREATE / EDIT SILO
-
 .edit-silo {
     height: 100%;
     align-items: center;
     flex-wrap: wrap;
-
     .block {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
     }
-
     .edit-silo__block-form {
         flex: 2;
         min-width: 500px;
         width: 500px;
     }
-
     .edit-silo__block-image {
         flex: 1;
     }
-
     .silo__image {
         height: 300px;
     }
-
     .silo__image__top {
         width: 207.2px;
         height: 113.72px;
     }
-
     .silo__image__middle {
         width: 207.17px;
         height: 80px;
     }
-
     .silo__image__bottom {
         width: 207.14px;
         height: 82.54px;
     }
-
     .silo__percentage {
         font-size: 25px;
     }
-
     .submit {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -254,20 +239,17 @@
     margin-bottom: 25px;
 }
 
-
 .input-control {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
     align-items: center;
-
     label {
         width: 100%;
         color: #fff;
         display: flex;
         flex: 1;
     }
-
     input,
     select {
         width: 100%;
@@ -279,7 +261,6 @@
         box-sizing: border-box;
         border-bottom: 1px solid #2a2236;
         padding: 5px;
-
         &:focus {
             outline: none;
         }
