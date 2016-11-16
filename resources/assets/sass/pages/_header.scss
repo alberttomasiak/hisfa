@@ -1,5 +1,4 @@
 .header {
-
     display: flex;
     flex: 0 0 auto;
     background-color: #2A2236;
@@ -11,7 +10,6 @@
     text-transform: uppercase;
     flex-direction: row;
     -webkit-flex-direction: row;
-
     .left-icons {
         display: flex;
         justify-content: flex-start;
@@ -19,47 +17,42 @@
         align-items: center;
         padding-left: 20px;
     }
-
     .middle-icons {
         display: flex;
         justify-content: center;
         flex: 2;
         align-items: center;
     }
-
+    h5 {
+        margin-bottom: 0px;
+    }
     .right-icons {
         display: flex;
         justify-content: flex-end;
         flex: 1;
         align-items: center;
         padding-right: 20px;
-
-        a  {
+        a {
             display: flex;
             margin-right: 15px;
-
             &:last-child {
-                margin-right: none; 
+                margin-right: none;
             }
-
             &:hover {
                 text-decoration: none;
             }
         }
-
         .icon {
             font-size: 28px;
             color: #FFF;
             align-self: center;
             justify-content: center;
         }
-
         #newNotification {
             img {
                 height: 25px;
                 width: auto;
             }
         }
-
     }
 }
