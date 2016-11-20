@@ -10,7 +10,7 @@
 						swal({
 							title: "De volgende silo's zijn bijna vol:",
 							text: [@foreach($silos as $silo)
-								"\n{{$silo->type . ' ' . $silo->number . ' is ' . $silo->volume . ' procent vol'}}", 
+								"\n{{$silo->type . ' ' . $silo->number . ' is ' . $silo->volume . ' procent vol'}}",
 							@endforeach ],
 							type: "error",
 							confirmButtonText: "Begrepen"
@@ -34,5 +34,6 @@
 			@endif
 		@endif
 		<a href="/profiel"><i class="icon icon-user"></i></a>
+		<a href="/logout"><i class="icon icon-share-square-o"></i></a>
 	</div>
 </div>
