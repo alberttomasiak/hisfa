@@ -1,4 +1,4 @@
-@servers(['hisfa' => ['root@139.162.181.121']])
+@servers(['hisfa' => ['hisfa5@139.162.181.121']])
 
 @task('deploy_hisfa', ['on' => 'hisfa'])
     cd /var/www/html/hisfa5
