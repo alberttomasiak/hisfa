@@ -8,8 +8,4 @@
     php composer.phar dump-autoload
     php artisan migrate --force
     php artisan up
-    composer update
-    npm install
-    gulp
-    gulp watch
 @endtask
