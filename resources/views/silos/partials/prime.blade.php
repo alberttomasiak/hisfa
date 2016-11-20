@@ -30,7 +30,6 @@
                                 <div class="silo__number">{{$p_silo->silo->number}}</div>
                             </div>
                         </a>
-
                         @endforeach
                     </div>
                 </div>

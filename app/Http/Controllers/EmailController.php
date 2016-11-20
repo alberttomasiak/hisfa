@@ -15,37 +15,54 @@ use App\Notifications\SilosVolumePrime;
 class EmailController extends Controller
 {
     //
-		public function checkVolume(){
-		$silos = DB::table('silos')
+		public function checkVolumeWaste(){
+		$silosWaste = DB::table('silos')
             ->join('silo_types', 'silos.id', '=', 'silo_types.silo_id')
             ->select('silos.*', 'silo_types.type')
-			->where('silos.volume', '>=', '90')
+			->where([
+				['silos.volume', '>=', '90'],
+				['silo_types.type', '=', 'waste'],
+			])
             ->get();
-		
-		if($silos->first()){
+
+		if($silosWaste->first()){
 			$userPermissionsWaste = DB::table('users')
 				->select('notification_waste')
 				->where('notification_waste', '=', '1')
 				->get();
-			
+
 			if($userPermissionsWaste->first()){
 				$this->sendMailWaste();
 			}
-			
+		}else{
+			return redirect()->back();
+		}
+	}
+
+	public function checkVolumePrime(){
+		$silosPrime = DB::table('silos')
+            ->join('silo_types', 'silos.id', '=', 'silo_types.silo_id')
+            ->select('silos.*', 'silo_types.type')
+			->where([
+				['silos.volume', '>=', '90'],
+				['silo_types.type', '=', 'prime'],
+			])
+            ->get();
+
+		if($silosPrime->first()){
 			$userPermissionsPrime = DB::table('users')
 				->select('notification_prime')
 				->where('notification_prime', '=', '1')
 				->get();
-			
+
 			if($userPermissionsPrime->first()){
 				$this->sendMailPrime();
+			}else{
+				return redirect()->back();
 			}
-
-		}else{
-			redirect('/home');
 		}
 	}
-	
+
 	public function sendMailWaste(){
 		$users = \App\User::where('notification_waste', '=', '1')->get();
 		foreach ($users as $user){
@@ -53,7 +70,7 @@ class EmailController extends Controller
 		}
 		return redirect('/home');
 	}
-	
+
 	public function sendMailPrime(){
 		$users = \App\User::where('notification_prime', '=', '1')->get();
 		foreach ($users as $user){

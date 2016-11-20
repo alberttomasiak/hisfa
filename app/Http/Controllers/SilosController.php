@@ -147,7 +147,12 @@ class SilosController extends Controller
         $type->save();
 
 		// Check volumes -> if any is 90% or fuller -> send mail to all users.
-		app('App\Http\Controllers\EmailController')->checkVolume();
+		if(strpos($type, "waste")){
+			app('App\Http\Controllers\EmailController')->checkVolumeWaste();
+		}else{
+			app('App\Http\Controllers\EmailController')->checkVolumePrime();
+		}
+
         if( $ajax ){
             // Will be automagically JSON ^^
             return compact('silo', 'content', 'type', 'account_options', 'account_id');

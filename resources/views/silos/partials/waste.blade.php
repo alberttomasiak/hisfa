@@ -25,13 +25,12 @@
                                         <div class="silo__image__middle default"></div>
                                         <div class="silo__image__bottom empty"></div>
                                     @endif
-                                    
+
                                     <div class="silo__percentage">{{ intval($w_silo->silo->volume) }}%</div>
                                 </div>
                                 <div class="silo__number">{{$w_silo->silo->number}}</div>
                             </div>
                         </a>
-
                         @endforeach
                     </div>
                 </div>
