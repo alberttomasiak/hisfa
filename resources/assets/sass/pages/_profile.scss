@@ -308,3 +308,24 @@ span {
 	margin-bottom: 1em;
 
 }
+
+.user-rights {
+
+	padding-left: 2%;
+	padding-right: 2%;
+
+	.table-data,
+	.table-header {
+		text-align: center;
+	}
+
+	.buttons a{
+		margin-top: 15px; 
+	}
+
+	.buttons a,
+	.buttons input {
+		width: 100%;
+	}
+
+}
