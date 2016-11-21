@@ -3,32 +3,38 @@
 @if(Auth::user()->account_type == "admin" || Auth::user()->account_type == "normal" && strpos($account_options, "7") && $account_id = "[".Auth::user()->id."]")
 
 @section('content')
-	<div class="col-md-8 col-md-offset-2">
-		<table class="table">
-			<thead>
-				<tr>
-					<td class="users--name">Naam</td><td>Dashboard bekijken</td><td>Blokken stock bekijken</td><td>Blokken stock beheren</td><td>Grondstof- en afvalsilos bekijken</td><td>Afvalsilos beheren</td><td>Grondstofsilos beheren</td><td>Gebruikers beheren</td>
-				</tr>
-			</thead>
+	<div class="col-md-12 user-rights">
+
+		<div class="table">
+			<div class="tr table-header">
+				<div class="flex1">Naam</div>
+				<div class="flex1">Dashboard bekijken</div>
+				<div class="flex1">Blokken stock bekijken</div>
+				<div class="flex1">Blokken stock beheren</div>
+				<div class="flex1">Silos bekijken</div>
+				<div class="flex1">Afvalsilos beheren</div>
+				<div class="flex1">Grondstofsilos beheren</div>
+				<div class="flex1">Gebruikers beheren</div>
+			</div>
+
 			@foreach($users as $user)
-				<tr>
-					<td>{{$user->name}}</td>
-					<form class="" action="{{ URL('/profiel/UpdateUser') }}" method="post">
+					<form class="tr table-data" action="{{ URL('/profiel/UpdateUser') }}" method="post">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="text" style="display:none" name="userId" value="{{$user->id}}">
-						<td><input type="checkbox" name="options[]" id="optie1" value="1" /></td>
-						<td><input type="checkbox" name="options[]" id="optie2" value="2" /></td>
-						<td><input type="checkbox" name="options[]" id="optie3" value="3" /></td>
-						<td><input type="checkbox" name="options[]" id="optie4" value="4" /></td>
-						<td><input type="checkbox" name="options[]" id="optie5" value="5" /></td>
-						<td><input type="checkbox" name="options[]" id="optie6" value="6" /></td>
-						<td><input type="checkbox" name="options[]" id="optie7" value="7" /></td>
-						<td><input type="submit" name="submit" class="btn btn-success btn-xs" id="updateUser_submit" value="Rechten aanpassen"></td>
+						<div class="flex1">{{$user->name}}</div>
+						<div class="flex1"><input type="checkbox" name="options[]" id="optie2" value="2" /></div>
+						<div class="flex1"><input type="checkbox" name="options[]" id="optie3" value="3" /></div>
+						<div class="flex1"><input type="checkbox" name="options[]" id="optie4" value="4" /></div>
+						<div class="flex1"><input type="checkbox" name="options[]" id="optie5" value="5" /></div>
+						<div class="flex1"><input type="checkbox" name="options[]" id="optie6" value="6" /></div>
+						<div class="flex1"><input type="checkbox" name="options[]" id="optie7" value="7" /></div>
+						<div class="flex1 buttons">
+							<input type="submit" name="submit" class="btn btn-success btn-xs" id="updateUser_submit" value="Rechten aanpassen">
+							<a href="{{ action('ProfileController@DeleteUser', [$user->id])}}" class="btn btn-danger btn-xs">Gebruiker verwijderen</a>
+						</div>
 					</form>
-					<td><a href="{{ action('ProfileController@DeleteUser', [$user->id])}}" class="btn btn-danger btn-xs">Gebruiker verwijderen</a></td>
-				</tr>
 			@endforeach
-		</table>
+		</div>
 	</div>
 @endsection
 @else
