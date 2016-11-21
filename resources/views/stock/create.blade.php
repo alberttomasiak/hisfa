@@ -4,22 +4,30 @@
 
 @section('content')
 
-<form method="post">
-	{{ csrf_field() }}
+<div class="stock-edit">
 
-	{!! Form::label('Grondstof type:') !!}
-	{!! Form::text('type', (isset($stock->type) ? $stock->type : '')) !!}
+	<form method="post" class="stock-edit__form">
+		{{ csrf_field() }}
 
-	{!! Form::label('Grondstof tonnage:') !!}
-	{!! Form::text('tonnage', (isset($stock->stock->tonnage) ? $stock->stock->tonnage : 0)) !!}
+		<div class="input-control">
+			{!! Form::label('Grondstof type:') !!}
+			{!! Form::text('type', (isset($stock->type) ? $stock->type : '')) !!}
+		</div>
 
-	@if( isset($stock) )
-	{!! Form::submit('Opslagen') !!}
-	@else
-	{!! Form::submit('Aanmaken') !!}
-	@endif
+		<div class="input-control">
+			{!! Form::label('Grondstof tonnage:') !!}
+			{!! Form::text('tonnage', (isset($stock->stock->tonnage) ? $stock->stock->tonnage : 0)) !!}
+		</div>
 
-</form>
+		@if( isset($stock) )
+		{!! Form::submit('Opslagen', array('class' => 'btn btn-success')) !!}
+		@else
+		{!! Form::submit('Aanmaken', array('class' => 'btn btn-success')) !!}
+		@endif
+
+	</form>
+
+</div>
 
 @endsection
 
