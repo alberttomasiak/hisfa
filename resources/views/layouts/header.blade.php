@@ -10,9 +10,10 @@
 						swal({
 							title: "De volgende silo's zijn bijna vol:",
 							text: [@foreach($silos as $silo)
-								"\n{{$silo->type . ' ' . $silo->number . ' is ' . $silo->volume . ' procent vol'}}",
+								"<span style='font-size:1.5em'>\n{{$silo->type . ' ' . $silo->number . ' is ' . $silo->volume . ' procent vol'}}</span>",
 							@endforeach ],
 							type: "error",
+							html: true,
 							confirmButtonText: "Begrepen"
 						});
 					});
