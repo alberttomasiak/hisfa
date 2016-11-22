@@ -57,7 +57,16 @@ class SilosController extends Controller
     {
         $type = ($type == null) ? '' : $type;
 
-        return view('silos/create', compact('type', 'account_options', 'account_id'))
+		// account type achterhalen + optie's
+		$loggedInUser = \Auth::user()->id;
+
+		// opties ophalen voor de ingelogde user
+		$account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+
+		// de id van ingelogde user ophalen uit user_permissions
+		$account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
+
+        return view('silos.add', compact('type', 'account_options', 'account_id'))
                ->with('title', 'Silo creeëren');
     }
 
@@ -69,7 +78,7 @@ class SilosController extends Controller
      */
     public function store(Request $request)
     {
-        $silo = Silo::create($request->except(['_token', 'content', 'type']));
+        /*$silo = Silo::create($request->except(['_token', 'content', 'type']));
 
         SiloType::create([
             'type' => $request->input('type'),
@@ -77,9 +86,31 @@ class SilosController extends Controller
 
         SiloContent::create([
             'content' => $request->input('content'),
-            'silo_id' => $silo->id]);
+            'silo_id' => $silo->id]);*/
 
-        return redirect()->action('SilosController@index');
+		$contents = $request->contents;
+		$number = $request->number;
+		$type = $request->type;
+		$volume = $request->volume;
+
+		$query_silos = DB::table('silos')->insert(['number' => $number, 'volume' => $volume]);
+
+		if($query_silos){
+			$lastSiloIDQuery = DB::table('silos')->orderBy('id', 'desc')->first();
+			$newID = $lastSiloIDQuery->id;
+
+			$query_silo_contents = DB::table('silo_contents')->insert(['silo_id' => $newID, 'content' => $contents]);
+
+			if($query_silo_contents){
+				$lastSiloIDQuery = DB::table('silos')->orderBy('id', 'desc')->first();
+				$newID = $lastSiloIDQuery->id;
+
+				$query_types = DB::table('silo_types')->insert(['silo_id' => $newID, 'type' => $type]);
+			}
+		}
+
+
+	    return redirect()->action('SilosController@index');
     }
 
     /**

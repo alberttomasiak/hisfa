@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -19,7 +18,23 @@ const app = new Vue({
     el: 'body'
 });
 
-$('.edit-silo .btn-success').on('click', function(e){
+
+$('#siloAdd_submit').attr('disabled', true);
+
+$('.silo-add-contents, .silo-add-number, .silo-add-volume').bind('keyup', function() {
+    if(allFilled()) $('#siloAdd_submit').removeAttr('disabled');
+});
+
+function allFilled() {
+    var filled = true;
+    $('body input').each(function() {
+        if($(this).val() == '') filled = false;
+    });
+    return filled;
+}
+
+
+$('.silo-edit .btn-edit-silo').on('click', function(e){
 
     e.preventDefault();
 
@@ -39,7 +54,7 @@ $('.edit-silo .btn-success').on('click', function(e){
            },
            error: function(e)
            {
-
+               // oei
            }
          });
 
@@ -47,7 +62,6 @@ $('.edit-silo .btn-success').on('click', function(e){
 
 $('.edit-silo__block-form #name').keyup(function(e) {
     // Do something
-
 });
 
 $('.edit-silo__block-form #number').keyup(function(e) {
@@ -57,7 +71,6 @@ $('.edit-silo__block-form #number').keyup(function(e) {
 
 $('.edit-silo__block-form #type').keyup(function(e) {
     // Keyup does not work
-
 });
 
 $('.edit-silo__block-form #volume').keyup(function(e) {

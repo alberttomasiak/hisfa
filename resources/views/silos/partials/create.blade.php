@@ -1,7 +1,7 @@
 @section('content')
 	<div class="container full-height">
 		@if( isset($method) && $method == 'edit' )
-		<form method="post" class="row flex-row edit-silo" action="{{ action('SilosController@update', $silo->id) }}">
+		<form method="post" class="row flex-row edit-silo silo-edit" action="{{ action('SilosController@update', $silo->id) }}">
 		<input type="hidden" id="id" value="{{ $silo->id }}">
 		@else
 		{!! Form::open(['action' => 'SilosController@store']) !!}
@@ -54,9 +54,9 @@
 				</div>
 
 				@if( isset($button) )
-					{!! Form::submit($button, array('class' => 'btn btn-success')) !!}
+					{!! Form::submit($button, array('class' => 'btn btn-success btn-edit-silo')) !!}
 				@else
-					{!! Form::submit('Add silo', array('class' => 'btn btn-success')) !!}
+					{!! Form::submit('Add silo', array('class' => 'btn btn-success btn-edit-silo')) !!}
 				@endif
 			</div>
 	{!! Form::close() !!}
