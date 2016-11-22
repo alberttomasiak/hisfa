@@ -336,3 +336,30 @@ span {
 	}
 
 }
+
+.panel-body{
+	background-color: #392F49;
+
+}
+
+.row{
+	background-color: #392F49;
+	border-color: #392F49;
+}
+
+.panel{
+	border-color: #392F49;
+}
+
+.user__info__name, .user__info__email, .user__info__huidig-wachtwoord, .user__info__wachtwoord, .user__info__bevestig-nieuw-wachtwoord{
+	color: white;
+}
+
+.fileToUpload{
+	color:white;
+	margin-top:10px;
+}
+
+#profile_submit{
+	margin-bottom: 50px;
+}
