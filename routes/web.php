@@ -45,8 +45,8 @@ Route::get('/silos/{type}/add', 	'SilosController@create');
 Route::get('/silos/{id}/delete', 	'SilosController@destroy');
 Route::get('/silos/{id}/edit',		'SilosController@edit');
 Route::post('/silos', 				'SilosController@store');
-Route::post('/silos/toevoegen', 	'SilosController@store');
 Route::post('/silos/{id}/edit', 	'SilosController@update');
+Route::post('/silos/{type}/add',	'SilosController@store');
 Route::post('/silos/{id}/editjson', 'SilosController@update_json');
 
 /**
