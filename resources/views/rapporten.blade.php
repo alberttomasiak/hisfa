@@ -17,6 +17,8 @@
                                     <div class="flex1">{{$prime_log->date}}</div>
                                 </div>
                             @endforeach
+
+                            {!!$prime_logs->appends(Request::except('primeLogs'))->render()!!}
                         </div>
                     </div>
                 </div>
@@ -34,6 +36,8 @@
                                     <div class="flex1">{{$waste_log->date}}</div>
                                 </div>
                             @endforeach
+
+                            {!!$waste_logs->appends(Request::except('wasteLogs'))->render()!!}
                         </div>
                     </div>
                 </div>
@@ -54,6 +58,8 @@
                                     <div class="flex1">{{$stock_log->date}}</div>
                                 </div>
                             @endforeach
+
+                            {!!$stock_logs->appends(Request::except('stockLogs'))->render()!!}
                         </div>
                     </div>
                     <!-- END STOCK -->
