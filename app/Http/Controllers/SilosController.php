@@ -10,6 +10,9 @@ use App\SiloType;
 use App\SiloContent;
 use App\Notifications\SilosVolume;
 use DB;
+//use Illuminate\Support\Facades\Log as Log;
+use App\Log as Log;
+use Carbon\Carbon;
 
 class SilosController extends Controller
 {
@@ -109,6 +112,16 @@ class SilosController extends Controller
 			}
 		}
 
+		$user = \Auth::user()->name;
+		$action = "Added a silo";
+		$details = $type . " silo " . $number . " filled with " . $contents;
+		$dataType = $type;
+		$date = Carbon::now()->toDateTimeString();
+
+		$query = DB::table('logs')->insert(
+			['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => $dataType, 'date' => $date]
+		);
+
 
 	    return redirect()->action('SilosController@index');
     }
@@ -183,6 +196,17 @@ class SilosController extends Controller
 		}else{
 			app('App\Http\Controllers\EmailController')->checkVolumePrime();
 		}
+
+		// logs aanmaken
+		$user = \Auth::user()->name;
+		$action = "Updated a silo";
+		$details = $request->input('type') . " silo number " . $request->input('number') . ": " . $request->input('volume') . "%";
+		$dataType = $request->input('type');
+		$date = Carbon::now()->toDateTimeString();
+
+		$query = DB::table('logs')->insert(
+			['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => $dataType, 'date' => $date]
+		);
 
         if( $ajax ){
             // Will be automagically JSON ^^

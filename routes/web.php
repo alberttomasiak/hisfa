@@ -101,8 +101,10 @@ Route::get('/home', 'HomeController@index');
 /**
  * RAPPORTEN ROUTES
  **/
-Route::get('/rapporten', 'RapportenController@index');
+
 
 Route::get('/rapporten', function(){
 	return view('rapporten')->with('title', 'Rapporten');
 });
+
+Route::get('/rapporten', 'RapportenController@index');

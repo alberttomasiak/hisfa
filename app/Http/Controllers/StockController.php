@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\StockType;
 use App\Stock;
 use DB;
+use App\Log as Log;
+use Carbon\Carbon;
 
 class StockController extends Controller
 {
@@ -114,6 +116,16 @@ class StockController extends Controller
             'stock_id' => $stock->id
         ]);
 
+        $user = \Auth::user()->name;
+		$action = "Added a block";
+		$details = $request->input('type') . " added";
+		$dataType = "stock";
+		$date = Carbon::now()->toDateTimeString();
+
+		$query = DB::table('logs')->insert(
+			['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => $dataType, 'date' => $date]
+		);
+
         return redirect()->action('StockController@index');
     }
 
@@ -172,6 +184,16 @@ class StockController extends Controller
 
         $stockType->save();
         $stock->save();
+
+        $user = \Auth::user()->name;
+		$action = "Updated a block";
+		$details = $request->input('type') . " tonnage: " . $request->input('tonnage');
+		$dataType = "stock";
+		$date = Carbon::now()->toDateTimeString();
+
+		$query = DB::table('logs')->insert(
+			['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => $dataType, 'date' => $date]
+		);
 
         return redirect()->action('StockController@index');
     }
