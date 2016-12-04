@@ -1,5 +1,5 @@
 @section('content')
-	<div class="container full-height">
+	<div class="container full-height center">
 		@if( isset($method) && $method == 'edit' )
 		<form method="post" class="row flex-row edit-silo silo-edit" action="{{ action('SilosController@update', $silo->id) }}">
 		<input type="hidden" id="id" value="{{ $silo->id }}">
@@ -8,7 +8,7 @@
 		@endif
 
 			{{ csrf_field() }}
-			<div class="block edit-silo__block-image">
+			<div class="col-xs-12 col-sm-4 block">
 				<div class="silo__image">
 					@if( intval($silo->volume) >= 90 )
 						<div class="silo__image__top full"></div>
@@ -27,7 +27,7 @@
 					<div class="silo__percentage">{{ intval($silo->volume) }}%</div>
 				</div>
 			</div>
-			<div class="block edit-silo__block-form">
+			<div class="col-xs-12 col-sm-8 block">
 
 				<div class="input-control">
 					{!! Form::label('name', 'Silo contents?') !!}

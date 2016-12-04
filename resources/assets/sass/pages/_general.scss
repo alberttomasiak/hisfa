@@ -52,5 +52,15 @@ a {
 }
 
 .full-height {
-    height: 100%;
+    min-height: 100%;
+}
+
+.full-height.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .row:first-child {
+        width: 100%;
+    }
 }
