@@ -46,6 +46,8 @@ class HomeController extends Controller
 			->where('silos.volume', '>=', '90')
             ->get();
 
-        return view('home', compact('account_id', 'account_options', 'account_type', 'prime_silos', 'waste_silos', 'silos'));
+        $logs = DB::table('logs')->orderBy('date', 'desc')->take(5)->get();
+
+        return view('home', compact('account_id', 'account_options', 'account_type', 'prime_silos', 'waste_silos', 'silos', 'logs'));
     }
 }
