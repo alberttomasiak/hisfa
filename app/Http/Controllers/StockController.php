@@ -92,7 +92,7 @@ class StockController extends Controller
             // de id van ingelogde user ophalen uit user_permissions
             $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
             return view('stock.create', compact('account_options', 'account_id'))
-                   ->with('title', 'Grondstof type toevoegen');
+                   ->with('title', 'Add a raw material');
         }else{
             return redirect('login');
         }
@@ -161,7 +161,7 @@ class StockController extends Controller
             $stock = StockType::with('stock')->findOrFail($id);
 
             return view('stock.create', compact('stock', 'account_options', 'account_id'))
-                   ->with('title', 'Grondstof aanpassen');
+                   ->with('title', 'Update material');
         }else{
             return redirect('login');
         }

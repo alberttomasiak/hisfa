@@ -7,14 +7,14 @@
 
 		<div class="table">
 			<div class="tr table-header">
-				<div class="flex1">Naam</div>
-				<div class="flex1">Dashboard bekijken</div>
-				<div class="flex1">Blokken stock bekijken</div>
-				<div class="flex1">Blokken stock beheren</div>
-				<div class="flex1">Silos bekijken</div>
-				<div class="flex1">Afvalsilos beheren</div>
-				<div class="flex1">Grondstofsilos beheren</div>
-				<div class="flex1">Gebruikers beheren</div>
+				<div class="flex1">Name</div>
+				<div class="flex1">Dashboard access</div>
+				<div class="flex1">Block/stock access</div>
+				<div class="flex1">Block/stock management</div>
+				<div class="flex1">Prime/waste silo access</div>
+				<div class="flex1">Waste silo management</div>
+				<div class="flex1">Prime silo management</div>
+				<div class="flex1">User management</div>
 			</div>
 
 			@foreach($users as $user)
@@ -29,8 +29,8 @@
 						<div class="flex1"><input type="checkbox" name="options[]" id="optie6" value="6" /></div>
 						<div class="flex1"><input type="checkbox" name="options[]" id="optie7" value="7" /></div>
 						<div class="flex1 buttons">
-							<input type="submit" name="submit" class="btn btn-success btn-xs" id="updateUser_submit" value="Rechten aanpassen">
-							<a href="{{ action('ProfileController@DeleteUser', [$user->id])}}" class="btn btn-danger btn-xs">Gebruiker verwijderen</a>
+							<input type="submit" name="submit" class="btn btn-success btn-xs" id="updateUser_submit" value="Change roles">
+							<a href="{{ action('ProfileController@DeleteUser', [$user->id])}}" class="btn btn-danger btn-xs">Delete user</a>
 						</div>
 					</form>
 			@endforeach

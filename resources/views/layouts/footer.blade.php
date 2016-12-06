@@ -18,10 +18,10 @@
                 <h6>STOCK</h6>
             </a>
         </div>
-        <div class="fp-content <?=(Request::is('rapports/*')) ? 'active' : '' ?>">
+        <div class="fp-content <?=(Request::is('rapporten/*')) ? 'active' : '' ?>">
             <a href="{{ action('RapportenController@index') }}">
                 <i class="icon-rapports badge-on-icon"></i>
-                <h6>RAPPORTEN</h6>
+                <h6>REPORTS</h6>
             </a>
         </div>
     </div>
