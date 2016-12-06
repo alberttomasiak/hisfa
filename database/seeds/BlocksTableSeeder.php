@@ -14,16 +14,27 @@ class BlocksTableSeeder extends Seeder
         //
         $faker = Faker\Factory::create();
 
-        $limit = 9;
+        $limit = 8;
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         DB::table('blocks')->truncate();
 
+        $name = array(
+            'P15',
+            'P20',
+            'P25',
+            'P30',
+            'P35',
+            '100SE',
+            '150SE',
+            '200SE',
+            '250SE',
+        );
+
         for($i = 0; $i <= $limit; $i++){
             DB::table('blocks')->insert([
-                'width' => 1030,
-                'depth' => 1290,
+                'name' => $name[$i]
             ]);
         }
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

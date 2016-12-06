@@ -23,13 +23,13 @@ Route::get('/', function () {
 	return view('/auth/login');
 });
 
-Route::get('/blokken', function() {
+/*Route::get('/blokken', function() {
 	if(Auth::user()){
 		return view('blokken');
 	}else{
 		return redirect('login');
 	}
-});
+});*/
 
 route::get('/logout', function(){
 	// session data wegdoen en redirecten naar login :)
@@ -60,6 +60,12 @@ Route::post('/stock/add',			'StockController@store');
 Route::get('/stock/{id}/delete',	'StockController@destroy');
 Route::get('/stock/{id}/increase', 	'StockController@increase');
 Route::get('/stock/{id}/decrease',	'StockController@decrease');
+
+/**
+* BLOCK ROUTES
+*/
+Route::get('/blocks',				'BlockController@index');
+
 
 // TEST ROUTE | NO LONGER NECESSARY
 //Route::get('/email', 'EmailController@checkVolume');

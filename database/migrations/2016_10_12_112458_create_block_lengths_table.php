@@ -17,6 +17,7 @@ class CreateBlockLengthsTable extends Migration
         Schema::create('block_lengths', function (Blueprint $table){
             $table->increments('id');
             $table->integer('length');
+            $table->integer('stock')->default(0);
             $table->timestamps();
         });
     }
