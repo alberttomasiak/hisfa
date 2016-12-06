@@ -69,7 +69,7 @@ Route::get('/stock/{id}/decrease',	'StockController@decrease');
 **/
 Route::get('/profiel', function(){
 	if(Auth::check()){
-		return view('profile')->with('title', 'Profiel');
+		return view('profile')->with('title', 'Profile');
 	}else{
 		return redirect('login');
 	}
@@ -81,7 +81,7 @@ Route::get('/profiel/updateNotiWaste', 'ProfileController@ClickUpdateNotificatio
 Route::get('/profiel/gebruikers_beheren', 'ProfileController@ManageUsers');
 
 Route::get('/profiel/instellingen', function(){
-	return view('profile_settings')->with('title', 'Profiel instellingen');
+	return view('profile_settings')->with('title', 'Profile settings');
 });
 
 // profiel instellingen wijzigen
@@ -104,7 +104,7 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::get('/rapporten', function(){
-	return view('rapporten')->with('title', 'Rapporten');
+	return view('rapporten')->with('title', 'Reports');
 });
 
 Route::get('/rapporten', 'RapportenController@index');
