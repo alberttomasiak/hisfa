@@ -47,7 +47,11 @@ class HomeController extends Controller
             ->get();
 
         $logs = DB::table('logs')->orderBy('date', 'desc')->take(5)->get();
+        $resources = DB::table('stocks')
+                    ->join('stock_types', 'stocks.id', '=', 'stock_types.stock_id')
+                    ->select('stocks.tonnage', 'stock_types.type')
+                    ->get();
 
-        return view('home', compact('account_id', 'account_options', 'account_type', 'prime_silos', 'waste_silos', 'silos', 'logs'));
+        return view('home', compact('account_id', 'account_options', 'account_type', 'prime_silos', 'waste_silos', 'silos', 'logs', 'resources'));
     }
 }

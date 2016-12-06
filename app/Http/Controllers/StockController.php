@@ -42,7 +42,7 @@ class StockController extends Controller
             $stockTypes = StockType::all();
 
             return view('stock.index', compact('stockTypes', 'account_options', 'account_id'))
-                   ->with('title', 'Stock');
+                   ->with('title', 'Resources');
 
         }else{
             return redirect('login');
