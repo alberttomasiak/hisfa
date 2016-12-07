@@ -24,8 +24,7 @@
 
 <br><br>
 
-<div class="row">
-
+<div class="col-md-12">
 
 <?php $i=0; ?>
 @foreach( $blocks as $block )
@@ -48,7 +47,7 @@
 	</div>
 	@if( $i % 4 == 0)
 	</div>
-	<div class="row">
+	<div class="col-md-12">
 	@endif
 @endforeach
 </div>
