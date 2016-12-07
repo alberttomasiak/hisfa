@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Block;
+use App\BlockLength;
 use Illuminate\Http\Request;
 
 class BlockController extends Controller
@@ -16,7 +17,7 @@ class BlockController extends Controller
     {
         $blocks = Block::with('length')->get();
 
-        return view('block.index', compact('blocks'))->with('title', 'Blokken');
+        return view('block.index', compact('blocks'))->with('title', 'Blocks');
     }
 
     /**
@@ -26,7 +27,14 @@ class BlockController extends Controller
      */
     public function create()
     {
-        //
+        return view('block.create')->with('title', 'Create Block');
+    }
+
+    public function create_length($id){
+
+        $block = Block::find($id);
+
+        return view('block.create_length', compact('block'));
     }
 
     /**
@@ -37,7 +45,24 @@ class BlockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $block = new Block;
+
+        $block->name = $request->input('name');
+        $block->save();
+
+        return redirect()->action('BlockController@index');
+    }
+
+    public function store_length(Request $request)
+    {
+        $block = new BlockLength;
+
+        $block->length = $request->input('length');
+        $block->block_id = $request->input('block_id');
+        $block->stock = $request->input('stock');
+        $block->save();
+
+        return redirect()->action('BlockController@index');
     }
 
     /**
@@ -59,7 +84,16 @@ class BlockController extends Controller
      */
     public function edit($id)
     {
-        //
+        $block = Block::findOrFail($id);
+
+        return view('block.update', compact('block'));
+    }
+
+     public function edit_length($id)
+    {
+        $block = BlockLength::findOrFail($id);
+
+        return view('block.update_length', compact('block'));
     }
 
     /**
@@ -71,7 +105,23 @@ class BlockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $block = Block::findOrFail($id);
+
+        $block->name = $request->input('name');
+        $block->save();
+
+        return redirect()->action('BlockController@index');
+    }
+
+    public function update_length(Request $request, $id)
+    {
+        $block = BlockLength::findOrFail($id);
+
+        $block->length = $request->input('length');
+        $block->stock = $request->input('stock');
+        $block->save();
+
+        return redirect()->action('BlockController@index');
     }
 
     /**
@@ -82,6 +132,17 @@ class BlockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $block = Block::find($id);
+        $block->delete();
+
+        return redirect()->back();
+    }
+
+    public function destroy_length($id)
+    {
+        $blockL = BlockLength::find($id);
+        $blockL->delete();
+
+        return redirect()->back();
     }
 }

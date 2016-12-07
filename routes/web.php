@@ -64,8 +64,15 @@ Route::get('/stock/{id}/decrease',	'StockController@decrease');
 /**
 * BLOCK ROUTES
 */
-Route::get('/blocks',				'BlockController@index');
-
+//Route::get('/blocks',				'BlockController@index');
+Route::resource('/blocks', 					'BlockController', ['except' => ['destroy', 'update']]);
+Route::get('/blocks/{id}/create_length',	'BlockController@create_length');
+Route::get('/blocks/{id}/destory_length',	'BlockController@destroy_length');
+Route::get('/blocks/delete/{id}', 			'BlockController@destroy');
+Route::post('/blocks/{id}',					'BlockController@update');
+Route::post('/blocks/{id}/length',			'BlockController@update_length');
+Route::post('/blocks/length/{id}',			'BlockController@store_length');
+Route::get('/blocks/edit_length/{id}', 		'BlockController@edit_length');
 
 // TEST ROUTE | NO LONGER NECESSARY
 //Route::get('/email', 'EmailController@checkVolume');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Silo;
 use App\SiloType;
 use App\User;
+use App\Block;
 use App\UserPermissions;
 use DB;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -46,8 +47,10 @@ class HomeController extends Controller
 			->where('silos.volume', '>=', '90')
             ->get();
 
+        $blocks = Block::with('length')->get();
+
         $logs = DB::table('logs')->orderBy('date', 'desc')->take(5)->get();
 
-        return view('home', compact('account_id', 'account_options', 'account_type', 'prime_silos', 'waste_silos', 'silos', 'logs'));
+        return view('home', compact('account_id', 'blocks', 'account_options', 'account_type', 'prime_silos', 'waste_silos', 'silos', 'logs'));
     }
 }
