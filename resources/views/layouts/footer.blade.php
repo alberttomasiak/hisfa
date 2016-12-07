@@ -15,7 +15,7 @@
         <div class="fp-content <?=(Request::is('stock/*') || Request::is('stock')) ? 'active' : '' ?>">
             <a href="{{ action('StockController@index') }}">
                 <i class="icon-cubes badge-on-icon"></i>
-                <h6>STOCK</h6>
+                <h6>RESOURCES</h6>
             </a>
         </div>
         <div class="fp-content <?=(Request::is('rapporten/*')) ? 'active' : '' ?>">
