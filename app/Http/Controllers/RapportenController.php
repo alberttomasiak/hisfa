@@ -29,8 +29,12 @@ class RapportenController extends Controller
 
         $stock_logs = DB::table('logs')->where('data_type', '=', 'stock')->orderBy('date', 'desc')->paginate(5, ['*'], 'stockLogs');
 
-        return view('rapporten', compact('prime_logs', 'waste_logs', 'stock_logs'))
+        $block_logs = DB::table('logs')->where('data_type', '=', 'block')->orderBy('date', 'desc')->paginate(5, ['*'], 'stockLogs');
+
+
+        return view('rapporten', compact('prime_logs', 'waste_logs', 'stock_logs', 'block_logs'))
             ->with('title', 'Reports');
+            
     }
 
 }

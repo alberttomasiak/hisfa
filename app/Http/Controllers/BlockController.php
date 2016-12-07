@@ -59,7 +59,7 @@ class BlockController extends Controller
         $date = Carbon::now()->toDateTimeString();
 
         $query = DB::table('logs')->insert(
-            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Blocks", 'date' => $date]
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "block", 'date' => $date]
         );
 
         return redirect()->action('BlockController@index');
@@ -80,7 +80,7 @@ class BlockController extends Controller
         $date = Carbon::now()->toDateTimeString();
 
         $query = DB::table('logs')->insert(
-            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Block Length", 'date' => $date]
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "block", 'date' => $date]
         );
 
         return redirect()->action('BlockController@index');
@@ -137,7 +137,7 @@ class BlockController extends Controller
         $date = Carbon::now()->toDateTimeString();
 
         $query = DB::table('logs')->insert(
-            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Blocks", 'date' => $date]
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "block", 'date' => $date]
         );
 
         return redirect()->action('BlockController@index');
@@ -157,7 +157,7 @@ class BlockController extends Controller
         $date = Carbon::now()->toDateTimeString();
 
         $query = DB::table('logs')->insert(
-            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Block Length", 'date' => $date]
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "block", 'date' => $date]
         );
 
         return redirect()->action('BlockController@index');
@@ -180,7 +180,7 @@ class BlockController extends Controller
         $date = Carbon::now()->toDateTimeString();
 
         $query = DB::table('logs')->insert(
-            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Blocks", 'date' => $date]
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "block", 'date' => $date]
         );
 
         return redirect()->back();
@@ -197,7 +197,7 @@ class BlockController extends Controller
         $date = Carbon::now()->toDateTimeString();
 
         $query = DB::table('logs')->insert(
-            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Block Length", 'date' => $date]
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "block", 'date' => $date]
         );
 
         return redirect()->back();

@@ -64,7 +64,33 @@
                     </div>
                     <!-- END STOCK -->
                 </div>
+
+                <div class="col-sm-6">
+                    <!-- START STOCK -->
+                    <div class="block">
+                        <h2 class="block__title">Block logs</h2>
+                        <div class="table">
+                            @include('logs.partials.header')
+                            @foreach($block_logs as $block_log)
+                                <div class="tr table-data">
+                                    <div class="flex1">{{$block_log->user}}</div>
+                                    <div class="flex1">{{$block_log->action}}</div>
+                                    <div class="flex2">{{ucfirst($block_log->details)}}</div>
+                                    <div class="flex1">{{$block_log->date}}</div>
+                                </div>
+                            @endforeach
+
+                            {!!$block_logs->appends(Request::except('blockLogs'))->render()!!}
+                        </div>
+                    </div>
+                    <!-- END STOCK -->
+                </div>
             </div>
+
+            <div class="row">
+                
+            </div>
+
         </div>
     </div>
 @endsection
