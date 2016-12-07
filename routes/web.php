@@ -23,13 +23,13 @@ Route::get('/', function () {
 	return view('/auth/login');
 });
 
-Route::get('/blokken', function() {
+/*Route::get('/blokken', function() {
 	if(Auth::user()){
 		return view('blokken');
 	}else{
 		return redirect('login');
 	}
-});
+});*/
 
 route::get('/logout', function(){
 	// session data wegdoen en redirecten naar login :)
@@ -60,6 +60,19 @@ Route::post('/stock/add',			'StockController@store');
 Route::get('/stock/{id}/delete',	'StockController@destroy');
 Route::get('/stock/{id}/increase', 	'StockController@increase');
 Route::get('/stock/{id}/decrease',	'StockController@decrease');
+
+/**
+* BLOCK ROUTES
+*/
+//Route::get('/blocks',				'BlockController@index');
+Route::resource('/blocks', 					'BlockController', ['except' => ['destroy', 'update']]);
+Route::get('/blocks/{id}/create_length',	'BlockController@create_length');
+Route::get('/blocks/{id}/destory_length',	'BlockController@destroy_length');
+Route::get('/blocks/delete/{id}', 			'BlockController@destroy');
+Route::post('/blocks/{id}',					'BlockController@update');
+Route::post('/blocks/{id}/length',			'BlockController@update_length');
+Route::post('/blocks/length/{id}',			'BlockController@store_length');
+Route::get('/blocks/edit_length/{id}', 		'BlockController@edit_length');
 
 // TEST ROUTE | NO LONGER NECESSARY
 //Route::get('/email', 'EmailController@checkVolume');

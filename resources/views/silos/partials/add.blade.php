@@ -1,12 +1,12 @@
 @section('content')
-    <div class="container full-height">
+    <div class="container full-height center">
         @if($type == "waste")
             <form id="silo--toevoegen" class="row flex-row edit-silo" action="{{ URL('/silos/waste/add')}}" method="post">
         @elseif($type == "prime")
             <form id="silo--toevoegen" class="row flex-row edit-silo" action="{{ URL('/silos/prime/add')}}" method="post">
         @endif
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="block edit-silo__block-image">
+            <div class="col-xs-12 col-sm-4 block"> 
                 <div class="silo__image">
                     <div class="silo__image__top empty"></div>
                     <div class="silo__image__middle empty"></div>
@@ -15,7 +15,7 @@
             </div>
 
 
-            <div class="block edit-silo__block-form">
+            <div class="col-xs-12 col-sm-8 block">
                 <div class="input-control">
                     <label for="contents">Silo contents</label>
                     <input type="text" name="contents" class="silo-add-contents" value="">

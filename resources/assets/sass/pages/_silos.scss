@@ -55,6 +55,10 @@
     margin: 0px auto;
 }
 
+.silo__image:hover{
+    transform: scale(1.05);
+}
+
 .silo__percentage {
     position: absolute;
     top: 50%;
@@ -266,4 +270,14 @@
             outline: none;
         }
     }
+}
+
+.silo__image:hover{
+    -webkit-animation:bounce 2s;
+}
+
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: scale(1.05) translateY(0);}
+    40% {transform: scale(1.05) translateY(-12px);}
+    60% {transform: scale(1.05) translateY(-6px);}
 }
