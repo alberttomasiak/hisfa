@@ -220,7 +220,7 @@ class ProfileController extends Controller
 
 	public function ManageUsers(){
 		$users = DB::table('users')->where('account_type', '=', 'normal')->get();
-		return view('profiel/gebruikers_beheren', ['users' => $users]);
+		return view('profiel/gebruikers_beheren', ['users' => $users])->with('title', 'User management');
 	}
 
 	public function UpdateUser(Request $request){

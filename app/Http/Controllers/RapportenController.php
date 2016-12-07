@@ -30,7 +30,7 @@ class RapportenController extends Controller
         $stock_logs = DB::table('logs')->where('data_type', '=', 'stock')->orderBy('date', 'desc')->paginate(5, ['*'], 'stockLogs');
 
         return view('rapporten', compact('prime_logs', 'waste_logs', 'stock_logs'))
-            ->with('title', 'Rapporten');
+            ->with('title', 'Reports');
     }
 
 }

@@ -70,7 +70,7 @@ class SilosController extends Controller
 		$account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
 
         return view('silos.add', compact('type', 'account_options', 'account_id'))
-               ->with('title', 'Silo creeëren');
+               ->with('title', 'Add a silo');
     }
 
     /**
@@ -160,8 +160,8 @@ class SilosController extends Controller
         $type = ($silo->type->type) ? $silo->type->type : '';
 
         return view('silos.create', compact('silo', 'type', 'account_options', 'account_id'))
-               ->with('title', 'Silo aanpassen')
-               ->with('button', 'Silo aanpassen')
+               ->with('title', 'Update silo')
+               ->with('button', 'Update silo')
                ->with('method', 'edit');
     }
 
