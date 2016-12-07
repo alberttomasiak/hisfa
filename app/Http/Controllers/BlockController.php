@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Block;
+use \DB;
+use App\Log as Log;
+use Carbon\Carbon;
 use App\BlockLength;
 use Illuminate\Http\Request;
 
@@ -50,6 +53,15 @@ class BlockController extends Controller
         $block->name = $request->input('name');
         $block->save();
 
+        $user = \Auth::user()->name;
+        $action = "Added a block";
+        $details = "Block with name: " . $request->input('name');
+        $date = Carbon::now()->toDateTimeString();
+
+        $query = DB::table('logs')->insert(
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Blocks", 'date' => $date]
+        );
+
         return redirect()->action('BlockController@index');
     }
 
@@ -61,6 +73,15 @@ class BlockController extends Controller
         $block->block_id = $request->input('block_id');
         $block->stock = $request->input('stock');
         $block->save();
+
+        $user = \Auth::user()->name;
+        $action = "Added a block length";
+        $details = "Block length added " . $request->input('length') . " for block";
+        $date = Carbon::now()->toDateTimeString();
+
+        $query = DB::table('logs')->insert(
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Block Length", 'date' => $date]
+        );
 
         return redirect()->action('BlockController@index');
     }
@@ -110,6 +131,15 @@ class BlockController extends Controller
         $block->name = $request->input('name');
         $block->save();
 
+        $user = \Auth::user()->name;
+        $action = "Edited a block";
+        $details = "Block with name: " . $block->name . ", changed to: " . $request->input('name');
+        $date = Carbon::now()->toDateTimeString();
+
+        $query = DB::table('logs')->insert(
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Blocks", 'date' => $date]
+        );
+
         return redirect()->action('BlockController@index');
     }
 
@@ -120,6 +150,15 @@ class BlockController extends Controller
         $block->length = $request->input('length');
         $block->stock = $request->input('stock');
         $block->save();
+
+        $user = \Auth::user()->name;
+        $action = "Edited stock block length";
+        $details = "Block length edited to: " . $request->input('length') . " - stock: " . $request->input('stock');
+        $date = Carbon::now()->toDateTimeString();
+
+        $query = DB::table('logs')->insert(
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Block Length", 'date' => $date]
+        );
 
         return redirect()->action('BlockController@index');
     }
@@ -135,6 +174,15 @@ class BlockController extends Controller
         $block = Block::find($id);
         $block->delete();
 
+        $user = \Auth::user()->name;
+        $action = "Block deleted";
+        $details = "Block with name: " . $block->name . ", deleted.";
+        $date = Carbon::now()->toDateTimeString();
+
+        $query = DB::table('logs')->insert(
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Blocks", 'date' => $date]
+        );
+
         return redirect()->back();
     }
 
@@ -142,6 +190,15 @@ class BlockController extends Controller
     {
         $blockL = BlockLength::find($id);
         $blockL->delete();
+
+        $user = \Auth::user()->name;
+        $action = "Stock length deleted";
+        $details = "Block length deleted (" . $request->input('length') . " - stock: " . $request->input('stock') . ")";
+        $date = Carbon::now()->toDateTimeString();
+
+        $query = DB::table('logs')->insert(
+            ['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => "Block Length", 'date' => $date]
+        );
 
         return redirect()->back();
     }
