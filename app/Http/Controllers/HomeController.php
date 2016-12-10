@@ -55,10 +55,7 @@ class HomeController extends Controller
                     ->select('stocks.tonnage', 'stock_types.type')
                     ->get();
 
-<<<<<<< HEAD
-        return view('home', compact('account_id', 'account_options', 'account_type', 'prime_silos', 'waste_silos', 'silos', 'logs', 'resources'));
-=======
         return view('home', compact('account_id', 'blocks', 'account_options', 'account_type', 'prime_silos', 'waste_silos', 'silos', 'logs'));
->>>>>>> c93cf2ca069d91ff5875fec2511c767aaf113622
+
     }
 }
