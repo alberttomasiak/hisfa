@@ -200,13 +200,6 @@ class SilosController extends Controller
         $type->type = $request->input('type');
         $type->save();
 
-		// Check volumes -> if any is 90% or fuller -> send mail to all users.
-		if(strpos($type, "waste")){
-			app('App\Http\Controllers\EmailController')->checkVolumeWaste();
-		}else{
-			app('App\Http\Controllers\EmailController')->checkVolumePrime();
-		}
-
 		// logs aanmaken
 		$user = \Auth::user()->name;
 		$action = "Updated a silo";
@@ -218,18 +211,27 @@ class SilosController extends Controller
 			['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => $dataType, 'date' => $date]
 		);
 
+		// Check volumes -> if any is 90% or fuller -> send mail to all users.
+		if(strpos($type, "waste")){
+			app('App\Http\Controllers\EmailController')->checkVolumeWaste();
+		}else{
+			app('App\Http\Controllers\EmailController')->checkVolumePrime();
+		}
+
         if( $ajax ){
             // Will be automagically JSON ^^
-            return compact('silo', 'content', 'type', 'account_options', 'account_id');
+			//return view('silos/index', compact('silo', 'content', 'type', 'account_options', 'account_id'));
+			return compact('silo', 'content', 'type', 'account_options', 'account_id');
+			//return redirect()->action('SilosController@index');
         } else {
-            return redirect()->back();
+            //return redirect()->back();
+			return redirect()->action('SilosController@index');
         }
     }
 
     public function update_json(Request $request, $id){
 
         return $this->update($request, $id, true);
-
     }
 
     /**
