@@ -4,7 +4,6 @@
 
 
                     <div class="block__body">
-
                         @foreach( $waste_silos as $w_silo )
 
                         <a class="silo" href="{{ action('SilosController@edit', [$w_silo->silo->id]) }}">
@@ -28,10 +27,16 @@
 
                                     <div class="silo__percentage">{{ intval($w_silo->silo->volume) }}%</div>
                                 </div>
+                                @foreach($silo_contents_waste as $silo_content)
+                                    @if($silo_content->silo_id === $w_silo->silo->id)
+                                        <div class="silo__inhoud">{{$silo_content->content}}</div>
+                                    @endif
+                                @endforeach
                                 <div class="silo__number">{{$w_silo->silo->number}}</div>
                             </div>
                         </a>
                         @endforeach
+
                     </div>
                 </div>
                 <!-- END WASTE SILOS -->

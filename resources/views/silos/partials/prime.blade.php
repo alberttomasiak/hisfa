@@ -27,6 +27,11 @@
                                     @endif
                                     <div class="silo__percentage">{{ intval($p_silo->silo->volume) }}%</div>
                                 </div>
+                                @foreach($silo_contents_prime as $silo_content)
+                                    @if($silo_content->silo_id === $p_silo->silo->id)
+                                        <div class="silo__inhoud">{{$silo_content->content}}</div>
+                                    @endif
+                                @endforeach
                                 <div class="silo__number">{{$p_silo->silo->number}}</div>
                             </div>
                         </a>

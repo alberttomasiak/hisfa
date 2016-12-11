@@ -47,7 +47,17 @@ class SilosController extends Controller
     	$waste_silos = SiloType::with('silo')->where('type','=','waste')->get();
         $prime_silos = SiloType::with('silo')->where('type','=','prime')->get();
 
-        return view('silos/index', compact('prime_silos', 'waste_silos', 'account_options', 'account_id'))
+		$silo_contents_waste =  DB::table('silo_contents')
+								->join('silo_types', 'silo_contents.silo_id', '=', 'silo_types.silo_id')
+								->where('silo_types.type', '=', 'waste')
+								->get();
+
+		$silo_contents_prime =  DB::table('silo_contents')
+								->join('silo_types', 'silo_contents.silo_id', '=', 'silo_types.silo_id')
+								->where('silo_types.type', '=', 'prime')
+								->get();
+
+        return view('silos/index', compact('prime_silos', 'waste_silos', 'account_options', 'account_id', 'silo_contents_waste', 'silo_contents_prime'))
                ->with('title', 'Silos');
     }
 
