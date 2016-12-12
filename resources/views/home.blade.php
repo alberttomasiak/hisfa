@@ -22,28 +22,11 @@
             <div class="col-sm-12">
                 <!-- START STOCK -->
                 <div class="block">
-<<<<<<< HEAD
-                    <h1 class="block__title">Resources</h1>
-                            <div class="table">
-                    			<div class="tr table-header">
-                    				<div class="flex5">Resource type</div>
-                    				<div class="flex1">Ton</div>
-                    			</div>
-
-                                @foreach($resources as $resource)
-                                    <div class="tr table-data">
-                                        <div class="flex5">{{$resource->type}}</div>
-                                        <div class="flex1">{{$resource->tonnage}}</div>
-                                    </div>
-                                @endforeach
-
-                            </div>
-=======
                     <h1 class="block__title">Blocks</h1>
 
                     <div class="block__body">
                         <div class="row" style="width: 100%;">
-                                
+
                             <style>
                             .hm {
                                 padding: 1em;
@@ -69,7 +52,7 @@
                                     <h4>{{  $block->name  }} <a href="{{ action('BlockController@edit', $block->id) }}">Edit</a> <a href="{{ url('blocks/delete', ['id' => $block->id]) }}">Delete</a><a href="{{ action('BlockController@create_length', $block->id) }}" class="pull-right">+</a></h4>
 
                                     @foreach( $block->length as $length)
-                                    <div class="row"> 
+                                    <div class="row">
                                         <div class="col-md-6">
                                             {{ $length->length/1000 }}m ({{ $length->stock }})
                                         </div>
@@ -88,7 +71,6 @@
 
                         </div>
                     </div>
->>>>>>> c93cf2ca069d91ff5875fec2511c767aaf113622
                 </div>
                 <!-- END STOCK -->
             </div>
@@ -97,24 +79,27 @@
                 <!-- START ADVANCED_DATA -->
                 <div class="block">
                     <h1 class="block__title">Advanced Data</h1>
-                            <div class="table">
-                    			<div class="tr table-header">
-                    				<div class="flex1">User</div>
-                    				<div class="flex1">Action</div>
-                    				<div class="flex2">Details</div>
-                    				<div class="flex1">Date and Time</div>
-                    			</div>
+                    <div class="table">
+            			<div class="tr table-header">
+            				<div class="flex1">User</div>
+            				<div class="flex1">Action</div>
+            				<div class="flex2">Details</div>
+            				<div class="flex1">Date and Time</div>
+            			</div>
 
-                                @foreach($logs as $log)
-                                    <div class="tr table-data">
-                                        <div class="flex1">{{$log->user}}</div>
-                                        <div class="flex1">{{$log->action}}</div>
-                                        <div class="flex2">{{ucfirst($log->details)}}</div>
-                                        <div class="flex1">{{$log->date}}</div>
-                                    </div>
-                                @endforeach
-
+                        @foreach($logs as $log)
+                            <div class="tr table-data">
+                                <div class="flex1">{{$log->user}}</div>
+                                <div class="flex1">{{$log->action}}</div>
+                                <div class="flex2">{{ucfirst($log->details)}}</div>
+                                <div class="flex1">{{$log->date}}</div>
                             </div>
+                        @endforeach
+
+                    </div>
+                    <div class="block-body">
+                        <div class="row"></div>
+                    </div>
                 </div>
                 <!-- END ADVANCED_DATA -->
             </div>
