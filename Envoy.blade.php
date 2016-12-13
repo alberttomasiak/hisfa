@@ -5,7 +5,8 @@
     php artisan down
     git reset --hard HEAD
     git pull origin develop
-    php composer.phar dump-autoload
+    composer update
+    composer dump-autoload
     php artisan migrate --force
     php artisan up
 @endtask
