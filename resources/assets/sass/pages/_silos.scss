@@ -55,6 +55,10 @@
     margin: 0px auto;
 }
 
+.silo__image:hover{
+    transform: scale(1.05);
+}
+
 .silo__percentage {
     position: absolute;
     top: 50%;
@@ -65,6 +69,17 @@
     font-size: 18px;
     font-weight: bold;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.silo__inhoud{
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
 }
 
 .silo__number {
@@ -177,7 +192,8 @@
 }
 
 // CREATE / EDIT SILO
-.edit-silo {
+
+.edit-silo{
     height: 100%;
     align-items: center;
     flex-wrap: wrap;
@@ -265,4 +281,14 @@
             outline: none;
         }
     }
+}
+
+.silo__image:hover{
+    -webkit-animation:bounce 2s;
+}
+
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: scale(1.05) translateY(0);}
+    40% {transform: scale(1.05) translateY(-12px);}
+    60% {transform: scale(1.05) translateY(-6px);}
 }

@@ -23,12 +23,18 @@ Route::get('/', function () {
 	return view('/auth/login');
 });
 
-Route::get('/blokken', function() {
+/*Route::get('/blokken', function() {
 	if(Auth::user()){
 		return view('blokken');
 	}else{
 		return redirect('login');
 	}
+});*/
+
+route::get('/logout', function(){
+	// session data wegdoen en redirecten naar login :)
+	Session::flush();
+	return redirect('login');
 });
 
 /**
@@ -40,6 +46,7 @@ Route::get('/silos/{id}/delete', 	'SilosController@destroy');
 Route::get('/silos/{id}/edit',		'SilosController@edit');
 Route::post('/silos', 				'SilosController@store');
 Route::post('/silos/{id}/edit', 	'SilosController@update');
+Route::post('/silos/{type}/add',	'SilosController@store');
 Route::post('/silos/{id}/editjson', 'SilosController@update_json');
 
 /**
@@ -54,6 +61,19 @@ Route::get('/stock/{id}/delete',	'StockController@destroy');
 Route::get('/stock/{id}/increase', 	'StockController@increase');
 Route::get('/stock/{id}/decrease',	'StockController@decrease');
 
+/**
+* BLOCK ROUTES
+*/
+//Route::get('/blocks',				'BlockController@index');
+Route::resource('/blocks', 					'BlockController', ['except' => ['destroy', 'update']]);
+Route::get('/blocks/{id}/create_length',	'BlockController@create_length');
+Route::get('/blocks/{id}/destory_length',	'BlockController@destroy_length');
+Route::get('/blocks/delete/{id}', 			'BlockController@destroy');
+Route::post('/blocks/{id}',					'BlockController@update');
+Route::post('/blocks/{id}/length',			'BlockController@update_length');
+Route::post('/blocks/length/{id}',			'BlockController@store_length');
+Route::get('/blocks/edit_length/{id}', 		'BlockController@edit_length');
+
 // TEST ROUTE | NO LONGER NECESSARY
 //Route::get('/email', 'EmailController@checkVolume');
 
@@ -62,7 +82,7 @@ Route::get('/stock/{id}/decrease',	'StockController@decrease');
 **/
 Route::get('/profiel', function(){
 	if(Auth::check()){
-		return view('profile')->with('title', 'Profiel');
+		return view('profile')->with('title', 'Profile');
 	}else{
 		return redirect('login');
 	}
@@ -74,7 +94,7 @@ Route::get('/profiel/updateNotiWaste', 'ProfileController@ClickUpdateNotificatio
 Route::get('/profiel/gebruikers_beheren', 'ProfileController@ManageUsers');
 
 Route::get('/profiel/instellingen', function(){
-	return view('profile_settings')->with('title', 'Profiel instellingen');
+	return view('profile_settings')->with('title', 'Profile settings');
 });
 
 // profiel instellingen wijzigen
@@ -94,8 +114,10 @@ Route::get('/home', 'HomeController@index');
 /**
  * RAPPORTEN ROUTES
  **/
-Route::get('/rapporten', 'RapportenController@index');
+
 
 Route::get('/rapporten', function(){
-	return view('rapporten')->with('title', 'Rapporten');
+	return view('rapporten')->with('title', 'Reports');
 });
+
+Route::get('/rapporten', 'RapportenController@index');

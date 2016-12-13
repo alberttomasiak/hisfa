@@ -8,21 +8,20 @@
         </div>
         <div class="fp-content <?=(Request::is('silos/*') || Request::is('silos')) ? 'active' : '' ?>">
             <a href="{{ action('SilosController@index') }}">
-                <i class="icon-stock badge-on-icon"></i>
+                <i class="icon-database badge-on-icon"></i>
                 <h6>SILOS</h6>
             </a>
         </div>
         <div class="fp-content <?=(Request::is('stock/*') || Request::is('stock')) ? 'active' : '' ?>">
             <a href="{{ action('StockController@index') }}">
-                <img src="img/stocks-ic.svg" alt="" style="width: auto; height: 35px; padding: 5px;">
-                {{--<i class="icon-stock badge-on-icon"></i>--}}
-                <h6>STOCK</h6>
+                <i class="icon-cubes badge-on-icon"></i>
+                <h6>RESOURCES</h6>
             </a>
         </div>
-        <div class="fp-content <?=(Request::is('rapports/*')) ? 'active' : '' ?>">
+        <div class="fp-content <?=(Request::is('rapporten/*')) ? 'active' : '' ?>">
             <a href="{{ action('RapportenController@index') }}">
                 <i class="icon-rapports badge-on-icon"></i>
-                <h6>RAPPORTEN</h6>
+                <h6>REPORTS</h6>
             </a>
         </div>
     </div>

@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\StockType;
 use App\Stock;
 use DB;
+use App\Log as Log;
+use Carbon\Carbon;
 
 class StockController extends Controller
 {
@@ -40,7 +42,7 @@ class StockController extends Controller
             $stockTypes = StockType::all();
 
             return view('stock.index', compact('stockTypes', 'account_options', 'account_id'))
-                   ->with('title', 'Stock');
+                   ->with('title', 'Resources');
 
         }else{
             return redirect('login');
@@ -90,7 +92,7 @@ class StockController extends Controller
             // de id van ingelogde user ophalen uit user_permissions
             $account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
             return view('stock.create', compact('account_options', 'account_id'))
-                   ->with('title', 'Grondstof type toevoegen');
+                   ->with('title', 'Add a raw material');
         }else{
             return redirect('login');
         }
@@ -113,6 +115,16 @@ class StockController extends Controller
             'type' => $request->input('type'),
             'stock_id' => $stock->id
         ]);
+
+        $user = \Auth::user()->name;
+		$action = "Added a block";
+		$details = $request->input('type') . " added";
+		$dataType = "stock";
+		$date = Carbon::now()->toDateTimeString();
+
+		$query = DB::table('logs')->insert(
+			['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => $dataType, 'date' => $date]
+		);
 
         return redirect()->action('StockController@index');
     }
@@ -149,7 +161,7 @@ class StockController extends Controller
             $stock = StockType::with('stock')->findOrFail($id);
 
             return view('stock.create', compact('stock', 'account_options', 'account_id'))
-                   ->with('title', 'Grondstof aanpassen');
+                   ->with('title', 'Update material');
         }else{
             return redirect('login');
         }
@@ -173,6 +185,16 @@ class StockController extends Controller
         $stockType->save();
         $stock->save();
 
+        $user = \Auth::user()->name;
+		$action = "Updated a block";
+		$details = $request->input('type') . " tonnage: " . $request->input('tonnage');
+		$dataType = "stock";
+		$date = Carbon::now()->toDateTimeString();
+
+		$query = DB::table('logs')->insert(
+			['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => $dataType, 'date' => $date]
+		);
+
         return redirect()->action('StockController@index');
     }
 
@@ -195,6 +217,14 @@ class StockController extends Controller
             return redirect()->back();
         }else{
             return redirect('login');
+        }
+    }
+
+    public function addAvatar($id)
+    {
+        if(Input::file())
+        {
+            $image = Input::file('image');
         }
     }
 }

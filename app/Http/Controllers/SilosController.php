@@ -10,6 +10,9 @@ use App\SiloType;
 use App\SiloContent;
 use App\Notifications\SilosVolume;
 use DB;
+//use Illuminate\Support\Facades\Log as Log;
+use App\Log as Log;
+use Carbon\Carbon;
 
 class SilosController extends Controller
 {
@@ -44,7 +47,17 @@ class SilosController extends Controller
     	$waste_silos = SiloType::with('silo')->where('type','=','waste')->get();
         $prime_silos = SiloType::with('silo')->where('type','=','prime')->get();
 
-        return view('silos/index', compact('prime_silos', 'waste_silos', 'account_options', 'account_id'))
+		$silo_contents_waste =  DB::table('silo_contents')
+								->join('silo_types', 'silo_contents.silo_id', '=', 'silo_types.silo_id')
+								->where('silo_types.type', '=', 'waste')
+								->get();
+
+		$silo_contents_prime =  DB::table('silo_contents')
+								->join('silo_types', 'silo_contents.silo_id', '=', 'silo_types.silo_id')
+								->where('silo_types.type', '=', 'prime')
+								->get();
+
+        return view('silos/index', compact('prime_silos', 'waste_silos', 'account_options', 'account_id', 'silo_contents_waste', 'silo_contents_prime'))
                ->with('title', 'Silos');
     }
 
@@ -57,8 +70,17 @@ class SilosController extends Controller
     {
         $type = ($type == null) ? '' : $type;
 
-        return view('silos/create', compact('type', 'account_options', 'account_id'))
-               ->with('title', 'Silo creeëren');
+		// account type achterhalen + optie's
+		$loggedInUser = \Auth::user()->id;
+
+		// opties ophalen voor de ingelogde user
+		$account_options = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('options');
+
+		// de id van ingelogde user ophalen uit user_permissions
+		$account_id = DB::table('user_permissions')->where('user_id', '=', $loggedInUser)->pluck('user_id');
+
+        return view('silos.add', compact('type', 'account_options', 'account_id'))
+               ->with('title', 'Add a silo');
     }
 
     /**
@@ -69,7 +91,7 @@ class SilosController extends Controller
      */
     public function store(Request $request)
     {
-        $silo = Silo::create($request->except(['_token', 'content', 'type']));
+        /*$silo = Silo::create($request->except(['_token', 'content', 'type']));
 
         SiloType::create([
             'type' => $request->input('type'),
@@ -77,9 +99,41 @@ class SilosController extends Controller
 
         SiloContent::create([
             'content' => $request->input('content'),
-            'silo_id' => $silo->id]);
+            'silo_id' => $silo->id]);*/
 
-        return redirect()->action('SilosController@index');
+		$contents = $request->contents;
+		$number = $request->number;
+		$type = $request->type;
+		$volume = $request->volume;
+
+		$query_silos = DB::table('silos')->insert(['number' => $number, 'volume' => $volume]);
+
+		if($query_silos){
+			$lastSiloIDQuery = DB::table('silos')->orderBy('id', 'desc')->first();
+			$newID = $lastSiloIDQuery->id;
+
+			$query_silo_contents = DB::table('silo_contents')->insert(['silo_id' => $newID, 'content' => $contents]);
+
+			if($query_silo_contents){
+				$lastSiloIDQuery = DB::table('silos')->orderBy('id', 'desc')->first();
+				$newID = $lastSiloIDQuery->id;
+
+				$query_types = DB::table('silo_types')->insert(['silo_id' => $newID, 'type' => $type]);
+			}
+		}
+
+		$user = \Auth::user()->name;
+		$action = "Added a silo";
+		$details = $type . " silo " . $number . " filled with " . $contents;
+		$dataType = $type;
+		$date = Carbon::now()->toDateTimeString();
+
+		$query = DB::table('logs')->insert(
+			['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => $dataType, 'date' => $date]
+		);
+
+
+	    return redirect()->action('SilosController@index');
     }
 
     /**
@@ -116,8 +170,8 @@ class SilosController extends Controller
         $type = ($silo->type->type) ? $silo->type->type : '';
 
         return view('silos.create', compact('silo', 'type', 'account_options', 'account_id'))
-               ->with('title', 'Silo aanpassen')
-               ->with('button', 'Silo aanpassen')
+               ->with('title', 'Update silo')
+               ->with('button', 'Update silo')
                ->with('method', 'edit');
     }
 
@@ -146,20 +200,38 @@ class SilosController extends Controller
         $type->type = $request->input('type');
         $type->save();
 
+		// logs aanmaken
+		$user = \Auth::user()->name;
+		$action = "Updated a silo";
+		$details = $request->input('type') . " silo number " . $request->input('number') . ": " . $request->input('volume') . "%";
+		$dataType = $request->input('type');
+		$date = Carbon::now()->toDateTimeString();
+
+		$query = DB::table('logs')->insert(
+			['user' => $user, 'action' => $action, 'details' => $details, 'data_type' => $dataType, 'date' => $date]
+		);
+
 		// Check volumes -> if any is 90% or fuller -> send mail to all users.
-		app('App\Http\Controllers\EmailController')->checkVolume();
+		if(strpos($type, "waste")){
+			app('App\Http\Controllers\EmailController')->checkVolumeWaste();
+		}else{
+			app('App\Http\Controllers\EmailController')->checkVolumePrime();
+		}
+
         if( $ajax ){
             // Will be automagically JSON ^^
-            return compact('silo', 'content', 'type', 'account_options', 'account_id');
+			//return view('silos/index', compact('silo', 'content', 'type', 'account_options', 'account_id'));
+			return compact('silo', 'content', 'type', 'account_options', 'account_id');
+			//return redirect()->action('SilosController@index');
         } else {
-            return redirect()->back();
+            //return redirect()->back();
+			return redirect()->action('SilosController@index');
         }
     }
 
     public function update_json(Request $request, $id){
 
         return $this->update($request, $id, true);
-
     }
 
     /**
