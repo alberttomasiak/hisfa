@@ -1,6 +1,6 @@
 const elixir = require('laravel-elixir');
 
-require('laravel-elixir-vue');
+require('laravel-elixir-vue-2');
 
 var gulp = require('gulp');
 var cleanCSS = require('gulp-clean-css'); // minify css files

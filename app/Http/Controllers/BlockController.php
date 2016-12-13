@@ -40,6 +40,24 @@ class BlockController extends Controller
         return view('block.create_length', compact('block'));
     }
 
+    public function decreaseLength($length_id){
+        $blockLength = BlockLength::find($length_id);
+
+        $blockLength->stock = $blockLength->stock-1;
+        $blockLength->save();
+
+        return response()->json(['stock' => $blockLength->stock, 'cubic' => round((1030/1000*1290/1000*($blockLength->length*$blockLength->stock)/ 1000),2)]);
+    }
+
+    public function increaseLength($length_id){
+        $blockLength = BlockLength::find($length_id);
+
+        $blockLength->stock = $blockLength->stock+1;
+        $blockLength->save();
+
+        return response()->json(['stock' => $blockLength->stock, 'cubic' => round((1030/1000*1290/1000*($blockLength->length*$blockLength->stock)/ 1000),2)]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

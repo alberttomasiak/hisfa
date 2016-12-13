@@ -15,7 +15,30 @@ require('./bootstrap');
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: 'body'
+    el: '.page',
+    data: {
+        message: 'lel',
+        stock: {},
+        cubic: {},
+    },
+    methods: {
+        plusBlock(id) {
+            //alert(id);
+            $.get('/blocks/length/'+id+'/increase', function(data){
+
+                $('.stock_'+id).html( data.stock );
+                $('.cubic_'+id).html( data.cubic );
+            });
+        },
+        minusBlock(id) {
+            //alert(id);
+            $.get('/blocks/length/'+id+'/decrease', function(data){
+                
+                $('.stock_'+id).html( data.stock );
+                $('.cubic_'+id).html( data.cubic );
+            });
+        }
+    }
 });
 
 

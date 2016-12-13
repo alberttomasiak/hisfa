@@ -64,3 +64,17 @@ a {
         width: 100%;
     }
 }
+
+.hm {
+    padding: 1em;
+    margin: .5em 0;
+}
+
+.hm .inner {
+    padding: .5em;
+    background: white;
+}
+
+.hm .inner .row {
+    background: none;
+}

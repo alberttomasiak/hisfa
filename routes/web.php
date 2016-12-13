@@ -73,6 +73,8 @@ Route::post('/blocks/{id}',					'BlockController@update');
 Route::post('/blocks/{id}/length',			'BlockController@update_length');
 Route::post('/blocks/length/{id}',			'BlockController@store_length');
 Route::get('/blocks/edit_length/{id}', 		'BlockController@edit_length');
+Route::get('/blocks/length/{id}/increase',	'BlockController@increaseLength');
+Route::get('/blocks/length/{id}/decrease',	'BlockController@decreaseLength');
 
 // TEST ROUTE | NO LONGER NECESSARY
 //Route::get('/email', 'EmailController@checkVolume');
