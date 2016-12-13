@@ -219,4 +219,12 @@ class StockController extends Controller
             return redirect('login');
         }
     }
+
+    public function addAvatar($id)
+    {
+        if(Input::file())
+        {
+            $image = Input::file('image');
+        }
+    }
 }

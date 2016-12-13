@@ -16,12 +16,14 @@
 
 		<div class="table">
 			<div class="tr table-header">
+                <div class="flex1">Image</div>
 				<div class="flex1">Type</div>
 				<div class="flex3">In stock</div>
 				<div class="flex1">Action</div>
 			</div>
 			@foreach($stockTypes as $type)
 				<div class="tr table-data">
+                    <div class="flex1"><img src="/img/gauge-icon.png" alt="" style="height: auto; width: 25px;"></div>
 					<div class="flex1">{{ $type->type }}</div>
 					<div class="flex3">{{ $type->stock->tonnage }}</div>
 					<div class="flex1">

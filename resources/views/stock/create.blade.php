@@ -19,6 +19,11 @@
 			{!! Form::text('tonnage', (isset($stock->stock->tonnage) ? $stock->stock->tonnage : 0)) !!}
 		</div>
 
+		<div class="input-control">
+			{!! Form::label('Add stock avatar') !!}
+			{!! Form::file('image') !!}
+		</div>
+
 		@if( isset($stock) )
 		{!! Form::submit('Save', array('class' => 'btn btn-success')) !!}
 		@else
