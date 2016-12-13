@@ -45,6 +45,7 @@
 
             <button type="submit" name="submit" class="submit">Login</button>
         </form>
+        <a href="/herstel-wachtwoord"  class="forgotPassword">Forgot your password?</a>
     </div>
 
     <div class="bg-boxes">

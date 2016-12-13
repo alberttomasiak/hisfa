@@ -37,6 +37,10 @@ route::get('/logout', function(){
 	return redirect('login');
 });
 
+Route::get('/herstel-wachtwoord', function(){
+	return view('auth/passwords/email');
+});
+
 /**
 * SILO ROUTES
 **/

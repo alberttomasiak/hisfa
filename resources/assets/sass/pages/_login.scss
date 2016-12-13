@@ -69,3 +69,14 @@
         transition-duration: 0.25s;
     }
 }
+.forgotPassword{
+    display: block;
+    color: white;
+    margin-top: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.forgotPassword:hover{
+    color: orange;
+}

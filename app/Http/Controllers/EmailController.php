@@ -33,10 +33,13 @@ class EmailController extends Controller
 
 			if($userPermissionsWaste->first()){
 				$this->sendMailWaste();
+				//return redirect()->back();
 			}
 		}else{
 			return redirect()->back();
 		}
+
+		return redirect()->back();
 	}
 
 	public function checkVolumePrime(){
@@ -57,10 +60,13 @@ class EmailController extends Controller
 
 			if($userPermissionsPrime->first()){
 				$this->sendMailPrime();
-			}else{
-				return redirect()->back();
+				//return redirect()->back();
 			}
+		}else{
+			return redirect()->back();
 		}
+
+		return redirect()->back();
 	}
 
 	public function sendMailWaste(){
