@@ -45,7 +45,7 @@ class BlockController extends Controller
 
         $blockLength->stock = $blockLength->stock-1;
 
-        if( $blockLength->stock >= 0){
+        if( $blockLength->stock-1 >= 0){
             $blockLength->save();
         }
 
