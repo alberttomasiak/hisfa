@@ -44,7 +44,10 @@ class BlockController extends Controller
         $blockLength = BlockLength::find($length_id);
 
         $blockLength->stock = $blockLength->stock-1;
-        $blockLength->save();
+
+        if( $blockLength->stock >= 0){
+            $blockLength->save();
+        }
 
         return response()->json(['stock' => $blockLength->stock, 'cubic' => round((1030/1000*1290/1000*($blockLength->length*$blockLength->stock)/ 1000),2)]);
     }
