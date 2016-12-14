@@ -30,7 +30,7 @@
                                 <div class="silo__inhoud">{{ $w_silo->silo->content->content }}</div>
                                 @foreach($silo_contents_waste as $silo_content)
                                     @if($silo_content->silo_id === $w_silo->silo->id)
-                                        <div class="silo__inhoud">{{$silo_content->content}} -</div>
+                                        <!--<div class="silo__inhoud">{{$silo_content->content}} -</div>-->
                                     @endif
                                 @endforeach
                                 <div class="silo__number">{{$w_silo->silo->number}}</div>
