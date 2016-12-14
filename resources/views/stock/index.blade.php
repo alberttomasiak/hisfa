@@ -32,8 +32,8 @@
 						<a class="btn btn-primary" href="{{ action('StockController@decrease', $type->stock->id) }}">-</a>
 					</div>
 					<div class="flex1">
-						<a href="{{ action('StockController@edit', $type->id)}}" class="btn btn-default btn-edit btn-sm">Aanpassen</i></a>
-						<a href="{{ action('StockController@destroy', $type->id)}}" class="btn btn-danger btn-sm">Verwijderen</a>
+						<a href="{{ action('StockController@edit', $type->id)}}" class="btn btn-default btn-edit btn-sm">Change</i></a>
+						<a href="{{ action('StockController@destroy', $type->id)}}" class="btn btn-danger btn-sm">Delete</a>
 					</div>
 				</div>
 			@endforeach

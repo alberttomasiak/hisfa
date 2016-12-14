@@ -9,7 +9,7 @@
 <br><br>
 
 
-<div class="col-md-12">
+<div class="col-md-12 blocksVUE">
 
 <?php $i=0; ?>
 @foreach( $blocks as $block )

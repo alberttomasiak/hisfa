@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('./sweetalert.min');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,7 +16,7 @@ require('./bootstrap');
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '.page',
+    el: '.blocksVUE',
     data: {
         message: 'lel',
         stock: {},

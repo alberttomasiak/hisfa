@@ -32,7 +32,6 @@
     </div>
 
     <!-- Scripts -->
-    <!--<script src="https://unpkg.com/vue/dist/vue.js"></script>-->
     <script src="/js/app.js"></script>
 
 </body>
