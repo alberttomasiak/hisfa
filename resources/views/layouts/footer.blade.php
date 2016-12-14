@@ -14,7 +14,7 @@
         </div>
         <div class="fp-content <?=(Request::is('blocks/*') || Request::is('blocks')) ? 'active' : '' ?>">
             <a href="{{ action('BlockController@index') }}">
-                <i class="icon-database badge-on-icon"></i>
+                <i class="icon-cube badge-on-icon"></i>
                 <h6>BLOCKS</h6>
             </a>
         </div>
