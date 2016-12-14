@@ -27,23 +27,6 @@
                     <div class="block__body">
                         <div class="row" style="width: 100%;">
 
-                            <style>
-                            .hm {
-                                padding: 1em;
-                                margin: .5em 0;
-                            }
-
-                            .hm .inner {
-                                padding: .5em;
-                                background: white;
-                            }
-
-                            .hm .inner .row {
-                                background: none;
-                                width: 100%;
-                            }
-                            </style>
-
                             <?php $i=0; ?>
                             @foreach( $blocks as $block )
                                 <?php $i++ ?>
